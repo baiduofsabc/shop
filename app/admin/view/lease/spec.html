@@ -1,0 +1,186 @@
+{include file="common/head2"/}
+
+<div id="appIndex">
+
+<fieldset class="layui-elem-field layui-field-title">
+        <legend>规格属性</legend>
+    </fieldset>
+    <el-tabs v-model="editableTabsValue" type="card"  @edit="handleTabsEdit">
+        <el-tab-pane
+                :key="item.name"
+                v-for="(item, index) in editableTabs"
+                :label="item.title"
+                :name="item.name"
+                lazy
+        >
+        <div class="talbe_item">
+
+            <div class="lable_name">属性名称：</div><el-input v-model="item.title" placeholder="请输入内容"></el-input>
+            <div class="lable_name">单位名称：</div><el-input v-model="item.unit" placeholder="请输入内容"></el-input>
+            <div class="lable_name">{{item.title}}：</div>
+            <div v-for="(vo,ind) in item.value" :key="ind" class="table_value">
+                <el-input v-model="item.value[ind]" placeholder="请输入内容" style="width:50%"></el-input>
+                <el-button type="danger" icon="el-icon-delete" circle @click="delValue(ind)"></el-button>
+            </div>
+            <el-button plain @click="addValue()">添加</el-button>
+            <el-button plain @click="save(index)">保存</el-button>
+
+        </div>
+
+
+        </el-tab-pane>
+    </el-tabs>
+</div>
+<script>
+    var appIndex = new Vue({
+        el: '#appIndex',
+        data() {
+            return {
+                editableTabsValue: 1,
+                editableTabs: [{
+                    title: '轮椅颜色',
+                    name: '1',
+                    unit:'颜色',
+                    value: [
+                        '红色','黑色'
+                    ]
+                }, {
+                    title: '租赁时长',
+                    name: '2',
+                    unit:'小时',
+                    value:[1,2,3]
+                }],
+                tabIndex: 1
+
+            };
+        },
+        created:function(){
+            this.setData();
+
+        },
+        methods: {
+            setData(){
+
+                let _this = this
+                axios({
+                    method:'post',
+                    url:'{:url("spec")}',
+                    data:{},
+                }).then(function(resp){
+
+                    _this.editableTabs = resp.data;
+                    _this.tabIndex = resp.data.length;
+                    for (let i = 0; i < resp.data.length; i++) {
+
+                        _this.$set(_this.editableTabs[i],'name',i+1);
+
+                        if(resp.data[i].value!=null) {
+                            _this.$set(_this.editableTabs[i],'value',resp.data[i].value.split(","));
+                        }
+                        else {
+                            _this.$set(_this.editableTabs[i],'value',[]);
+                        }
+                        console.log(_this.editableTabs[i],'abc');
+                    }
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+            },
+            addValue(){
+                console.log(this.editableTabsValue-1);
+                this.editableTabs[this.editableTabsValue-1].value.push('');
+
+            },
+            delValue(ind){
+                this.editableTabs[this.editableTabsValue-1].value.splice(ind,1);
+            },
+            handleTabsEdit(targetName, action) {
+                if (action === 'add') {
+                    let newTabName = ++this.tabIndex;
+                    this.editableTabs.push({
+                        title: '新属性',
+                        name: newTabName,
+                        value: []
+                    });
+                    this.editableTabsValue = newTabName;
+                }
+                if (action === 'remove') {
+
+                    let tabs = this.editableTabs;
+                    let activeName = this.editableTabsValue;
+                    if (activeName === targetName) {
+                        tabs.forEach((tab, index) => {
+
+                            if (tab.name === targetName) {
+                                this.del(tab.id);
+                                let nextTab = tabs[index + 1] || tabs[index - 1];
+                                if (nextTab) {
+                                    activeName = nextTab.name;
+                                }
+                            }
+                        });
+                    }
+
+
+                    this.editableTabsValue = activeName;
+                    this.editableTabs = tabs.filter(tab => tab.name !== targetName);
+                    this.tabIndex = this.editableTabs.length;
+                }
+            },
+            del(id){
+                var _this = this
+                axios({
+                    method:'post',
+                    url:'{:url("specDel")}',
+                    data:{id:id},
+                }).then(function(resp){
+                    console.log(resp.data);
+                    if(resp.data.code==1) {
+                        _this.$notify({title: '删除成功',message:resp.data.msg,type: 'success'});
+
+                    }
+                    else {
+                        _this.$notify({title: '失败',message:resp.data.msg,type: 'error'});
+                    }
+
+                    _this.setData();
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+
+            },
+            save(index) {
+
+
+                    var submitData = JSON.parse(JSON.stringify(this.editableTabs[index]));
+                    submitData.value=this.editableTabs[index].value.join(",");
+                    var _this = this
+                    axios({
+                        method:'post',
+                        url:'{:url("specAdd")}',
+                        data:submitData,
+                    }).then(function(resp){
+                        console.log(resp.data);
+                        if(resp.data.code==1) {
+                            _this.$notify({title: '成功',message:resp.data.msg,type: 'success'});
+
+                        }
+                        else {
+                            _this.$notify({title: '失败',message:resp.data.msg,type: 'error'});
+                        }
+
+                    }).catch(resp => {
+                        console.log('请求失败：'+resp.status+','+resp.statusText);
+                    });
+
+            },
+
+        },
+        mounted() {
+
+        }
+
+    });
+</script>
+</body>
+</html>

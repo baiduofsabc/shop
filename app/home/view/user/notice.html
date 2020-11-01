@@ -1,0 +1,135 @@
+{include file="common/head"/}
+{include file="common/nav"/}
+<div id="app">
+    <van-list
+            v-model="loading"
+            :finished="finished"
+            finished-text="没有更多了"
+            @load="setData"
+    >
+        <div class="list_notice" v-for="(item,index) in list" :key="index">
+            <div class="title van-hairline--bottom">
+                <van-row>
+                    <van-col span="16">
+                        {{item.addtime}}
+                    </van-col>
+                    <van-col span="8">
+                        <div style="text-align: right;">
+                            <van-button type="primary" size="small" class="btn_grey" @click="del(item.id,index)">删除
+                            </van-button>
+                        </div>
+                    </van-col>
+
+                </van-row>
+            </div>
+             <p style="font-size: 0.35rem">{{item.info}}</p>
+            <!-- <p v-if="item.packUp" @click="item.packUp = !item.packUp ">{{item.info.substring(0,20)}}... &nbsp;&nbsp;<a href="javascript::void " v-if="item.packUp">展开</a></p>
+            <p v-else @click="item.packUp = !item.packUp ">{{item.info}} &nbsp;&nbsp;<a href="javascript::void ">收起</a></p> -->
+
+
+            <van-row gutter="1">
+                <van-col span="8" v-for="(vo,ind) in item.imagesArr" :key="ind">
+                    <div class="img" :style="'background-image: url('+vo+');'"
+                         @click="viewPic(item.imagesArr,ind)"></div>
+                </van-col>
+            </van-row>
+        </div>
+
+    </van-list>
+
+</div>
+<script>
+    var appIndex = new Vue({
+        el: '#app',
+        data: function data() {
+            return {
+                list: [],
+                loading: false,
+                finished: false,
+                packUp: true,
+                pageTotal: 0,
+                filter: {page: 1, limit: 15},
+                status: ['', '', '已下架', '用户已删除']
+            };
+        },
+        created: function () {
+            axios({
+                method: 'post',
+                url: '{:url("noticeTimeUpdate")}',
+                data: {},
+            }).then(function (resp) {
+
+            }).catch(resp => {
+                console.log('请求失败：' + resp.status + ',' + resp.statusText);
+            });
+
+        },
+
+        methods: {
+            viewPic(images, index) {
+                // this.picIndex = index;
+                // this.show = true
+
+                let _this = this
+                vant.ImagePreview({
+                    images: images,
+                    startPosition: index,
+                    onClose() {
+                        // do something
+                    }
+                });
+            },
+            setData() {
+                var _this = this
+                axios({
+                    method: 'post',
+                    url: '',
+                    data: _this.filter,
+                }).then(function (resp) {
+                    _this.loading = false;
+                    _this.list = _this.list.concat(resp.data.data);
+                    _this.pageTotal = resp.data.count
+                    _this.filter.page++
+                    if (_this.list.length >= _this.pageTotal) {
+                        _this.finished = true;
+                    }
+                }).catch(resp => {
+                    console.log('请求失败：' + resp.status + ',' + resp.statusText);
+                });
+            },
+            del(id, index) {
+                var _this = this
+                vant.Dialog.confirm({
+                    title: '提示',
+                    message: '确认删除'
+                }).then(() => {
+                    axios({
+                        method: 'post',
+                        url: '{:url("noticeDel")}',
+                        data: {id: id},
+                    }).then(function (resp) {
+                        if (resp.data.code == 1) {
+                            vant.Toast.success(resp.data.msg);
+                            _this.list.splice(index, 1);
+                        } else {
+                            vant.Toast.fail("删除失败");
+                        }
+                    }).catch(resp => {
+                        console.log('请求失败：' + resp.status + ',' + resp.statusText);
+                    });
+                }).catch(() => {
+                    // on cancel
+                });
+
+
+            },
+
+
+        },
+        mounted() {
+
+        }
+
+    });
+</script>
+ 

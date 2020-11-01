@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script src="/statics/home/js/jquery.min.js"></script>
+   <!--  <script src="../js/base/src.js"></script>
+    <script src="/statics/home/js/http.js"></script> -->
+    <title>商品添加</title>
+    <style>
+        *{margin: 0;padding: 0}
+        p{
+            padding: 20px;
+            background: red;
+            color: #fff;
+            text-align: center;
+            font-size: 14px;
+        }
+        li{
+            font-style: normal;
+            display: inline-block;
+            border:1px solid blue;
+            margin: 1px;
+            width: 32%;
+            height: 100px;
+        }
+        img{width:100%;height: 100px}
+        input{margin:30px}
+    </style>
+</head>
+<body>
+<div>
+    <p>添加图片</p>
+    <div class="box"></div>
+    <input type="submit" id="submit">
+</div>
+<script>
+  
+  wx.config({
+      beta: true,// 必须这么写，否则wx.invoke调用形式的jsapi会有问题
+      debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+      appId: "{$hello.appid}", // 必填，企业微信的corpID
+      timestamp: "{$hello.timestamp}", // 必填，生成签名的时间戳
+      nonceStr: "{$hello.noncestr}", // 必填，生成签名的随机串
+      signature: "{$hello.signature}",// 必填，签名，见附录1
+      jsApiList:[
+          'previewImage',
+          'uploadImage',
+          'chooseImage',
+          'downloadImage'
+      ] ,// 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+  });
+
+    // 上传预览多张图片
+   $('p').on('click',function () {
+       $('box').empty()
+       var that = $(this);
+       // 选择图片
+       wx.chooseImage({
+           count: 9,
+           needResult: 1,
+           sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
+           sourceType: ['camera','album'], // 可以指定来源是相册还是相机，默认二者都有
+           success: function (data) {
+               var localIds = data.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+               // 判断设备
+               // console.log(data)
+               var xt = navigator.userAgent;
+               if(xt.indexOf("OS") > -1){
+                   // ios苹果转base64显示
+                   var length=localIds.length;
+                   for(let j=0;j<localIds.length;j++){
+                   //    alert(localIds.length)
+                       wx.getLocalImgData({
+                           localId: localIds[j], // 图片的localID
+                           success: function (res) {
+                               localIds = res.localData; // localData是图片的base64数据，可以用img标签显示
+                               // alert(JSON.stringify(localIds))
+                               // alert(1)
+                               var html="",ht="",ml="";
+                               if(localIds==1){
+                                   ht="<li class='thumb'><img src='"+res.localData+"' alt=''><span class='del'>X</span></li>"
+                               }else {
+                                   ml+="<li class='thumb'><img src='"+res.localData+"' alt=''><span class='del'>X</span></li>"
+                               }
+
+                               html+=ht+ml;
+                               $('.box').append(html);
+                               funcReadImgInfo();//点击查看大图
+                               //  alert(JSON.stringify(result1))
+                           },
+                           fail: function (res) {
+                               // alert("请联系开发人员")
+                               alert(JSON.stringify(res))
+                           }
+                       });
+                   }
+               }else {
+                   // 安卓android
+                   var html,ht,ml;
+                   if(localIds==1){
+                       ht="<li><img src='"+res.serverId+"' ></li>"
+                   }else {
+                       ml+="<li><img src='"+res.serverId+"'></li>"
+                   }
+                   html+=ht+ml
+                   $('.box').append(html);
+                   funcReadImgInfo()//点击查看大图
+               }
+                syncUpload(localIds)
+           },
+           fail: function (res) {
+               alert("请联系开发人员")
+               //alert(JSON.stringify(res))
+           }
+       });
+   });
+    //点击查看大图
+    function funcReadImgInfo() {
+        var imgs = [];
+        var imgObj = $(".box img");//这里改成相应的对象
+        for (var i = 0; i < imgObj.length; i++) {
+            imgs.push(imgObj.eq(i).attr('src'));
+            imgObj.eq(i).click(function () {
+                var nowImgurl = $(this).attr('src');
+                //alert(nowImgurl)
+              //  alert(JSON.stringify(result1))
+                WeixinJSBridge.invoke("imagePreview", {
+                    "urls": imgs,
+                    "current": nowImgurl
+                });
+            });
+        }
+    }
+    // 最后传给后台服务器数组 -->list
+    var list=[]
+    var syncUpload = function(localIds) {
+        var localId = localIds.pop();
+        wx.uploadImage({
+            localId: localId.toString(), // 需要上传的图片的本地ID，由chooseImage接口获得
+            isShowProgressTips: 1, // 默认为1，显示进度提示
+            success: function (res) {
+                //res.serverId 返回图片的服务器端ID
+                list.push(res.serverId);
+                //alert(JSON.stringify(list))
+                if (localIds.length > 0) {
+                    window.setTimeout(function () {
+                        syncUpload(localIds);
+                    }, 100);
+                } else {
+                    window.setTimeout(function () {
+                        downloadImage(0);
+                    }, 100);
+
+                }
+            }
+        })
+    };
+    // 提交
+    $('#submit').on('click',function () {
+         var thumb_arr=[];
+         $(".thumb img").each(function(){
+            var img_url = $(this).attr("src");
+            thumb_arr.push(img_url)
+          });
+        alert(JSON.stringify(thumb_arr.length))
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+{include file="common/head"/}
+{include file="common/nav"/}
+<div id="app">
+  <div class="user_setting_shop" >
+    <div class="title">请输入要投诉的内容</div>
+    <div class="field">
+    <van-field
+        v-model="goodsInfo.info"
+        type="textarea"
+        placeholder="投诉内容"
+        rows="5"
+        autosize
+        class="van-hairline--surround "
+      ></van-field>
+    </div>
+   
+  </div>
+
+  <div class="user_setting_shop" >
+    <div class="title">请上传图片(最多上传3张)</div>
+  
+      <div  class="uploader" style="text-align: left;">
+       <van-uploader  v-model="fileList" :after-read="afterRead2"  :max-count="3"><van-uploader>
+       </div> 
+  </div>
+
+<div  class="uploader">
+<van-button size="large"  type="primary" class="btn_green_deep" @click="save">保 存</van-button>
+</div> 
+ 
+</div>
+<script>
+    var appIndex = new Vue({
+        el: '#app',
+        data: function data() {
+            return {
+      
+              info:{images:[]},
+              fileList:[],
+              goodsInfo:{images:[],},
+
+ 
+      
+            };
+        },
+        created:function(){   
+      
+        },
+
+        methods: {
+          save:function() {
+
+              let _this = this
+              if(!this.goodsInfo.info) {
+                vant.Toast.fail('请输入要投诉的内容');
+                return false;
+              }
+              vant.Toast.loading({mask: true,  message: '请稍等...'});
+              let submitInfo = JSON.parse(JSON.stringify(this.goodsInfo))
+              let images = [];
+              for (var i = 0; i < this.fileList.length; i++) {
+                images.push(this.fileList[i].content)
+              }
+              this.$set(submitInfo,'images',images.join(','))
+              axios({
+                method:'post',
+                url:'',
+                data:submitInfo,
+              }).then(function(resp){
+                if(resp.data.code==1) {
+                  vant.Toast.success("保存成功");
+                  window.location.href="{:url('user/index')}"
+                }
+                else {
+                  vant.Toast.fail("保存失败");
+                } 
+              }).catch(resp => {
+                console.log('请求失败：'+resp.status+','+resp.statusText);
+              });
+               
+            },
+
+            afterRead(file) {
+              let fd= new FormData();
+              fd.append("file", file.file);
+              var _this = this
+                  axios({
+                      method:'post',
+                      url:'{:url("UpFiles/uploadJson")}',
+                      data:fd,
+                  }).then(function(resp){
+                  console.log(2222)
+                    _this.$set(_this.userInfo,'avatarUrl',resp.data.url )
+                  }).catch(resp => {
+                      console.log('请求失败：'+resp.status+','+resp.statusText);
+               });
+      
+            },
+            afterRead2(file) {
+              vant.Toast.loading({mask: true,  message: '上传中，请稍等...'});
+              let fd= new FormData();
+              fd.append("file", file.file);
+              var _this = this
+              axios({
+                method:'post',
+                url:'{:url("UpFiles/uploadJson")}',
+                data:fd,
+              }).then(function(resp){
+                vant.Toast.success("上传成功");
+                _this.$set(_this.fileList[_this.fileList.length-1],'content',resp.data.url)
+              }).catch(resp => {
+                console.log('请求失败：'+resp.status+','+resp.statusText);
+              });
+               
+            },
+            navTo:function(url) {
+              window.location.href=url
+            }
+
+        },
+        mounted() {
+ 
+        }
+
+    });
+</script>
+<style>
+  button, input, textarea{
+    font-size: 16px !important;
+  }
+  .van-button{
+    font-size: 18px !important;
+  }
+</style>
+ 

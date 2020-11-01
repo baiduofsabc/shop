@@ -1,0 +1,556 @@
+{include file="common/head2"/}
+<script type="text/javascript" src="/statics/UE/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="/statics/UE/ueditor.all.js"></script>
+<div id="appIndex">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>轮椅租赁订单</legend>
+    </fieldset>
+    <el-form :inline="true" :model="filter">
+      <el-form-item label="订单编号">
+        <el-input v-model="filter.order_sn" placeholder="订单编号" clearable></el-input>
+      </el-form-item>
+ 
+      <el-form-item label="订单状态" >
+                 <el-select v-model="filter.order_status" clearable placeholder="请选择">
+                    <el-option  :label="item?item:'全部'" :value="index" v-for="(item,index) in orderStatus" :key="index"></el-option>
+        
+                  </el-select>
+      </el-form-item>
+       <el-form-item label="发货状态" prop="remark">
+                 <el-select v-model="filter.express_status" clearable placeholder="请选择">
+                    <el-option  :label="item?item:'全部'" :value="index" v-for="(item,index) in express_status" :key="index" v-if="index>0"></el-option>
+                 </el-select>
+      </el-form-item>
+      <el-form-item label="支付状态" >
+                 <el-select v-model="filter.pay_status" clearable placeholder="请选择">
+            
+                    <el-option  :label="item?item:'全部'" :value="index" v-for="(item,index) in payStatus" :key="index"></el-option>
+        
+                  </el-select>
+      </el-form-item>
+
+ 
+
+      <el-form-item>
+        <el-button type="primary" @click="setData">查询</el-button>
+        <el-button plain style="margin-bottom: 20px;" @click="add">添加</el-button>
+      </el-form-item>
+    </el-form>
+
+ 
+
+    <el-table
+            :data="tableData"
+            border
+            style="width: 100%">
+ 
+        <el-table-column
+                prop="order_sn"
+                label="订单编号"
+                width="150">
+        </el-table-column>
+        <el-table-column
+                prop="nickName"
+                label="用户"
+                width="100">
+        </el-table-column>
+   
+ 
+        <el-table-column
+                prop="status"
+                label="订单状态"
+                width="120">
+             <template slot-scope="scope">
+                 <span :style="'color:'+statusColor[scope.row.order_status]">{{orderStatus[scope.row.order_status]}}</span>
+       
+             </template>
+        </el-table-column>
+        <el-table-column
+                prop="status"
+                label="支付状态"
+                width="120">
+             <template slot-scope="scope">
+                 <span :style="'color:'+statusColor[scope.row.pay_status]">{{payStatus[scope.row.pay_status]}}</span>
+             </template>
+        </el-table-column>
+         <el-table-column
+                prop="express_status"
+                label="发货状态"
+                width="120">
+             <template slot-scope="scope">
+                 <span>{{express_status[scope.row.express_status]}}</span>
+             </template>
+        </el-table-column>
+       
+        <el-table-column
+                prop="add_time"
+                label="下单时间"
+                width="200">
+        </el-table-column>
+   
+        <el-table-column
+                label="操作"
+                width="300">
+            <template slot-scope="scope">
+                
+                <el-button size="mini" @click="edit(scope.$index)">订单修改</el-button>
+                <el-button size="mini" @click="send(scope.row.id)" v-if="">{{scope.row.express_status!=1?"发货":"修改发货信息"}}</el-button>
+     
+            </template>
+        </el-table-column>
+    </el-table>
+
+    <el-pagination
+      background
+      @current-change="handleCurrentChange"
+      layout="prev, pager, next"
+      :page-size="15"
+      :total="pageTotal">
+    </el-pagination>
+
+    <el-dialog
+            :title="thisTitle+'订单'"
+            :visible.sync="dialogVisible"
+
+
+            width="70%"
+            :close-on-click-modal="false"
+            :before-close="handleClose">
+
+
+        <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+         
+            <el-form-item label="订单号" prop="name">
+                {{ruleForm.order_sn}}
+            </el-form-item>
+            <el-form-item label="收件人姓名" prop="name">
+                 <el-input v-model="ruleForm.name"></el-input>
+            </el-form-item>
+            <el-form-item label="收件人电话" prop="tel">
+                 <el-input v-model="ruleForm.tel" ></el-input>
+            </el-form-item>
+            <el-form-item label="收件人区域" prop="address">
+                 <el-input v-model="ruleForm.address" ></el-input>
+            </el-form-item>
+            <el-form-item label="详情地址" prop="address_detail">
+                 <el-input v-model="ruleForm.address_detail" ></el-input>
+            </el-form-item>
+            <el-form-item label="数量" prop="num">
+                 <el-input v-model="ruleForm.num" style="width:80px;"></el-input>
+            </el-form-item>
+            <el-form-item label="留言" prop="remark">
+                 <el-input v-model="ruleForm.remark" ></el-input>
+            </el-form-item>
+            <el-form-item label="订单状态" prop="remark">
+                 <el-select v-model="ruleForm.order_status" clearable placeholder="请选择" :disabled="ruleForm.pay_status==4">
+                    <el-option  :label="item?item:'全部'" :value="index" v-for="(item,index) in orderStatus" :key="index" v-if="index>0"></el-option>
+                 </el-select>
+            </el-form-item>
+            <el-form-item label="发货状态" prop="remark">
+                 <el-select v-model="ruleForm.express_status" clearable placeholder="请选择"  >
+                    <el-option  :label="item?item:'全部'" :value="index" v-for="(item,index) in express_status" :key="index" v-if="index>0"></el-option>
+                 </el-select>
+            </el-form-item>
+             <el-form-item label="支付状态" prop="remark">
+                 {{payStatus[ruleForm.pay_status]}}
+             <!--     <el-select v-model="ruleForm.pay_status" clearable placeholder="请选择">
+                    <el-option  :label="item?item:'全部'" :value="index" v-for="(item,index) in payStatus" :key="index" v-if="index>0"></el-option>
+                 </el-select> -->
+            </el-form-item>
+
+            <el-form-item label="租金" >
+                  {{ruleForm.deposit*ruleForm.num}} 元
+            </el-form-item>
+            <el-form-item label="总金额" >
+                  {{ruleForm.total_price}}元 
+            </el-form-item>
+       
+            <el-form-item label="优惠金额" >
+                  {{ruleForm.total_price-ruleForm.pay_price}}  <span v-if="ruleForm.coupon">（包含优惠券：{{ruleForm.coupon.name}}）</span>
+            </el-form-item>
+            <el-form-item label="实付金额" >
+                  <el-input v-model="ruleForm.pay_price" style="width:100px;" :disabled="ruleForm.pay_status!=2"></el-input> 元
+                  <el-button type="primary" @click="refund" v-if="ruleForm.pay_status==1">申请退款</el-button>
+            </el-form-item>
+
+         
+            <el-form-item label="备注" prop="com_tag_ids">
+              <el-input v-model="ruleForm.remark_chengye" ></el-input>
+            </el-form-item> 
+ 
+            <el-form-item>
+                <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+            </el-form-item>
+        </el-form>
+
+
+
+    </el-dialog>
+
+    <el-dialog title="发货信息" :visible.sync="commentVisible" width="1000px" :close-on-click-modal="false">
+      <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+            <el-form-item label="收件人姓名" prop="">
+                 {{ruleForm.name}}
+            </el-form-item>
+            <el-form-item label="收件人电话" prop="">
+                 {{ruleForm.tel}}
+            </el-form-item>
+            <el-form-item label="收件人地址" prop="">
+                {{ruleForm.address}}{{ruleForm.address_detail}}
+            </el-form-item>
+        
+            <el-form-item label="快递公司" prop="express_id">
+                 <el-select v-model="ruleForm.express_id" clearable placeholder="请选择">
+                    <el-option  :label="item.express_name" :value="item.id" v-for="(item,index) in express" :key="index" v-if="index>0"></el-option>
+                 </el-select>
+            </el-form-item>
+            <el-form-item label="物流单号" prop="express_number">
+              <el-input v-model="ruleForm.express_number" ></el-input>
+            </el-form-item> 
+            <el-form-item>
+                <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+            </el-form-item>
+        </el-form>
+
+        
+    </el-dialog>        
+
+
+
+
+</div>
+<script>
+    var appIndex = new Vue({
+        el: '#appIndex',
+        data() {
+            return {
+                tableData: [],
+                dialogVisible: false,
+                ruleForm: {},
+                filter:{page:1},
+                rules: {
+                    hospital_id: [
+                        {required: true, message: '所属医院不能为空', trigger: 'change' }
+                    ],
+                    express_id: [
+                        {required: true, message: '请选择快递公司', trigger: 'change' }
+                    ],
+                    express_number: [
+                        {required: true, message: '请输入物流单号', trigger: 'change' }
+                    ],
+                },
+                thisTitle:"添加",
+                pageTotal:0,
+                
+                comfilter:{page:1},
+                comData: [],
+                commentVisible:false,
+                comTotal:0,
+                orderStatus: ["", "已完成", "未完成", "已取消"],
+                payStatus: ["", "已支付", "未支付", "退款中", "已退款"],
+                statusColor:["","#4BE086","#4B94EA","#FB402E","#B54BF3"],
+                express_status: ["", "已发货", "未发货"],
+                express: [
+                   {id:1,express_name:"中通",express_name_py:"zhongtong"},
+                   {id:2,express_name:"圆通",express_name_py:"yuantong"},
+                   {id:3,express_name:"韵达",express_name_py:"yunda"},
+                   {id:4,express_name:"百世汇通",express_name_py:"huitongkuaidi"},
+                   {id:5,express_name:"天天",express_name_py:"tiantian"},
+                   {id:6,express_name:"顺丰",express_name_py:"shunfeng"},
+                ],
+
+            };
+        },
+        created:function(){
+          this.setData();
+        },
+        methods: {
+            setData(){
+                var _this = this
+                axios({
+                    method:'post',
+                    url:'{:url("lease")}',
+                    data:_this.filter,
+                }).then(function(resp){
+                    console.log(resp.data);
+                    _this.tableData = resp.data.data;
+                    _this.pageTotal = resp.data.count;
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+            },
+            handleCurrentChange(val) {
+                this.$set(this.filter,'page',val);
+                this.setData()
+            },
+            add() {
+                var _this =this;
+                this.thisTitle="添加";
+                this.dialogVisible=true;
+                this.ruleForm = {tag_ids:[]};;
+                this.editor = UE.getEditor('container');
+
+                this.editor.ready(function() {
+                    _this.editor.setContent('');
+                });
+
+            },
+            send(id) {
+                var _this = this
+                this.resetForm("ruleForm")
+                axios({
+                    method:'post',
+                    url:'{:url("leaseInfo")}',
+                    data:{id:id},
+                }).then(function(resp){
+                    _this.ruleForm = resp.data.data;
+                    _this.commentVisible = true; 
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+                
+            },
+            edit(index) {
+              this.resetForm("ruleForm")
+                var _this =this;
+                _this.thisTitle="编辑";
+                axios({
+                    method:'post',
+                    url:'{:url("leaseInfo")}',
+                    data:{id:_this.tableData[index].id},
+                }).then(function(resp){
+                    _this.ruleForm = resp.data.data;
+                    _this.dialogVisible=true;
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+            },
+            refund(){
+                var _this = this
+                this.$confirm('确认退款？')
+                    .then(_ => {
+
+                        _this.refundSubmit();
+                    })
+                    .catch(_ => {});
+
+            },
+            refundSubmit() {
+ 
+                let postInfo ={};
+                let _this = this;
+                postInfo.out_trade_no = this.ruleForm.order_sn;
+                postInfo.total_fee = this.ruleForm.pay_price;
+                postInfo.refund_fee = this.ruleForm.pay_price;
+                axios({
+                    method:'post',
+                    url:'{:url("wxRefund")}',
+                    data:postInfo,
+                }).then(function(resp){
+       
+                    if(resp.data.result_code=="SUCCESS" && resp.data.return_code=="SUCCESS") {
+                        _this.$notify({title: '退款成功',message:"",type: 'success'});
+                        _this.$set(_this.ruleForm,'pay_status',4)
+                        _this.$set(_this.ruleForm,'order_status',3)
+                        _this.save()
+                    }
+                    else {
+                        _this.$notify({title: '退款失败',message:"",type: 'error'});
+                    }
+          
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+            },
+            handleClick(row) {
+                console.log(row);
+            },
+            handleClose(done) {
+                this.$confirm('确认关闭？')
+                    .then(_ => {
+                        done();
+                    })
+                    .catch(_ => {});
+            },
+            submitForm(formName) {
+              var _this = this;
+                if(this.ruleForm.express_id) {
+                  var newArr = this.express.filter(function(p){
+                    return p.id === _this.ruleForm.express_id;
+                  });
+                  this.$set(this.ruleForm,'express_name',newArr[0].express_name)
+                  this.$set(this.ruleForm,'express_name_py',newArr[0].express_name_py)
+                  this.$set(this.ruleForm,'express_status',1)
+                }                
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        _this.save()
+                        _this.commentVisible = false; 
+
+
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+                });
+            },
+            save() {
+                let ruleForm = JSON.parse(JSON.stringify(this.ruleForm));
+                var _this = this
+                axios({
+                    method:'post',
+                    url:'{:url("leaseEdit")}',
+                    data:ruleForm,
+                }).then(function(resp){
+                    if(resp.data.code==1) {
+                        _this.$notify({title: '修改成功',message:resp.data.msg,type: 'success'});
+                    }
+                    else {
+                        _this.$notify({title: '修改失败',message:resp.data.msg,type: 'error'});
+                    }
+                    _this.dialogVisible=false;
+                    _this.setData();
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+            },
+            resetForm(formName) {
+              if(this.$refs[formName]) {
+                
+                this.$refs[formName].resetFields();
+              }
+            },
+            handleAvatarSuccess(res, file) {
+                console.log(res)
+               this.$set(this.ruleForm,'thumb',res.url)
+             
+            },
+            health_certSuccess(res, file) {
+                console.log(res)
+               this.$set(this.ruleForm,'health_cert',res.url)
+             
+            },
+            ylhly_certSuccess(res, file) {
+                console.log(res)
+               this.$set(this.ruleForm,'ylhly_cert',res.url)
+             
+            },
+            ylzh_certSuccess(res, file) {
+                console.log(res)
+               this.$set(this.ruleForm,'ylzh_cert',res.url)
+             
+            },
+
+            beforeAvatarUpload(file) {
+           
+                const isLt2M = file.size / 1024 / 1024 < 2;
+
+               
+                if (!isLt2M) {
+                  this.$message.error('上传头像图片大小不能超过 2MB!');
+                }
+                return  isLt2M;
+            },
+            del(index){
+                var _this = this
+                this.$confirm('确认删除？')
+                    .then(_ => {
+                        _this.del2(index);
+                    })
+                    .catch(_ => {});
+
+            },
+            del2(index){
+                var id = this.tableData[index].id;
+                var _this = this
+                axios({
+                    method:'post',
+                    url:'{:url("del")}',
+                    data:{id:id},
+                }).then(function(resp){
+                    console.log(resp.data);
+                    if(resp.data.code==1) {
+                        _this.$notify({title: '成功',message:resp.data.msg,type: 'success'});
+
+                    }
+                    else {
+                        _this.$notify({title: '失败',message:resp.data.msg,type: 'error'});
+                    }
+
+                    _this.setData();
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+
+            },
+            delCom(index){
+                var _this = this
+                this.$confirm('确认删除？')
+                    .then(_ => {
+                        _this.delCom2(index);
+                    })
+                    .catch(_ => {});
+
+            },
+            delCom2(index){
+                var id = this.comData[index].id;
+                var _this = this
+                axios({
+                    method:'post',
+                    url:'{:url("Comment/del")}',
+                    data:{id:id},
+                }).then(function(resp){
+                    console.log(resp.data);
+                    if(resp.data.code==1) {
+                        _this.getCom();
+                        _this.$notify({title: '成功',message:resp.data.msg,type: 'success'});
+                    }
+                    else {
+                        _this.$notify({title: '失败',message:resp.data.msg,type: 'error'});
+                    }
+                    _this.setData();
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+            },
+            
+
+            getTag() {
+                var _this = this;
+                axios({
+                    method:'post',
+                    url:'{:url("tag")}',
+                    data:{},
+                }).then(function(resp){
+                    _this.tag=resp.data
+              
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+
+                axios({
+                    method:'post',
+                    url:'{:url("tagCom")}',
+                    data:{},
+                }).then(function(resp){
+                    _this.tagCom=resp.data
+              
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+
+            },
+            comCurrentChange(val) {
+                this.$set(this.comfilter,'page',val);
+                this.getCom()
+            },
+        },
+        mounted() {
+             
+        }
+
+    });
+</script>
+</body>
+</html>

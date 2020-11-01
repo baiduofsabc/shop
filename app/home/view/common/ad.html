@@ -1,0 +1,173 @@
+<style type="text/css" media="screen">
+   .swiper-container {
+        width: 32.2%;
+        height:3.4rem;
+        float: left;
+        
+    }  
+</style>
+<!-- <link rel="stylesheet" href="../../../../../plugins/swiper/dist/css/swiper.min.css">
+<script src="../../../../../plugins/swiper/dist/js/swiper.min.js"></script> -->
+<div id="ad" >
+<div style="background: #fff;height:3.4rem;display:inline; " v-if="sortBannerInfo.length>0" >
+<div class="swiper-container" style="margin-right: 0.425%;margin-left: 0.85%;">
+    <div class="swiper-wrapper" style="height:3.4rem;">
+      <div class="swiper-slide" v-for="(vo,index) in sortBannerInfo" :style="'background-image: url('+vo.thumb+');'" @click="viewPic(index)" v-if="index < 9">
+      
+      </div>
+      <div class="swiper-slide" v-for="(vo,index) in sortBannerInfo" :style="'background-image: url('+vo.thumb+');'" @click="viewPic(index)" v-if="index < 9">
+      
+      </div>
+    </div>
+</div>
+<div class="swiper-container" style="margin-right: 0.425%;margin-left: 0.425%;">
+    <div class="swiper-wrapper" style="height:3.4rem;">
+      <div class="swiper-slide" v-for="(vo,index) in sortBannerInfo" :style="'background-image: url('+vo.thumb+');'" @click="viewPic(index)" v-if="index < 18 && index >= 9">
+      
+      </div>
+      <div class="swiper-slide" v-for="(vo,index) in sortBannerInfo" :style="'background-image: url('+vo.thumb+');'" @click="viewPic(index)" v-if="index < 18 && index >= 9">
+      
+      </div>
+    </div>
+</div>
+<div class="swiper-container" style="margin-right: 0.85%;margin-left: 0.425%;">
+    <div class="swiper-wrapper" style="height:3.4rem;">
+      <div class="swiper-slide" v-for="(vo,index) in sortBannerInfo" :style="'background-image: url('+vo.thumb+');'" @click="viewPic(index)" v-if="index < 27 && index >= 18">
+      
+      </div>
+      <div class="swiper-slide" v-for="(vo,index) in sortBannerInfo" :style="'background-image: url('+vo.thumb+');'" @click="viewPic(index)" v-if="index < 27 && index >= 18">
+      
+      </div>
+    </div>
+</div>
+
+</div>
+
+
+<van-popup
+  v-model="popupShow"
+  position="right"
+  :overlay="false"
+
+  :style="{ height: '100%' }"
+>
+<van-nav-bar
+  left-text="返回"
+  left-arrow
+  @click-left="onImgLeft"
+ 
+/>
+</van-nav-bar>
+
+<van-image
+  width="7.5rem"
+  height="100%"
+  fit="contain"
+  :src="thisImage"
+/> 
+</van-popup>
+
+
+</div>
+<script>
+    new Vue({
+        el: '#ad',
+        data: function data() {
+            return {
+              bannerInfo:[],
+              bannerImages:[],
+              popupShow:false,
+              thisImage:'',
+              
+              
+            };
+        },
+        created:function(){
+          this.getBanner()
+        },
+
+        methods: {
+           getBanner() {
+                 var _this = this
+                  axios({
+                      method:'post',
+                      url:'{:url("Goods/listAd")}',
+                      data:_this.filter,
+                  }).then(function(resp){
+                      _this.bannerInfo = JSON.parse(resp.data.data.banner)
+                      for (var i = 0; i < _this.sortBannerInfo.length; i++) {
+                         _this.bannerImages.push(_this.sortBannerInfo[i].bigthumb)
+                      }
+
+                          var shuffled = _this.sortBannerInfo.slice(0), i = _this.sortBannerInfo.length, min = i - count, temp, index;
+                          while (i-- > min) {
+                              index = Math.floor((i + 1) * Math.random());
+                              temp = shuffled[index];
+                              shuffled[index] = shuffled[i];
+                              shuffled[i] = temp;
+                          }
+                          // return shuffled.slice(min);
+                      
+                      console.log(shuffled.slice(min));
+                      setTimeout(function() { 
+                        var swiper = new Swiper('.swiper-container', {
+                          slidesPerView: 1,
+                          spaceBetween:2,
+                          paginationClickable: true,
+                           autoplay: {
+                              delay: 3000,
+                              stopOnLastSlide: false,
+                              disableOnInteraction: true,
+                              },
+                        });
+
+                       },500);
+                  }).catch(resp => {
+                      console.log('请求失败：'+resp.status+','+resp.statusText);
+                  });
+
+            },
+            viewPic(index) {
+                // this.picIndex = index;
+                // this.show = true
+                this.thisImage=this.bannerImages[index]
+                this.popupShow = true;
+ 
+            },
+            onImgLeft:function() {
+              
+              this.popupShow = false;
+            },
+            // viewPic(index) {
+
+            //     // this.picIndex = index;
+            //     // this.show = true
+
+            //     let _this = this
+            //     vant.ImagePreview({
+            //       images: _this.bannerImages,
+            //       startPosition: index,
+            //       onClose() {
+            //         // do something
+            //       }
+            //     });
+            // },
+            sortByKey: function(array, key) { //(数组、排序的列)
+              return array.sort(function(a, b) {
+                var x = a[key];
+                var y = b[key];
+                return ((x < y) ? 1 : ((x > y) ? -1 : 0));
+              })
+            },
+        },
+        mounted() {
+ 
+        },
+        computed:{
+          sortBannerInfo:function(){
+             return this.sortByKey(this.bannerInfo,'order_num');
+          }
+        },
+
+    });
+</script>

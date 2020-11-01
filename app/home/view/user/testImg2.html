@@ -1,0 +1,1163 @@
+{include file="common/head"/}
+
+{include file="common/nav"/}
+
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+<!-- <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script> -->
+<script src="/statics/home/js/uoload.js"></script>
+
+<style>
+
+    .fabuzi .van-cell {
+        font-size: 16px;
+    }
+
+    .fabuzi .van-cell__label {
+        font-size: 16px;
+    }
+
+   p{
+        padding: 10px;
+        background: #fff;
+        color: #969799;
+        text-align: center;
+        font-size: 14px;
+    }
+    p span{display: block;border: 1px dashed #000000;width:2rem;height: 2rem;line-height:2rem;font-weight:50;font-size: 0.75rem;}
+   
+    img{width:100%;height: 100px}
+
+    .imgDiv {
+            display: inline-block;
+            position: relative;
+            width: 100px!important;
+            height: 100px;
+
+        }
+ 
+    .imgDiv .delete {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 50px;
+        height: 50px;
+        display: none;
+    }
+
+
+</style>
+  <script type="text/javascript">
+        $(document).ready(init);
+        function init() {
+            $(".imgDiv").mouseover(function () {
+                $(this).find(".delete").show();
+ 
+            });
+ 
+ 
+            $(".imgDiv").mouseleave(function () {
+                $(this).find(".delete").hide();
+            });
+ 
+        }
+
+        function del_img(obj) {
+            // alert(444)
+            $(obj).parent("div").remove();
+
+        }
+ 
+ 
+ 
+    </script>
+
+<div id="app" v-cloak>
+
+    <div class="user_addgoods_warning">
+        {$goodsTip}
+    </div>
+
+    <van-cell-group title="">
+
+
+        <van-field
+
+                v-model="goodsInfo.price"
+
+                label="价格"
+
+                type="number"
+
+                placeholder="请输入价格"
+
+                @input="checkPrice"
+
+                v-if="Number(goodsInfo.type)==1"
+
+        ></van-field>
+
+        <van-field
+
+                v-model="goodsInfo.info"
+
+                label="详情"
+
+                type="textarea"
+
+                placeholder="请输入详情1000字符以内"
+
+                maxlength="1000"
+
+                rows="4"
+
+                autosize
+
+        ></van-field>
+
+
+    </van-cell-group>
+
+    <van-cell-group title="点'+'添加图片，点图片右上角'×'删除图片，主图限一张">
+
+        <div class="uploader" :style="{weight:'100%'}">
+
+            <van-uploader v-model="thumb" :after-read="afterRead" :max-count="1" />
+
+
+        </div>
+
+    </van-cell-group>
+
+    <van-cell-group :title="Number(goodsInfo.type)==1?'点以下'+'号添加细节图，可以连续点+号添加图片，最多添加15张':'点以下+号添加细节图，可以连续点+号添加图片，最多添加6张'">
+          
+         <p><span><i class="van-icon van-icon-plus van-uploader__upload-icon"><!----></i></span></p>
+         <div class="box"></div>
+
+    </van-cell-group>
+
+    <!-- <div  class="uploader">
+
+    <van-button size="large"  type="primary" class="btn_green" @click="save">保 存</van-button>
+
+    </div>  -->
+
+
+    <div class="fabuzi">
+        <div style="width:100%;height:1rem;display:flex;align-items:center;justify-content:center;">
+            <van-button @click="navTo('{:url('user/explain')}')" plain
+                        style="font-size:0.35rem;color:blue;background:none; text-align: center;width:80%;height:100%;border: solid 0.01rem black;border-radius: 0.1rem;margin:0 auto;"
+                        type="danger">发布说明,很重要 >
+            </van-button>
+        </div>
+
+        <van-cell-group title="" class="">
+
+            <van-cell title="本条信息发布到分类" label="需1个积分" v-if="Number(goodsInfo.type)==1" value=""></van-cell>
+            <van-cell title="本条信息发布到分类" label="需50个积分" v-if="Number(goodsInfo.type)==2" value=""></van-cell>
+
+
+            <van-cell :title="item.name" :value="item.days?item.days+'天':'请选择天数'"
+                      :label="item.need_int+'积分/天,需'+Number(item.need_int)*Number(item.days)+'积分'" is-link
+                      v-for="(item,index) in advInfo" @click="getPicker(index)"/>
+
+
+        </van-cell-group>
+
+    </div>
+
+    <van-popup v-model="showPicker2" position="bottom">
+
+        <van-picker
+
+                v-if="showPicker2"
+
+                show-toolbar
+
+                :columns="columns2"
+
+                default-index="361"
+
+                @cancel="showPicker2 = false"
+
+                @confirm="onConfirm2"
+
+        ></van-picker>
+
+    </van-popup>
+
+    <div style="height: 1.5rem"></div>
+
+    <van-submit-bar
+
+            :price="total_int*100"
+
+            button-text="立即发布"
+
+            label="合计："
+
+            suffix-label="积分"
+
+            @submit="checkInt"
+
+            currency="$"
+            style="background:none;"
+
+            :safe-area-inset-bottom="true"
+
+    ></van-submit-bar>
+
+    <!-- <van-dialog
+
+      v-model="show"
+
+      title="请输入密码"
+
+      show-cancel-button
+
+      @confirm="save"
+
+    >
+
+     <van-field
+
+        v-model="password"
+
+        type="password"
+
+        placeholder="请输入密码"
+
+      ></van-field>
+
+    </van-dialog> -->
+
+
+    <van-popup v-model="showPicker" position="bottom">
+
+        <van-picker
+
+                show-toolbar
+
+                :columns="columns"
+
+                @change="onChange"
+
+                @cancel="showPicker = false"
+
+                @confirm="onConfirm"
+
+        />
+
+    </van-popup>
+
+
+</div>
+<style>
+    .van-icon-delete:before {
+        content: "×";
+        line-height: 0.2rem;
+        /*margin-left: -0.15rem;*/
+        font-size: 1rem;
+    }
+    .van-uploader__preview-delete {
+        right: 1px;
+        top: 1px; 
+        background: red;
+        height:0.6rem;
+        width: 0.6rem;
+    }
+    .van-uploader__preview {
+        width: 2.0rem;
+        height: 2rem;
+    }
+    .van-image__error ,.van-uploader__preview-image ,.van-uploader__upload{
+        width:  2.0rem;
+        height: 2rem;
+    }
+</style>
+<script>
+
+    const citys = {
+
+        '浙江': ['杭州', '宁波', '温州', '嘉兴', '湖州'],
+
+        '福建': ['福州', '厦门', '莆田', '三明', '泉州']
+
+    };
+
+    var dayNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    var appIndex = new Vue({
+
+        el: '#app',
+
+        data: function data() {
+
+            return {
+
+                filter: {},
+
+                userInfo: {},
+
+                list: [],
+
+                loading: false,
+
+                finished: false,
+
+                pageTotal: 0,
+
+                goodsInfo: {
+                    type: '{$goodsInfo.type}',
+                    catid: '{$goodsInfo.catid}',
+                    images: '{$goodsInfo.images}',
+                    info: '{$goodsInfo.info}',
+                    thumb: '{$goodsInfo.thumb}',
+                    price: '{$goodsInfo.price}'
+                },
+
+                fileList: [],
+
+                thumb: [],
+
+                showPicker: false,
+
+                catInfo: [],
+
+                catNames: {},
+
+                columns: [],
+
+                columns2: [
+
+                    {
+
+                        values: [],
+
+                        className: 'column1'
+
+                    },
+
+                    // {
+
+                    //   values:dayNum,
+
+                    //   className: 'column2'
+
+                    // },
+
+                    // {
+
+                    //   values:dayNum,
+
+                    //   className: 'column3'
+
+                    // },
+
+                ],
+
+                value: "",
+
+                advInfo: [],
+
+                thisIndex: 0,
+
+                total_int: {$total_int},
+
+                total_first: {$total_int},
+
+                show:false,
+
+                password: "",
+
+                showPicker2: false,
+
+                goodsBackId: 0,
+
+                defaultIndex: 361,
+
+            };
+
+        },
+        beforeDestroy() {
+            clearInterval(this.timer);
+        },
+
+        created: function () {
+
+            // this.getGoodsInfo();
+            // this.getTmp();
+            for (var i = 0; i < 361; i++) {
+
+                this.columns2[0].values.push(i);
+
+            }
+
+            for (var i = 0; i < 361; i++) {
+
+                this.columns2[0].values.push(i);
+
+            }
+
+            // console.log(this.columns2)
+
+            this.getCate();
+
+            this.setData();
+
+            // console.log({$gettmp});
+            this.getTmp();
+            this.wxConf();
+            this.timer = window.setInterval(this.saveTmp, 2000);
+            // setTimeout(wxConf,2000) ;
+
+        },
+
+        methods: {
+            // this.timer = window.setInterval(this.saveTmp, 3000);
+
+
+           wxConf(){
+               var _this = this;
+               // console.log('88888888')
+              axios({
+
+                  method: 'post',
+
+                  url: '{:url("Wxjssdk/getSecret")}',
+
+                  data:{ url:location.href.split('#')[0] } //向服务端提供授权url参数，并且不需要#后面的部分
+
+                  // alert()
+
+                }).then((res)=>{
+
+                 // console.log(res,55558888888)
+                  var res=res.data;
+
+                  wx.config({
+                    beta: true,
+                    debug: false, // 开启调试模式,
+
+                    jsapi_ticket: res.jsapi_ticket,
+
+                    appId: res.appid, // 必填，企业号的唯一标识，此处填写企业号corpid
+
+                    timestamp: res.timestamp, // 必填，生成签名的时间戳
+
+                    nonceStr: res.noncestr, // 必填，生成签名的随机串
+
+                    signature: res.signature,// 必填，签名，见附录1
+
+                    jsApiList: [ 'previewImage','uploadImage','chooseImage','downloadImage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+
+                  });
+
+                  // console.log(location.href.split('#')[0])
+
+
+                   $('p').on('click',function () {
+				       $('box').empty()
+				       var that = $(this);
+				       // 选择图片
+				       wx.chooseImage({
+				           count: 9,
+				           needResult: 1,
+				           sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
+				           sourceType: ['camera','album'], // 可以指定来源是相册还是相机，默认二者都有
+				           success: function (data) {
+				               var localIds = data.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+				               // 判断设备
+				               // console.log(data)
+				               var xt = navigator.userAgent;
+				               if(xt.indexOf("OS") > -1){
+				                   // ios苹果转base64显示
+				                   var length=localIds.length;
+				                   for(let j=0;j<localIds.length;j++){
+				                   //    alert(localIds.length)
+				                       wx.getLocalImgData({
+				                           localId: localIds[j], // 图片的localID
+				                           success: function (res) {
+				                               localIds = res.localData; // localData是图片的base64数据，可以用img标签显示
+				                               // alert(JSON.stringify(localIds))
+				                               // alert(1)
+				                               var html="",ht="",ml="";
+
+				                               if(localIds==1){
+				                                   ht='<div class="imgDiv"><img src="'+res.localData+'" /><a href="javascript:;" onclick="del_img(this)"><i class="van-icon van-icon-delete van-uploader__preview-delete"></i></a></div>'
+				                               }else {
+				                                   ml+='<div class="imgDiv"><img src="'+res.localData+'" /><a href="javascript:;" onclick="del_img(this)"><i class="van-icon van-icon-delete van-uploader__preview-delete"></i></a></div>'
+				                               }
+
+				                               html+=ht+ml;
+				                               $('.box').append(html);
+				                               funcReadImgInfo();//点击查看大图
+				                               //  alert(JSON.stringify(result1))
+				                           },
+				                           fail: function (res) {
+				                               // alert("请联系开发人员")
+				                               alert(JSON.stringify(res))
+				                           }
+				                       });
+				                   }
+				               }
+				                syncUpload(localIds)
+				           },
+				           fail: function (res) {
+				               alert("请联系开发人员或请刷新一下")
+				               //alert(JSON.stringify(res))
+				           }
+				       });
+				   });
+    //点击查看大图
+    function funcReadImgInfo() {
+        var imgs = [];
+        var imgObj = $(".box img");//这里改成相应的对象
+        for (var i = 0; i < imgObj.length; i++) {
+            imgs.push(imgObj.eq(i).attr('src'));
+            imgObj.eq(i).click(function () {
+                var nowImgurl = $(this).attr('src');
+                //alert(nowImgurl)
+              //  alert(JSON.stringify(result1))
+                WeixinJSBridge.invoke("imagePreview", {
+                    "urls": imgs,
+                    "current": nowImgurl
+                });
+            });
+        }
+    }
+
+ 
+
+
+
+
+
+    // 最后传给后台服务器数组 -->list
+    var list=[]
+    var syncUpload = function(localIds) {
+        var localId = localIds.pop();
+        wx.uploadImage({
+            localId: localId.toString(), // 需要上传的图片的本地ID，由chooseImage接口获得
+            isShowProgressTips: 1, // 默认为1，显示进度提示
+            success: function (res) {
+                //res.serverId 返回图片的服务器端ID
+                list.push(res.serverId);
+                //alert(JSON.stringify(list))
+                if (localIds.length > 0) {
+                    window.setTimeout(function () {
+                        syncUpload(localIds);
+                    }, 100);
+                } else {
+                    window.setTimeout(function () {
+                        downloadImage(0);
+                    }, 100);
+
+                }
+            }
+        })
+    };
+
+
+
+                })
+
+           },
+
+            getTmp() {
+                // if (!this.goodsInfo) {
+                //   return;
+                // }
+                var _this = this
+                axios({
+
+                    method: 'post',
+
+                    url: '{:url("getTmp")}',
+
+                    data: _this.goodsInfo,
+
+                }).then(function (resp) {
+
+                    if (resp.data.code == 1) {
+
+                        // console.log(resp.data.data);
+
+                        // _this.goodsInfo = resp.data.data;
+
+                        // console.log(resp.data.data['images']);
+
+                        if (resp.data.data['thumb']) {
+                            _this.thumb = [{content: resp.data.data['thumb']}]
+                        }
+                        // _this.goodsInfo.images = resp.data.data['images']
+                        // console.log(resp.data.data['images'] == []);
+                        if (resp.data.data['images'] != []) {
+                            for (var i = 0; i < resp.data.data['images'].length; i++) {
+                                _this.fileList[i] = {content: ""}
+                                _this.$set(_this.fileList[i], 'content', resp.data.data['images'][i])
+                            }
+                        }
+                        console.log(_this.fileList)
+                        return _this
+
+                    } else {
+
+                        _this.goodsInfo = {images: []}
+
+                    }
+
+                }).catch(resp => {
+
+                    console.log('请求失败：' + resp.status + ',' + resp.statusText);
+
+                });
+            },
+
+            saveTmp() {
+                let tmpInfo = JSON.parse(JSON.stringify(this.goodsInfo))
+
+                let images = [];
+
+
+                for (var i = 0; i < this.fileList.length; i++) {
+
+                    images.push(this.fileList[i].content)
+
+                }
+
+                this.$set(tmpInfo, 'images', images.join(','))
+                // console.log(tmpInfo);
+
+                axios({
+
+                    method: 'post',
+
+                    url: '{:url("saveTmp")}',
+
+                    data: tmpInfo,
+
+                }).then(function (resp) {
+
+                }).catch(resp => {
+
+                    console.log('自动保存的请求失败：' + resp.status + ',' + resp.statusText);
+
+                });
+
+            },
+
+            checkPrice() {
+
+                var re = /^(0|\+?[1-9][0-9]*)$/;
+
+                if (!re.test(this.goodsInfo.price)) {
+
+                    vant.Toast.fail("请输入正整数！");
+
+                    this.$set(this.goodsInfo, 'price', '')
+
+                }
+
+            },
+
+            checkInt() {
+
+                if (this.goodsInfo.price == '' && this.goodsInfo.type == 1) {
+
+                    vant.Toast.fail('请输入价格');
+
+                    return false;
+
+                }
+
+                if (this.goodsInfo.info == '') {
+
+                    vant.Toast.fail('请输入详情');
+
+                    return false;
+
+                }
+
+                if (this.goodsInfo.thumb == '') {
+
+                    vant.Toast.fail('请输上传主图');
+
+                    return false;
+
+                }
+
+                let _this = this;
+
+                vant.Toast.loading({mask: true, message: '请稍等...'});
+
+                axios({
+
+                    method: 'post',
+
+                    url: '{:url("checkInt")}',
+
+                    data: {total_int: _this.total_int},
+
+                }).then(function (resp) {
+
+                    if (resp.data.code == 1) {
+
+                        _this.show = true
+                        _this.save()
+
+                    } else {
+
+                        vant.Toast.fail(resp.data.msg);
+
+                    }
+
+                }).catch(resp => {
+
+                    console.log('请求失败：' + resp.status + ',' + resp.statusText);
+
+                });
+
+
+            },
+
+            getPicker(index) {
+
+                this.thisIndex = index;
+
+                this.defaultIndex = 361;
+
+                this.showPicker2 = true;
+
+            },
+
+            onSubmitCheck: function () {
+
+                vant.Toast.loading({mask: true, message: '请稍等...'});
+
+                this.onSubmit();
+
+
+            },
+
+            onSubmit: function () {
+
+                var _this = this
+
+                axios({
+
+                    method: 'post',
+
+                    url: '{:url("advAdd")}',
+
+                    data: {list: _this.advInfo, total_int: _this.total_int, goods_id: _this.goodsBackId},
+
+                }).then(function (resp) {
+
+                    // console.log(resp.data)
+
+                    if (resp.data.code == 1) {
+
+                        vant.Toast.success("提交成功");
+
+                        clearInterval(this.timer);
+
+                        axios({
+                            method: 'post',
+                            url: '{:url("clearTmp")}',
+                            data: {code: resp.data.code},
+                        }).then(function (resp) {
+                            if (resp.data.code == 1) {
+                                window.location.href = "{:url('goods')}"
+
+                            }
+
+                        }).catch(resp => {
+                            console.log('请求失败：' + resp.status + ',' + resp.statusText);
+                        });
+
+                    } else {
+
+                        vant.Toast.fail(resp.data.msg);
+
+                    }
+
+                }).catch(resp => {
+
+                    console.log('请求失败：' + resp.status + ',' + resp.statusText);
+
+                });
+
+            },
+
+            setData() {
+
+                var _this = this
+
+
+                axios({
+
+                    method: 'post',
+
+                    url: '{:url("advList")}',
+
+                    data: _this.filter,
+
+                }).then(function (resp) {
+
+                    // _this.info=resp.data.data;
+
+                    // _this.info.images.unshift(_this.info.thumb)
+
+                    _this.advInfo = resp.data.adv
+
+                }).catch(resp => {
+
+                    console.log('请求失败：' + resp.status + ',' + resp.statusText);
+
+                });
+
+            },
+
+            onChange(picker, values) {
+
+                // console.log(picker, values)
+
+                picker.setColumnValues(1, this.catNames[values[0]]);
+
+            },
+
+            onConfirm(value, index) {
+
+                this.goodsInfo.catid = this.catInfo[index[0]].children[index[1]].id;
+
+                this.goodsInfo.cat_name = this.catInfo[index[0]].children[index[1]].text;
+
+                this.showPicker = false;
+
+            },
+
+            onConfirm2(value) {
+                this.$set(this.advInfo[this.thisIndex], 'days', Number(value.join('')));
+
+                this.showPicker2 = false;
+
+                this.total_int = this.total_first
+
+                for (var i = 0; i < this.advInfo.length; i++) {
+
+                    this.total_int = this.total_int + (this.advInfo[i].days * this.advInfo[i].need_int)
+
+                }
+
+            },
+
+            getCate() {
+
+                var _this = this
+
+                axios({
+
+                    method: 'post',
+
+                    url: '{:url("Goods/index")}',
+
+                    data: {},
+
+                }).then(function (resp) {
+
+                    if (resp.data.code == 1) {
+
+                        _this.catInfo = resp.data.data.category;
+
+                        for (let i in _this.catInfo) {
+
+                            _this.catNames[_this.catInfo[i].text] = [];
+
+                            for (let j in _this.catInfo[i].children) {
+
+                                _this.catNames[_this.catInfo[i].text].push(_this.catInfo[i].children[j].text)
+
+
+                            }
+
+                        }
+
+                        // console.log(resp.data.data.category, _this.catNames)
+
+                        _this.columns = [
+
+                            {
+
+                                values: Object.keys(_this.catNames),//this.catInfo,
+
+                                className: 'column1'
+
+                            },
+
+                            {
+
+                                values: _this.catNames[_this.catInfo[0].text],
+
+                                className: 'column2',
+
+                                defaultIndex: 0
+
+                            }
+
+                        ]
+
+
+                    } else {
+
+
+                    }
+
+                }).catch(resp => {
+
+                    console.log('请求失败：' + resp.status + ',' + resp.statusText);
+
+                });
+
+            },
+
+
+            getGoodsInfo() {
+
+                var _this = this
+
+                axios({
+
+                    method: 'post',
+
+                    url: '',
+
+                    data: _this.goodsInfo,
+
+                }).then(function (resp) {
+
+                    if (resp.data.code == 1) {
+
+                        _this.goodsInfo = resp.data.data;
+
+                        _this.thumb = [{content: _this.goodsInfo.thumb}]
+
+                        for (var i = 0; i < _this.goodsInfo.images.length; i++) {
+
+                            _this.fileList[i] = {content: _this.goodsInfo.images[i]}
+
+                        }
+
+                    } else {
+
+                        _this.goodsInfo = {images: []}
+
+                    }
+
+                }).catch(resp => {
+
+                    console.log('请求失败：' + resp.status + ',' + resp.statusText);
+
+                });
+
+            },
+
+            save: function () {
+
+
+                let _this = this
+
+                if (this.goodsInfo.thumb == '') {
+
+                    vant.Toast.fail('请输上传主图');
+
+                    return false;
+
+                }
+
+
+                if (this.goodsInfo.info == '') {
+
+                    vant.Toast.fail('请输入详情');
+
+                    return false;
+
+                }
+
+                if (this.goodsInfo.price == '' && this.goodsInfo.type == 1) {
+
+                    vant.Toast.fail('请输入价格');
+
+                    return false;
+
+                }
+
+                  var thumb_arr=[];
+                 $(".box img").each(function(){
+                        var img_url = $(this).attr("src");
+                        thumb_arr.push(img_url);
+                  });
+
+
+                 // alert(list)
+
+                 // return false;
+
+                vant.Toast.loading({mask: true, message: '请稍等...'});
+
+                let submitInfo = JSON.parse(JSON.stringify(this.goodsInfo))
+
+                let images = [];
+
+                for (var i = 0; i < this.fileList.length; i++) {
+
+                    images.push(this.fileList[i].content)
+
+                }
+
+                // this.$set(submitInfo, 'images', thumb_arr.join('-'))
+
+
+                        // console.log(thumb_arr.length)
+
+                if (thumb_arr.length > 15) {
+
+                    vant.Toast.fail('您最多只能上传 15张图片');
+
+                    return false;
+
+                }
+
+                this.$set(submitInfo, 'images', thumb_arr)
+
+                // console.log(submitInfo)
+                // return false;
+
+
+                axios({
+
+                    method: 'post',
+
+                    url: '{:url("goodsSubmit2")}',
+
+                    data: submitInfo,
+
+                }).then(function (resp) {
+
+                    console.log(resp)
+
+                    if (resp.data.code == 1) {
+
+                        //vant.Toast.success("保存成功");
+
+
+                        _this.goodsBackId = resp.data.id;
+
+                        _this.onSubmitCheck();
+
+                        //window.location.href="{:url('goods')}"
+
+                    } else {
+
+                        vant.Toast.fail("保存失败");
+
+                    }
+
+                }).catch(resp => {
+
+                    console.log('请求失败：' + resp.status + ',' + resp.statusText);
+
+                });
+
+
+            },
+
+            afterRead(file) {
+
+                vant.Toast.loading({mask: true, message: '上传中，请稍等...'});
+
+                let fd = new FormData();
+
+                fd.append("file", file.file);
+
+                var _this = this
+
+                axios({
+
+                    method: 'post',
+
+                    url: '{:url("UpFiles/uploadJson")}',
+
+                    data: fd,
+
+                }).then(function (resp) {
+
+                    vant.Toast.success("上传成功");
+
+                    console.log(resp.data)
+
+                    _this.$set(_this.goodsInfo, 'thumb', resp.data.url)
+                    _this.$set(_this.goodsInfo, 'small_thumb', resp.data.small_thumb)
+
+                }).catch(resp => {
+
+                    console.log('请求失败：' + resp.status + ',' + resp.statusText);
+
+                });
+
+
+            },
+
+
+
+
+            afterRead2(file) {
+
+                vant.Toast.loading({mask: true, message: '上传中，请稍等...'});
+
+                let fd = new FormData();
+
+                fd.append("file", file.file);
+                var _this = this
+
+                axios({
+
+                    method: 'post',
+
+                    url: '{:url("UpFiles/uploadJson")}',
+
+                    data: fd,
+
+                }).then(function (resp) {
+
+                    vant.Toast.success("上传成功");
+
+                    _this.$set(_this.fileList[_this.fileList.length - 1], 'content', resp.data.url)
+
+                }).catch(resp => {
+
+                    console.log('请求失败：' + resp.status + ',' + resp.statusText);
+
+                });
+
+
+            },
+
+            navTo: function (url) {
+
+                window.location.href = url
+
+            }
+
+
+        },
+
+        mounted() {
+
+
+        }
+
+
+    });
+
+</script>
+

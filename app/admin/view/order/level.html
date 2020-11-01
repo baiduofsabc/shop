@@ -1,0 +1,130 @@
+{include file="common/head2"/}
+
+<div id="appIndex">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>照护师等级</legend>
+    </fieldset>
+
+  
+       
+            <div v-for="(item,index) in editableTabs" :key="index" class="table_value">
+                等级名称:<el-input v-model="item.level_name" placeholder="请输入内容" style="width:200px"></el-input>
+                价格：<el-input v-model="item.price" placeholder="请输入内容" style="width:100px"></el-input>
+                排序：<el-input v-model="item.sort" placeholder="请输入内容" style="width:80px"></el-input>
+                <el-button plain @click="save(index)">保存</el-button>
+                <el-button type="danger" icon="el-icon-delete" @click="del(index)"></el-button>
+            </div>
+            <el-button plain @click="addValue()">添加</el-button>
+            
+ 
+</div>
+<script>
+    var appIndex = new Vue({
+        el: '#appIndex',
+        data() {
+            return {
+                editableTabsValue: 1,
+                editableTabs: [],
+                tabIndex: 1
+
+            };
+        },
+        created:function(){
+            this.setData();
+
+        },
+        methods: {
+            setData(){
+
+                let _this = this
+                axios({
+                    method:'post',
+                    url:'{:url("level")}',
+                    data:{},
+                }).then(function(resp){
+
+                    _this.editableTabs = resp.data;
+                    _this.tabIndex = resp.data.length;
+                    
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+            },
+            addValue(){
+        
+                this.editableTabs.push({level_name:'',price:0.00,sort:50});
+
+            },
+            delValue(ind){
+                this.editableTabs[this.editableTabsValue-1].value.splice(ind,1);
+            },
+            del(index){
+                var _this = this
+                this.$confirm('确认删除？')
+                    .then(_ => {
+                        _this.del2(index);
+                    })
+                    .catch(_ => {});
+
+            },
+             
+            del2(index){
+                if(!this.editableTabs[index].level_id) {
+                    this.editableTabs.splice(index,1);
+                    return false;
+                }
+                var _this = this
+                axios({
+                    method:'post',
+                    url:'{:url("levelDel")}',
+                    data:{level_id:this.editableTabs[index].level_id},
+                }).then(function(resp){
+                    console.log(resp.data);
+                    if(resp.data.code==1) {
+                        _this.$notify({title: '删除成功',message:resp.data.msg,type: 'success'});
+                    }
+                    else {
+                        _this.$notify({title: '失败',message:resp.data.msg,type: 'error'});
+                    }
+
+                    _this.setData();
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+
+            },
+            save(index) {
+
+
+                    var submitData = JSON.parse(JSON.stringify(this.editableTabs[index]));
+                    var _this = this
+                    axios({
+                        method:'post',
+                        url:'{:url("levelAdd")}',
+                        data:submitData,
+                    }).then(function(resp){
+                        console.log(resp.data);
+                        if(resp.data.code==1) {
+                            _this.$notify({title: '成功',message:resp.data.msg,type: 'success'});
+                            _this.setData();
+
+                        }
+                        else {
+                            _this.$notify({title: '失败',message:resp.data.msg,type: 'error'});
+                        }
+
+                    }).catch(resp => {
+                        console.log('请求失败：'+resp.status+','+resp.statusText);
+                    });
+
+            },
+
+        },
+        mounted() {
+
+        }
+
+    });
+</script>
+</body>
+</html>

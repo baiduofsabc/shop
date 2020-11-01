@@ -1,0 +1,493 @@
+{include file="common/head"/}
+<style>
+  .copySuccess{
+    font-size: 0.4rem;
+  }
+  .van-button--small{
+    min-width: 75px;
+  }
+</style>
+<script type="text/javascript" src="../../../../../plugins/NativeShare/NativeShare.js"></script>
+
+<script>
+  var nativeShare = new NativeShare()
+  var shareData = {
+    title: '服饰专版',
+    desc: '我发现了一个很不错的服装哦,发给你看看',
+    // 如果是微信该link的域名必须要在微信后台配置的安全域名之内的。
+    link: document.URL,
+    icon: '',
+    // 不要过于依赖以下两个回调，很多浏览器是不支持的
+    success: function () {
+      alert('success')
+    },
+    fail: function () {
+      alert('fail')
+    }
+  }
+  nativeShare.setShareData(shareData)
+
+  function call(command) {
+    try {
+      nativeShare.call(command)
+    } catch (err) {
+      // 如果不支持，你可以在这里做降级处理
+      alert('貌似不兼容您的浏览器,请尝试更换浏览器,谢谢')
+    }
+  }
+
+  function setTitle(title) {
+    nativeShare.setShareData({
+      title: title,
+    })
+  }
+</script>
+
+<script>
+
+  window.onload = function () {
+    var user_id = document.getElementById('user_id').value;
+    var title = document.getElementsByClassName("van-nav-bar__title");
+    for (var i = 0; i < title.length; i++) {
+      title[i].onclick = function () {
+        window.location.href = "{:url('shop/index')}?id=" + user_id + "#mp.weixin.qq.com "
+        // console.log(this.info.user_id);
+
+      }
+    }
+  }
+    // window.location.href="{:url('shop/index')}?id="+this.info.user_id
+</script>
+<div id="app" class="my_id" v-cloak>
+
+  <van-nav-bar title="进入店铺" left-text="返回" right-text="我的" left-arrow @click-left="onClickLeft"
+    @click-right="onClickRight" />
+  </van-nav-bar>
+  <van-nav-bar title="进入店铺" left-text="返回" right-text="我的" left-arrow @click-left="onClickLeft"
+    @click-right="onClickRight" style="position:fixed; width: 100%;top: 0;z-index: 9999999" />
+  </van-nav-bar>
+
+  <input type="hidden" id='user_id' value="{$user_id}">
+  <div class="article_show" v-if="info.id">
+    <div class="title van-hairline--bottom">
+      <van-row v-if="{$showdel} == 1">
+        <van-col span="14">
+          {{info.addtime}}
+        </van-col>
+        <van-col span="10">
+
+          <div style="text-align: center;">
+<!--            <van-button type="primary" size="small" class="btn_white_deep_k tag-read blue font-size-14"-->
+<!--              :data-clipboard-text="info.id" @click="del" v-if="{$showdel} == 1">删除</van-button>-->
+            <van-button type="primary" size="small" class="btn_white_deep_k tag-read" :data-clipboard-text="info.info"
+              @click="copy">复制文字</van-button>
+
+          </div>
+        </van-col>
+
+      </van-row>
+      <van-row v-if="{$showdel} == 0">
+        <van-col span="14">
+          {{info.addtime}}
+        </van-col>
+        <van-col span="10">
+
+          <div style="text-align: center;">
+            <van-button type="primary" size="small" class="btn_white_deep_k tag-read font-size-14" :data-clipboard-text="info.info"
+              @click="copy">复制文字</van-button>
+          </div>
+        </van-col>
+
+      </van-row>
+    </div>
+
+    <div class="content">
+
+      <div class="content_info" :style="{height:infoHeight}">
+        <van-button type="primary" size="small" class="btn_white_deep_blue font-size-14" @click="openInfo">
+          {{infoHeight=="auto"?"收起":"展开"}}</van-button> <span
+          style="word-break:break-all;word-wrap:break-word">{{info.info}} </span>
+      </div>
+      <div class="butt">
+        <van-button type="primary" icon="like" size="small" class="btn_green_deep btn_white_deep_k font-size-14"
+          v-if="info.collect_status==0" @click="collectAdd">收藏</van-button>
+        <van-button type="primary" icon="like" size="small" class="btn_green_deep is_collect btn_white_deep_k" v-else
+          @click="collectDel">取消收藏</van-button>
+        <van-button type="primary" icon="label" size="small" class="btn_white_deep_k tag-read font-size-14"
+          @click="navTo('{:url('User/feedback')}')">投诉</van-button>
+      </div>
+
+      <!-- <van-button type="primary" icon="friends" size="small" class="btn_green" @click="setShare">分享</van-button> -->
+
+
+
+      <div class="bdsharebuttonbox" v-show="shareShow==1">
+        <!-- <button class="btn_green_deep" size="small" class="btn_green" onclick="call()">通用分享</button> -->
+        <button class="btn_green_deep" size="small" class="btn_green" onclick="call('wechatFriend')"
+          style="margin-top: 10px;">微信好友</button>
+        <button class="btn_green_deep" size="small" class="btn_green" onclick="call('wechatTimeline')"
+          style="margin-top: 10px;">朋友圈</button>
+        <button class="btn_green_deep" size="small" class="btn_green" onclick="call('qqFriend')"
+          style="margin-top: 10px;">QQ</button>
+        <button class="btn_green_deep" size="small" class="btn_green" onclick="call('qZone')"
+          style="margin-top: 10px;">QQ空间</button>
+        <!-- <button class="btn_green_deep" size="small" class="btn_green" onclick="call('weibo')">微博</button> -->
+        <!-- <button class="btn_green_deep" size="small" class="btn_green" onclick="setTitle('fa-ge NativeShare')">设置标题</button> -->
+      </div>
+
+
+      <!-- <div class="bdsharebuttonbox" v-show="shareShow==1"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div> -->
+
+    </div>
+    <!-- <div class="bc">
+          <van-button type="primary" style="margin-left:0.2rem;" class="btn_white_deep_k tag-read" size="small" class="btn_green" @click="downloadPic()">保存以下所有图片</van-button>
+
+      </div> -->
+
+  </div>
+
+  <div class="article_images" v-if="info.id">
+    <van-row gutter="1">
+      <van-col span="8" v-for="(item,index) in info.imagesArr" key="index">
+        <div class="img" :style="'background-image: url('+item+');'" @click="viewPic(index)"></div>
+      </van-col>
+
+    </van-row>
+
+  </div>
+
+
+  <van-popup v-model="popupShow" position="right" :overlay="false" :style="{ height: '100%' }">
+    <van-nav-bar left-text="返回" left-arrow @click-left="onImgLeft" />
+    </van-nav-bar>
+
+    <van-image width="7.5rem" height="90%" fit="contain" :src="thisImage" />
+
+
+
+  </van-popup>
+
+
+
+</div>
+
+<style>
+  .font-size-14{
+    font-size: 14px !important;
+  }
+  .van-nav-bar__title {
+    color: blue;
+  }
+
+  .van-button--small {
+    /*font-size: 13px;*/
+  }
+
+  .butt {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .bc {
+    display: flex;
+    justify-content: center;
+  }
+
+  .van-nav-bar__left .van-nav-bar__text {
+    color: #A19487;
+  }
+
+  .van-nav-bar__right .van-nav-bar__text {
+    color: blue;
+  }
+</style>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: function data() {
+      return {
+        filter: {},
+        info: {},
+        show: false,
+        picIndex: 0,
+        shopUserId: 0,
+        infoHeight: '0.67rem',
+        shareShow: 0,
+        popupShow: false,
+        thisImage: '',
+
+      };
+    },
+    created: function () {
+      let _this = this
+      if (window.sessionStorage['list_ul6'] != undefined && window.sessionStorage.length > 0) {
+        // console.log(JSON.parse(window.sessionStorage.list_ul))
+        var top = parseInt(sessionStorage.getItem("top6"));
+        top = top ? top : 0;
+        var product_ul = JSON.parse(sessionStorage.getItem("list_ul6"));
+        var page = parseInt(sessionStorage.getItem("page6"));
+        var url = sessionStorage.getItem("url6");
+        //判断返回后的页面和上一次的页面地址是否一致
+        if (product_ul != null && url == window.location.href) {
+          _this.list = product_ul;;
+          document.body.scrollTop = top + parseInt($(window).height());
+          _this.filter.page = Number(page);
+        }
+        this.setData()
+
+      } else {
+        this.setData()
+      }
+
+    },
+
+    methods: {
+      setShare() {
+        if (this.shareShow == 1) {
+          this.shareShow = 0;
+          // window._bd_share_config={}
+        }
+        else {
+          this.shareShow = 1;
+          // window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        }
+
+      },
+      del() {
+        vant.Toast.loading({ mask: true, message: '请稍等...' });
+        var _this = this
+        console.log(_this.info.id)
+        vant.Dialog.confirm({
+          title: '',
+          message: '是否删除该条发布？'
+        }).then(() => {
+          axios({
+            method: 'post',
+            url: '{:url("goods/delshow")}',
+            data: { id: _this.info.id },
+          }).then(function (resp) {
+            vant.Toast.success("删除成功");
+            window.location.href = '{:url("user/goods")}';
+          }).catch(resp => {
+            console.log('请求失败：' + resp.status + ',' + resp.statusText);
+          });
+
+        }).catch(() => {
+          console.log("取消删除")
+        })
+      },
+      copy() {
+
+        var clipboard = new ClipboardJS('.tag-read')
+        clipboard.on('success', e => {
+          console.log('复制成功')
+          vant.Toast.success({message:'复制成功',duration:2000,className:'copySuccess'});
+          // 释放内存
+          clipboard.destroy()
+        })
+        clipboard.on('error', e => {
+          // 不支持复制
+          vant.Toast.fail({message:'该浏览器不支持自动复制',duration:2000});
+          console.log('该浏览器不支持自动复制')
+          // 释放内存
+          clipboard.destroy()
+        })
+      },
+      saveImg() {
+        console.log(this.info.imagesArr);
+
+        for (var i in this.info.imagesArr) {
+          console.log(this.info.imagesArr[i]);
+          //保存到系统相册
+          plus.gallery.save(this.info.imagesArr[i], function () {
+            ///刷新相册  
+            var main = plus.android.runtimeMainActivity();
+            var intent = plus.android.importClass('android.content.Intent');
+            var Uri = plus.android.importClass('android.net.Uri');
+            main.sendBroadcast(new intent(intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse(pant)));
+            ///  
+
+            plus.nativeUI.alert("保存图片到相册成功");
+
+          }, function () {
+            plus.nativeUI.alert("保存失败");
+          });
+        }
+
+
+
+        // if(!window.plus) return;
+        //   plus.gallery.save('/public/uploads/20190823/', function () {
+        //   plus.nativeUI.alert("保存图片到相册成功");
+        // },function(){
+        //   plus.nativeUI.alert("保存失败");
+        // });
+
+      },
+      openInfo() {
+        if (this.infoHeight == "auto") {
+          this.infoHeight = "0.6rem"
+
+        }
+        else {
+          this.infoHeight = "auto"
+        }
+
+      },
+      onClickLeft() {
+        if (window.history.length > 1) {
+          // window.history.go( -1 ); 
+          window.history.back();
+        } else {
+          window.location.href = "/"
+        }
+      },
+      onClickRight() {
+        // window.location.href="{:url('shop/index')}?id="+this.info.user_id
+        window.location.href = "{:url('home/user/index')}"
+      },
+      setData() {
+        var _this = this
+        console.log(this.$route)
+        axios({
+          method: 'post',
+          url: '',
+          data: _this.filter,
+        }).then(function (resp) {
+          _this.info = resp.data.data;
+          console.log(_this.info)
+          _this.info.imagesArr.unshift(_this.info.thumb)
+        }).catch(resp => {
+          console.log('请求失败：' + resp.status + ',' + resp.statusText);
+        });
+      },
+      collectDel() {
+        var _this = this
+        vant.Dialog.confirm({
+          title: '提示',
+          message: '确认取消？'
+        }).then(() => {
+          vant.Toast.loading({ mask: true, message: '请稍等...' });
+          axios({
+            method: 'post',
+            url: '{:url("User/collectDel")}',
+            data: { id: _this.info.collect_id },
+          }).then(function (resp) {
+            if (resp.data.code == 1) {
+              vant.Toast.success("已取消");
+              _this.info.collect_status = 0
+            }
+            else {
+              vant.Toast.fail("取消失败");
+            }
+          }).catch(resp => {
+            console.log('请求失败：' + resp.status + ',' + resp.statusText);
+          });
+        }).catch(() => {
+          // on cancel
+        });
+      },
+      collectAdd() {
+        vant.Toast.loading({ mask: true, message: '请稍等...' });
+        var _this = this
+
+        axios({
+          method: 'post',
+          url: '{:url("User/collectAdd")}',
+          data: { id: _this.info.id },
+        }).then(function (resp) {
+          if (resp.data.code == 1) {
+            vant.Toast.setDefaultOptions({ duration: 800 });
+            vant.Toast.success("收藏成功");
+            _this.info.collect_status = 1
+            _this.info.collect_id = resp.data.id
+          }
+          else {
+            vant.Toast.fail("收藏失败");
+          }
+        }).catch(resp => {
+          console.log('请求失败：' + resp.status + ',' + resp.statusText);
+        });
+
+      },
+
+      viewPic(index) {
+        console.log(this.info.imagesArr[index]);
+        // this.picIndex = index;
+        // this.show = true
+        this.thisImage = this.info.imagesArr[index]
+        this.popupShow = true;
+        // var url = '/home/goods/showimg?url='+this.info.imagesArr[index];
+        // console.log(url);
+        // window.location.href= "{:url('goods/showimg')}?url="+this.info.imagesArr[index];
+        // let _this = this
+        // vant.ImagePreview({
+        //   images: _this.info.imagesArr,
+        //   startPosition: index,
+        //   onClose() {
+        //     // do something
+        //   }
+        // });
+      },
+      downloadPic() {
+        for (var i = 0; i < this.info.imagesArr.length; i++) {
+          this.downloadImgByBlob(this.info.imagesArr[i]);
+        }
+        vant.Toast.fail("下载");
+      },
+      downloadImgByBlob(url) {
+        var img = new Image()
+        img.onload = function () {
+          var canvas = document.createElement('canvas')
+          canvas.width = img.width
+          canvas.height = img.height
+          var ctx = canvas.getContext('2d')
+          // 将img中的内容画到画布上
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+          // 将画布内容转换为Blob
+          canvas.toBlob((blob) => {
+            // blob转为同源url
+            var blobUrl = window.URL.createObjectURL(blob)
+            // 创建a链接
+            var a = document.createElement('a')
+            a.href = url + "?mp.wexin.qq.com"
+            a.download = ''
+            // 触发a链接点击事件，浏览器开始下载文件
+            a.click()
+            console.log(a);
+          })
+        }
+        img.src = url
+        // 必须设置，否则canvas中的内容无法转换为blob
+        img.setAttribute('crossOrigin', 'Anonymous')
+
+
+      },
+      navTo: function (url) {
+        let _this = this
+        sessionStorage.clear()
+        // console.log(sessionStorage)
+        sessionStorage.setItem("list_ul6", `${JSON.stringify(_this.list)}`);
+        sessionStorage.setItem("top6", `${window.pageYOffset}`);
+        sessionStorage.setItem("page6", `${_this.filter.page - 1}`);
+        sessionStorage.setItem("url6", window.location.href);
+        // console.log(sessionStorage)
+        setTimeout(() => {
+          window.location.href = url
+        }, 200)
+      },
+      onImgLeft: function () {
+
+        this.popupShow = false;
+      },
+
+
+    },
+    mounted() {
+
+    }
+
+  });
+</script>
+{include file="common/footer"/}

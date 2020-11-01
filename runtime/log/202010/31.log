@@ -1,0 +1,79 @@
+---------------------------------------------------------------
+[ 2020-10-31T18:12:41+08:00 ] 192.168.1.10 GET /
+[ info ] 192.168.1.10:8001/ [运行时间：0.265289s][吞吐率：3.77req/s] [内存消耗：2,344.13kb] [文件加载：48]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '192.168.1.10:8001',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'fszb78sjk'@'localhost' (using password: YES)[E:\asd1028\fszb1027\think\library\think\db\Connection.php:292]
+---------------------------------------------------------------
+[ 2020-10-31T18:13:47+08:00 ] 192.168.1.10 GET /
+[ info ] 192.168.1.10:8001/ [运行时间：0.148083s][吞吐率：6.75req/s] [内存消耗：2,499.98kb] [文件加载：50]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => '192.168.1.10:8001',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Index->index[ E:\asd1028\fszb1027\app\home\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.013039s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.007405s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.003017s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.002481s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_category` [ RunTime:0.002335s ]
+[ sql ] [ SQL ] SELECT MIN(parentid) AS tp_min FROM `tp_category` WHERE  `parentid` <> 0 LIMIT 1 [ RunTime:0.001387s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_category` WHERE  `parentid` = 1 ORDER BY listorder asc LIMIT 1 [ RunTime:0.001024s ]

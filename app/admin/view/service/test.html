@@ -1,0 +1,423 @@
+{include file="common/head2"/}
+<script type="text/javascript" src="/statics/UE/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="/statics/UE/ueditor.all.js"></script>
+<div id="appIndex">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>测试管理</legend>
+    </fieldset>
+    <el-form :inline="true" :model="filter">
+        <el-form-item label="测试名称">
+            <el-input v-model="filter.name" placeholder="科室名称"></el-input>
+        </el-form-item>
+        <el-form-item label="所属类别" prop="catid">
+
+            <el-select v-model="filter.catid" clearable placeholder="请选择">
+                <el-option
+
+                        v-for="item in cate"
+                        :key="item.id"
+                        :label="item.name"
+                        :value="item.id">
+                </el-option>
+            </el-select>
+        </el-form-item>
+        <el-form-item>
+            <el-button type="primary" @click="setData">查询</el-button>
+            <el-button plain style="margin-bottom: 20px;" @click="add">添加</el-button>
+        </el-form-item>
+    </el-form>
+
+    <el-table
+            :data="tableData"
+            border
+            style="width: 100%">
+        <el-table-column
+                fixed
+                prop="id"
+                label="序号"
+                width="100">
+        </el-table-column>
+        <el-table-column
+                prop="name"
+                label="测试名称"
+                width="200">
+        </el-table-column>
+        <el-table-column
+                prop="catname"
+                label="所属类别"
+                width="200">
+        </el-table-column>
+        <el-table-column
+                prop="status"
+                label="状态"
+                width="100">
+            <template slot-scope="scope">
+                <font v-if="scope.row.status==1">已启用</font>
+                <font v-if="scope.row.status==2" style="color: red">已禁用</font>
+            </template>
+
+        </el-table-column>
+
+
+        <el-table-column
+                prop="sort"
+                label="排序"
+                width="100">
+            <template slot-scope="scope">
+
+                <el-input  v-model="scope.row.sort" @blur="setSort(scope.row.id,scope.row.sort)"></el-input>
+
+            </template>
+
+        </el-table-column>
+
+
+
+        <el-table-column
+                prop="add_time"
+                label="添加时间"
+                width="200">
+        </el-table-column>
+
+        <el-table-column
+                label="操作"
+                width="160">
+            <template slot-scope="scope">
+                <el-button
+                        size="mini" @click="edit(scope.$index)"
+                >编辑</el-button>
+                <el-button
+                        size="mini"
+                        type="danger" @click="del(scope.$index)"
+                >删除</el-button>
+            </template>
+        </el-table-column>
+    </el-table>
+
+    <el-pagination
+            background
+            @current-change="handleCurrentChange"
+            layout="prev, pager, next"
+            :page-size="15"
+            :total="pageTotal">
+    </el-pagination>
+
+    <el-dialog
+            :title="thisTitle+'疾病'"
+            :visible.sync="dialogVisible"
+
+
+            width="70%"
+            :close-on-click-modal="false"
+            :before-close="handleClose">
+
+
+        <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+
+            <el-form-item label="测试名称" prop="name">
+                <el-input v-model="ruleForm.name"></el-input>
+            </el-form-item>
+            <el-form-item label="描述(选填)" prop="description">
+                <el-input v-model="ruleForm.description"></el-input>
+            </el-form-item>
+
+
+            <el-form-item label="所属类别" prop="catid">
+
+                <el-select v-model="ruleForm.catid" placeholder="请选择">
+                    <el-option
+                            v-for="item in cate"
+                            :key="item.id"
+                            :label="item.name"
+                            :value="item.id">
+                    </el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="测试状态" prop="status">
+                 <el-select v-model="ruleForm.status" clearable placeholder="请选择">
+                    <el-option  label="启用" :value="1"></el-option>
+                    <el-option  label="禁用" :value="2"></el-option>
+                 </el-select>
+            </el-form-item>
+
+            <el-form-item label="关联服务" prop="service_id">
+
+                <div v-for="(vo,index) in service" :key="index" >
+                    {{vo.name}}
+                    <el-checkbox-group v-model="ruleForm.service_id" size="small" >
+
+                        <el-checkbox :label="item.id" border v-for="(item,ind) in vo.service" :key="ind">  {{item.name}}</el-checkbox>
+
+                    </el-checkbox-group>
+                </div>
+            </el-form-item>
+
+
+            <el-form-item>
+                <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+                <el-button @click="resetForm('ruleForm')">重置</el-button>
+            </el-form-item>
+        </el-form>
+
+
+
+    </el-dialog>
+
+
+
+
+</div>
+<script>
+    var appIndex = new Vue({
+        el: '#appIndex',
+        data() {
+            return {
+                tableData: [],
+                dialogVisible: false,
+                ruleForm: {service_id:[]},
+                filter:{page:1},
+                rules: {
+                    name: [
+                        { required: true, message: '请输入名称', trigger: 'blur' },
+
+                    ],
+                    catid: [
+                        { required: true, message: '请选择服务类别', trigger: 'change' }
+                    ],
+
+                },
+                thisTitle:"添加",
+                pageTotal:0,
+                editor:'',
+                level:[],
+                regions:[[],[],[]],
+                cate:[],
+                service:[],
+
+            };
+        },
+        created:function(){
+            this.getCate();
+            this.getService();
+            this.setData();
+        },
+        methods: {
+            getCate(){
+                let _this = this
+                axios({
+                    method:'post',
+                    url:'{:url("testCate")}',
+                    data:{},
+                }).then(function(resp){
+                    _this.cate = resp.data.data;
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+            },
+            getService(){
+                let _this = this
+                axios({
+                    method:'post',
+                    url:'{:url("serviceCateInfo")}',
+                    data:{},
+                }).then(function(resp){
+                    _this.service = resp.data.data;
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+            },
+            setData(){
+
+                let _this = this
+                axios({
+                    method:'post',
+                    url:'{:url("test")}',
+                    data:_this.filter,
+                }).then(function(resp){
+                    console.log(resp.data);
+                    _this.tableData = resp.data.data;
+                    _this.pageTotal = resp.data.count;
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+            },
+
+            handleCurrentChange(val) {
+                this.$set(this.filter,'page',val);
+                this.setData()
+            },
+            setSort(id,sort) {
+                var _this = this
+                axios({
+                    method:'post',
+                    url:'{:url("testAdd")}',
+                    data:{id:id,sort:sort},
+                }).then(function(resp){
+                    if(resp.data.code==1) {
+                        _this.$notify({title: '成功',message:resp.data.msg,type: 'success'});
+                        _this.dialogVisible=false;
+                    }
+                    else {
+                        _this.$notify({title: '失败', message: resp.data.msg, type: 'error'});
+                    }
+                    _this.setData();
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+
+            },
+            add() {
+                var _this =this;
+                this.thisTitle="添加";
+                this.dialogVisible=true;
+                this.ruleForm = {service_id:[]};
+                this.editor = UE.getEditor('container');
+
+                this.editor.ready(function() {
+                    _this.editor.setContent('');
+                });
+
+            },
+            edit(index) {
+                var _this =this;
+                _this.thisTitle="编辑";
+
+                axios({
+                    method:'post',
+                    url:'{:url("testInfo")}',
+                    data:{id:_this.tableData[index].id},
+                }).then(function(resp){
+
+                    _this.ruleForm = resp.data.data;
+                    if(resp.data.data.service_id) {
+                        _this.$set(_this.ruleForm,'service_id',resp.data.data.service_id.split(',').map(Number));
+                    }
+                    else {
+                        _this.$set(_this.ruleForm,'service_id',[]);
+                    }
+                    _this.dialogVisible=true;
+                    _this.editor = UE.getEditor('container');
+                    _this.editor.ready(function() {
+                        if (_this.tableData[index].info) {
+                            _this.editor.setContent(_this.tableData[index].info);
+                        }
+                        else{
+                            _this.editor.setContent('');
+                        }
+
+                    });
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+
+
+
+                //this.editor.setContent(_this.tableData[index].content);
+
+
+
+            },
+            handleClick(row) {
+                console.log(row);
+            },
+            handleClose(done) {
+                this.$confirm('确认关闭？')
+                    .then(_ => {
+                        done();
+                    })
+                    .catch(_ => {});
+            },
+            submitForm(formName) {
+                var _this = this;
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        _this.save()
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+                });
+            },
+            save() {
+
+                var _this = this
+                let ruleForm = JSON.parse(JSON.stringify(this.ruleForm));
+                this.$set(ruleForm,'service_id',this.ruleForm.service_id.join(','));
+                axios({
+                    method:'post',
+                    url:'{:url("testAdd")}',
+                    data:ruleForm,
+                }).then(function(resp){
+                    if(resp.data.code==1) {
+                        _this.$notify({title: '成功',message:resp.data.msg,type: 'success'});
+                        _this.dialogVisible=false;
+                    }
+                    else {
+                        _this.$notify({title: '失败',message:resp.data.msg,type: 'error'});
+                    }
+                    this.dialogVisible=false;
+                    _this.setData();
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+            },
+            resetForm(formName) {
+                this.$refs[formName].resetFields();
+            },
+            handleAvatarSuccess(res, file) {
+                console.log(res)
+                this.$set(this.ruleForm,'thumb',res.url)
+
+            },
+            beforeAvatarUpload(file) {
+
+                const isLt2M = file.size / 1024 / 1024 < 2;
+
+
+                if (!isLt2M) {
+                    this.$message.error('上传头像图片大小不能超过 2MB!');
+                }
+                return  isLt2M;
+            },
+            del(index){
+                var _this = this
+                this.$confirm('确认删除？')
+                    .then(_ => {
+                        _this.del2(index);
+                    })
+                    .catch(_ => {});
+
+            },
+            del2(index) {
+                var _this = this;
+                var id = this.tableData[index].id;
+                axios({
+                    method:'post',
+                    url:'{:url("testDel")}',
+                    data:{id:id},
+                }).then(function(resp){
+                    console.log(resp.data);
+                    if(resp.data.code==1) {
+                        _this.$notify({title: '成功',message:resp.data.msg,type: 'success'});
+                    }
+                    else {
+                        _this.$notify({title: '失败',message:resp.data.msg,type: 'error'});
+                    }
+                    _this.setData();
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+            }
+
+
+        },
+        mounted() {
+
+
+        }
+
+    });
+</script>
+</body>
+</html>

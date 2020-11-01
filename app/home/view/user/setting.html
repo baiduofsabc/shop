@@ -1,0 +1,284 @@
+{include file="common/head"/}
+
+<style type="text/css" media="screen">
+   .settingbtnmargin {margin-bottom: 10px!important;}
+</style>
+
+{include file="common/nav"/}
+<div id="app">
+  <div class="user_setting" v-if="userInfo.id">
+    <van-row gutter="10">
+      
+<!--       <van-col span="8">
+          <div :class="active==1?'btn active':'btn'" @click="setActive(1)">标题</div>
+      </van-col> -->
+<!--      <van-col span="12">-->
+<!--          <div :class="active==2?'btn active':'btn'" style="margin-bottom: 20px" @click="setActive(2)">店铺介绍</div>-->
+<!--      </van-col>-->
+      <van-col span="12">
+          <div :class="active==3?'btn active':'btn'" style="margin-bottom: 20px" @click="setActive(3)">交易记录</div>
+      </van-col>
+      <van-col span="12">
+          <div :class="active==4?'btn active':'btn'" style="margin-bottom: 20px" >剩余积分:<span v-if="userInfo.cardInfo">{{userInfo.cardInfo.integral}}</span>
+          </div>
+      </van-col>
+      <van-col span="12">
+          <div :class="active==5?'btn active':'btn'" style="margin-bottom: 20px" @click="navTo('{:url('Recharge/index')}')">充值</div>
+        </van-col>
+      
+    </van-row>
+
+
+  <div class="user_setting_shop" v-if="active==1">
+    <div class="title">标题：（20字以内）</div>
+    <div class="field">
+    <van-field
+        v-model="shopInfo.name"
+        type="textarea"
+        placeholder="请输入标题"
+        rows="5"
+        autosize
+        class="van-hairline--surround"
+      ></van-field>
+    </div>
+
+      <van-button plain  type="primary" class="btn_green_deep_plain" @click="saveShop">保存</van-button>
+
+  </div>
+  <div class="user_setting_shop" v-if="active==2">
+    <div class="title">店铺介绍：（500字以内）</div>
+    <div class="field">
+    <van-field
+        v-model="shopInfo.info"
+        type="textarea"
+        placeholder="店铺介绍"
+        maxlength="500"
+        rows="5"
+        autosize
+        class="van-hairline--surround"
+      ></van-field>
+    </div>
+    <div class="field">
+    <van-field
+        v-model="shopInfo.tel"
+        label="电话"
+        placeholder="请输入电话"
+        label-width="1rem"
+        class="van-hairline--surround"
+      ></van-field>
+    </div>
+    <div class="field">
+    <van-field
+        v-model="shopInfo.wechat"
+        label="微信"
+        placeholder="请输入微信"
+        label-width="1rem"
+        class="van-hairline--surround"
+      ></van-field>
+    </div>
+    <van-button plain  type="primary" class="btn_green_deep_plain" @click="saveShop">保存</van-button>
+  </div>
+  <div class="user_setting_follow" v-if="active==3">
+    <div class="title van-hairline--bottom">交易记录</div>
+    <van-list
+    v-model="loading"
+    :finished="finished"
+    finished-text="没有更多了"
+    @load="getFollow"
+  >
+      <van-row gutter="1" v-for="(item,index) in followInfo" key="index">
+          <van-col span="18">
+              <div class="follow follow1">{{item.info}}<br>{{item.addtime}}</div>
+          </van-col>
+          <van-col span="6">
+              <div class="follow follow2">{{item.type==1?'+':'-'}}{{item.integral}}积分</div>
+          </van-col>
+      </van-row>
+    </van-list>
+
+
+
+  </div>
+
+
+   
+</div>
+<script>
+    var appIndex = new Vue({
+        el: '#app',
+        data: function data() {
+            return {
+              filter:{},
+              userInfo:{},
+              list: [],
+              loading: false,
+              finished: false,
+              pageTotal:0,
+              active:0,
+              shopInfo:{
+                  info:""
+              },
+              followInfo:[],
+ 
+      
+            };
+        },
+        created:function(){   
+          this.getUserInfo()
+        },
+
+        methods: {
+
+            afterRead(file) {
+              let fd= new FormData();
+              fd.append("file", file.file);
+              var _this = this
+                  axios({
+                      method:'post',
+                      url:'{:url("UpFiles/uploadJson")}',
+                      data:fd,
+                  }).then(function(resp){
+                    _this.$set(_this.userInfo,'avatarUrl',resp.data.url )
+                  }).catch(resp => {
+                      console.log('请求失败：'+resp.status+','+resp.statusText);
+               });
+      
+            },
+            setActive:function(val) {
+              if(val==1||val==2) {
+                this.getShop()
+              }
+           
+              this.active = val
+            },
+
+
+            getShop:function() {
+                var _this = this
+                axios({
+                      method:'post',
+                      url:'{:url("getShop")}',
+                      data:{},
+                  }).then(function(resp){
+                     _this.shopInfo = resp.data.data
+             
+                  }).catch(resp => {
+                      console.log('请求失败：'+resp.status+','+resp.statusText);
+               });
+        
+            },
+            saveShop:function() {
+                var _this = this
+                axios({
+                      method:'post',
+                      url:'{:url("updateShop")}',
+                      data:_this.shopInfo,
+                  }).then(function(resp){
+                       if(resp.data.code==1) {
+                            vant.Toast.success("保存成功");
+                        }
+                        else {
+                            vant.Toast.fail("删除失败");
+                        } 
+             
+                  }).catch(resp => {
+                      console.log('请求失败：'+resp.status+','+resp.statusText);
+               });
+        
+            },
+            getFollow:function() {
+                  var _this = this
+                  axios({
+                      method:'post',
+                      url:'{:url("getFollow")}',
+                      data:{},
+                  }).then(function(resp){
+                      _this.loading = false;
+                      _this.followInfo=_this.followInfo.concat(resp.data.data);
+                      _this.pageTotal = resp.data.count
+                      _this.filter.page++
+                      if (_this.followInfo.length >= _this.pageTotal) {
+                           _this.finished = true;
+                      }
+                  }).catch(resp => {
+                      console.log('请求失败：'+resp.status+','+resp.statusText);
+                  });   
+        
+        
+            },
+            saveAvatar() {
+                 var _this = this
+                  axios({
+                          method:'post',
+                          url:'{:url("updateUserInfo")}',
+                          data:{avatarUrl:_this.userInfo.avatarUrl},
+                    }).then(function(resp){
+                       if(resp.data.code==1) {
+                            vant.Toast.success("保存成功");
+                        }
+                        else {
+                            vant.Toast.fail("删除失败");
+                        } 
+                    }).catch(resp => {
+                          
+                    });
+            },
+
+            getUserInfo(){
+                  var _this = this
+                  axios({
+                      method:'post',
+                      url:'{:url("user_info")}',
+                      data:_this.filter,
+                  }).then(function(resp){
+                    _this.userInfo = resp.data  
+                    console.log(_this.userInfo)
+                  }).catch(resp => {
+                      console.log('请求失败：'+resp.status+','+resp.statusText);
+                  });
+            },
+            getUserGoods() {
+              var _this = this
+              axios({
+                      method:'post',
+                      url:'{:url("getUserGoods")}',
+                      data:_this.filter,
+              }).then(function(resp){
+                      _this.loading = false;
+                        _this.list=_this.list.concat(resp.data.data);
+                        _this.pageTotal = resp.data.count
+                        _this.filter.page++
+                        if (_this.list.length >= _this.pageTotal) {
+                    _this.finished = true;
+                  }
+              }).catch(resp => {
+                      console.log('请求失败：'+resp.status+','+resp.statusText);
+              });
+
+            },
+            navTo:function(url) {
+              window.location.href=url
+            }
+
+        },
+        mounted() {
+ 
+        },
+        watch: {
+            "shopInfo.info":{
+                handler(newValue, oldValue) {
+                    //do something
+                    if(newValue) {
+                        if (newValue.length > 498) {
+                            vant.Toast.fail("字数超出限制");
+                        }
+                    }
+                },
+                deep:true,
+                immediate: true
+            }
+        }
+
+    });
+</script>
+ 

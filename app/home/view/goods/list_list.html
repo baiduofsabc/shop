@@ -1,0 +1,390 @@
+{include file="common/head"/}
+<style>
+    .van-icon.icon-jiantouarrow486 {
+        font-size: 0.6rem
+    }
+
+    .head_list {
+        line-height: 1rem;
+        font-size: 0.4rem;
+        height: 1rem;
+        background: #fff;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 9;
+        text-align: center
+    }
+
+    .head_list i {
+        font-size: 0.6rem;
+        margin-top: 0.05rem;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    /*.swiper-container {height:3.4rem!important;left: 0;right: 0;bottom: 0; position: absolute;}*/
+    .swiper-container {
+        width: 32.2%;
+        height: 3.4rem;
+        float: left;
+
+    }
+
+    .btn_green_deep {
+        width: 100%;
+        height: 60px;
+        line-height: 58px;
+        background: #07c160 !important;
+        opacity: 1;
+        top: 50%;
+        z-index: 999;
+        border: none !important;
+    }
+
+    .btn-bcg {
+        padding: 0.2rem;
+        left: 0;
+        right: 0;
+        bottom: 0rem;
+        position: absolute;
+        height: 2rem;
+        background: rgb(255, 255, 255, 0.9);
+        ;
+        z-index: 999;
+    }
+</style>
+
+
+<div id="app" v-cloak>
+
+
+    <div class="head_list" @click="onClickRight">
+
+
+        {$head_title} <i class="iconfont icon-jiantouarrow486"></i>
+
+    </div>
+    <div style="height: 1rem"></div>
+    <!-- <van-nav-bar
+      title="{$head_title}"
+      left-text="返回"
+
+      left-arrow
+      @click-left="onClickLeft"
+      @click-right="onClickRight"
+    />
+    <van-icon name="descending" slot="right" />
+    </van-nav-bar>
+    <van-nav-bar
+      title="{$head_title}"
+
+      @click-left="onClickLeft"
+      @click-right="onClickRight"
+      style="position:fixed; width: 100%;top: 0;z-index: 9999999"
+    />
+    <van-icon name="a iconfont icon-jiantouarrow486" slot="right" style="font-size: 0.6rem" />
+    </van-nav-bar> -->
+
+
+    <van-popup v-model="popupShow" position="top" :style="{ height: '100%' }">
+
+        <div class="btn-bcg">
+            <van-button size="" type="primary" class="btn_green_deep" @click="popupShow=false">收起</van-button>
+        </div>
+        <van-tree-select :items="items" :main-active-index="mainActiveIndex" :active-id="activeId"
+            @navclick="onNavClick" @itemclick="onItemClick" :style="{height:'100%'}" />
+        </van-tree-select>
+
+        <!--        <div class="index_center"-->
+        <!--             style="background: #fff;padding: 0;margin:0; left: 0;right: 0;bottom: 0; position: absolute;"-->
+        <!--             v-if="sortBannerInfo.length>0">-->
+        <!--            <div class="swiper-container" style="margin-right: 0.425%;margin-left: 0.85%;">-->
+        <!--                <div class="swiper-wrapper" style="height:3.4rem;">-->
+        <!--                    <div class="swiper-slide" v-for="(vo,index) in sortBannerInfo"-->
+        <!--                         :style="'background-image:  url('+(vo.thumb).replace('.','_150_150.')+') , url('+vo.thumb+');'"-->
+        <!--                         @click="viewPic(index)" v-if="index < 9">-->
+
+        <!--                    </div>-->
+        <!--                    <div class="swiper-slide" v-for="(vo,index) in sortBannerInfo"-->
+        <!--                         :style="'background-image:  url('+(vo.thumb).replace('.','_150_150.')+') , url('+vo.thumb+');'"-->
+        <!--                         @click="viewPic(index)" v-if="index < 9">-->
+
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="swiper-container" style="margin-right: 0.425%;margin-left: 0.425%;">-->
+        <!--                <div class="swiper-wrapper" style="height:3.4rem;">-->
+        <!--                    <div class="swiper-slide" v-for="(vo,index) in sortBannerInfo"-->
+        <!--                         :style="'background-image:  url('+(vo.thumb).replace('.','_150_150.')+') , url('+vo.thumb+');'"-->
+        <!--                         @click="viewPic(index)" v-if="index < 18 && index >= 9">-->
+
+        <!--                    </div>-->
+        <!--                    <div class="swiper-slide" v-for="(vo,index) in sortBannerInfo"-->
+        <!--                         :style="'background-image:  url('+(vo.thumb).replace('.','_150_150.')+') , url('+vo.thumb+');'"-->
+        <!--                         @click="viewPic(index)" v-if="index < 18 && index >= 9">-->
+
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="swiper-container" style="margin-right: 0.85%;margin-left: 0.425%;">-->
+        <!--                <div class="swiper-wrapper" style="height:3.4rem;">-->
+        <!--                    <div class="swiper-slide" v-for="(vo,index) in sortBannerInfo"-->
+        <!--                         :style="'background-image:  url('+(vo.thumb).replace('.','_150_150.')+') , url('+vo.thumb+');'"-->
+        <!--                         @click="viewPic(index)" v-if="index < 27 && index >= 18">-->
+
+        <!--                    </div>-->
+        <!--                    <div class="swiper-slide" v-for="(vo,index) in sortBannerInfo"-->
+        <!--                         :style="'background-image:  url('+(vo.thumb).replace('.','_150_150.')+') , url('+vo.thumb+');'"-->
+        <!--                         @click="viewPic(index)" v-if="index < 27 && index >= 18">-->
+
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+
+    </van-popup>
+
+
+
+            <van-list id="a" v-model="loading" :finished="finished"  finished-text="没有更多了" @load="onLoad" :offset="1"  >
+                <div class="list_content">
+                    <van-row gutter="1">
+                        <van-col span="8" v-for="(item,index) in list" :key="index">
+                            <div class="img" :style="'background-image:  url('+(item.thumb)+') , url('+item.thumb+');'"
+                                 @click="navTo('{:url('show')}?id='+item.id)">
+                                <i class="iconfont icon-zhiding" v-if="item.is_top==1" :style="{top:0 , right:'0.0rem'}"></i>
+                                <div class="title">￥{{item.price}}</div>
+                            </div>
+
+                        </van-col>
+
+                    </van-row>
+                </div>
+
+            </van-list>
+
+
+
+
+    <van-popup v-model="popupImgShow" position="right" :overlay="false" :style="{ height: '100%' }">
+        <van-nav-bar left-text="返回" left-arrow @click-left="onImgLeft" />
+        </van-nav-bar>
+
+        <van-image width="7.5rem" height="90%" fit="contain" :src="thisImage" />
+    </van-popup>
+
+</div>
+<style>
+    .icon-zhiding {
+        width: 0.45rem;
+        background: red;
+        height: 0.45rem;
+        line-height: 0.45rem;
+        text-align: center;
+    }
+
+    .icon-zhiding:before {
+        content: "顶";
+        /*font-weight: bold;*/
+        background: red;
+        color: white;
+        /*font-size: 0.4rem;*/
+    }
+</style>
+
+<script >
+
+
+    new Vue({
+
+        el: '#app',
+        data: function data() {
+            return {
+                tableData: [],
+                list: [],//图片数组
+                loading: false,
+                finished: false,
+                pageTotal: 0,
+                filter: { page: 1, limit: 18 },
+                items: [],
+                // 左侧高亮元素的index
+                mainActiveIndex: 0,
+                // 被选中元素的id
+                activeId: 1,
+                popupShow: false,
+                bannerInfo: [],
+                bannerImages: [],
+                popupImgShow: false,
+                thisImage: '',
+                scrollY:0
+            };
+        },
+        created: function () {
+            let _this = this
+
+            if (window.sessionStorage.list_ul != undefined) {
+                // console.log(JSON.parse(window.sessionStorage.list_ul))
+
+                var top = parseInt(sessionStorage.getItem("top"));
+                top = top ? top : 0;
+                var product_ul = JSON.parse(sessionStorage.getItem("list_ul"));
+                console.log(product_ul)
+                var page = parseInt(sessionStorage.getItem("page"));
+
+                var url = sessionStorage.getItem("url");
+                //判断返回后的页面和上一次的页面地址是否一致
+                if (product_ul != null && url == window.location.href) {
+                     _this.list = product_ul;
+                    _this.filter.page = page;
+                     console.log(sessionStorage)
+                    window.scrollTop=top
+                    document.scrollingElement.scrollTop = top + parseInt($(window).height());
+                    _this.filter.page = Number(page+1);
+                }
+               this.setNav();
+
+            } else {
+                this.setNav();
+                this.getBanner();
+            }
+        },
+
+
+        methods: {
+
+            onClickLeft() {
+                if (window.history.length > 1) {
+                    window.history.go(-1);
+                } else {
+                    window.location.href = "/"
+                }
+            },
+            onClickRight() {
+                this.popupShow = true
+                setTimeout(function () {
+                    var swiper = new Swiper('.swiper-container', {
+                        slidesPerView: 1,
+                        spaceBetween: 2,
+                        paginationClickable: true,
+                        autoplay: {
+                            delay: 3000,
+                            stopOnLastSlide: false,
+                            disableOnInteraction: true,
+                        },
+                    });
+
+                }, 500);
+            },
+
+            onNavClick(index) {
+                this.mainActiveIndex = index;
+            },
+            onItemClick(data) {
+
+    window.location.href = "{:url('list_list')}?catid=" + data.id
+            },
+
+            setData() {
+
+                var _this = this
+                axios({
+                    method: 'post',
+                    url: '',
+                    data: _this.filter,
+                }).then(function (resp) {
+                    _this.loading = false;
+                    _this.list = _this.list.concat(resp.data.data);
+                    console.log(resp)
+                    _this.pageTotal = resp.data.count
+                    _this.filter.page++
+                    if (_this.list.length >= _this.pageTotal) {
+                        _this.finished = true;
+                    }
+                }).catch(resp => {
+                    console.log('请求失败：' + resp.status + ',' + resp.statusText);
+                });
+            },
+            onLoad() {
+
+                    this.page++;
+                    this.setData();
+            },
+            setNav() {
+                var _this = this
+                axios({
+                    method: 'post',
+                    url: '{:url("index")}',
+                    data: _this.filter,
+                }).then(function (resp) {
+                    console.log(resp.data.data.category)
+                    _this.items = resp.data.data.category
+                }).catch(resp => {
+                    console.log('请求失败：' + resp.status + ',' + resp.statusText);
+                });
+            },
+            navTo: function (url) {
+                let _this = this
+                sessionStorage.clear()
+                sessionStorage.setItem("list_ul", `${JSON.stringify(_this.list)}`);
+                sessionStorage.setItem("top", `${window.pageYOffset}`);
+                sessionStorage.setItem("page", `${_this.filter.page - 1}`);
+                sessionStorage.setItem("url", window.location.href);
+
+                // console.log(sessionStorage)
+                setTimeout(() => {
+                    window.location.href = url
+                }, 200)
+            },
+            getBanner() {
+                var _this = this
+                axios({
+                    method: 'post',
+                    url: '{:url("Goods/index")}',
+                    data: _this.filter,
+                }).then(function (resp) {
+
+                    _this.bannerInfo = JSON.parse(resp.data.data.banner)
+                    console.log( _this.bannerInfo)
+
+                    for (var i = 0; i < _this.sortBannerInfo.length; i++) {
+                        _this.bannerImages.push(_this.sortBannerInfo[i].thumb)
+                    }
+
+                }).catch(resp => {
+                    console.log('请求失败：' + resp.status + ',' + resp.statusText);
+                });
+            },
+            viewPic(index) {
+                // this.picIndex = index;
+                // this.show = true
+                this.thisImage = this.bannerImages[index]
+                this.popupImgShow = true;
+
+            },
+            onImgLeft: function () {
+
+                this.popupImgShow = false;
+            },
+
+            sortByKey: function (array, key) { //(数组、排序的列)
+                return array.sort(function (a, b) {
+                    var x = a[key];
+                    var y = b[key];
+                    return ((x < y) ? 1 : ((x > y) ? -1 : 0));
+                })
+            },
+
+        },
+        mounted() {
+
+        },
+        computed: {
+            sortBannerInfo: function () {
+                return this.sortByKey(this.bannerInfo, 'order_num');
+            }
+        },
+
+    });
+</script>
+{include file="common/footer"/}

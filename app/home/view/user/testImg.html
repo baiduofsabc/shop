@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script src="/statics/home/js/jquery.min.js"></script>
+   <!--  <script src="../js/base/src.js"></script>
+    <script src="/statics/home/js/http.js"></script> -->
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0}
+        button{
+            padding: 20px;
+            background: red;
+            color: #fff;
+            text-align: center;
+            font-size: 14px;
+        }
+        li{
+            font-style: normal;
+            display: inline-block;
+            border:1px solid blue;
+            margin: 1px;
+            width: 32%;
+            height: 100px;
+        }
+        img{width:100%;height: 100px}
+        input{margin:30px}
+    </style>
+</head>
+<body>
+<div>
+    <button id="btn" style="margin-top: 200px;margin-left: 100px;">上传</button>
+
+    <div class="box" id="pic"></div>
+    <input type="submit" id="submit">
+</div>
+<script>
+  
+ 
+    // 上传预览多张图片
+   $('#btn').click(function () {
+       wx.config({
+            beta: true,// 必须这么写，否则wx.invoke调用形式的jsapi会有问题
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: "{$hello.appid}", // 必填，企业微信的corpID
+            timestamp: "{$hello.timestamp}", // 必填，生成签名的时间戳
+            nonceStr: "{$hello.noncestr}", // 必填，生成签名的随机串
+            signature: "{$hello.signature}",// 必填，签名，见附录1
+            jsApiList:[
+                'previewImage',
+                'uploadImage',
+                'chooseImage',
+                'downloadImage'
+            ] ,// 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+
+
+
+        wx.ready(function () {
+
+                wx.checkJsApi({
+
+                    jsApiList: [
+
+                        'chooseImage',
+
+                        'previewImage',
+
+                        'uploadImage',
+
+                        'downloadImage'
+
+                    ],
+
+                    success: function (res) {
+
+                        //alert(JSON.stringify(res));
+
+                        //alert(JSON.stringify(res.checkResult.getLocation));
+
+                        if (res.checkResult.getLocation == false) {
+
+                            alert('你的微信版本太低，不支持微信JS接口，请升级到最新的微信版本！');
+
+                            return;
+
+                        }else{
+
+                            wxChooseImage();
+
+                        }
+
+                    }
+
+                });
+        });
+
+       // $('box').empty()
+       // var that = $(this);
+       // 选择图片
+       
+   });
+
+   //选择图片
+
+    var images = {
+
+            localId: [],
+
+            serverId: []
+
+        };
+
+   function wxChooseImage() {
+      wx.chooseImage({
+           count: 9,
+           needResult: 1,
+           sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
+           sourceType: ['camera','album'], // 可以指定来源是相册还是相机，默认二者都有
+           success: function (res) {
+
+                    images.localId = res.localIds;
+
+                    alert('已选择 ' + res.localIds.length + ' 张图片');
+
+                    if (images.localId.length == 0) {
+
+                        alert('请先使用 chooseImage 接口选择图片');
+
+                        return;
+
+                    }
+
+                    var i = 0, length = images.localId.length;
+
+                    images.serverId = [];
+
+                    function upload() {
+
+                        //图片上传
+
+                        wx.uploadImage({
+
+                            localId: images.localId[i],
+
+                            success: function(res) {
+
+                                i++;
+
+                                images.serverId.push(res.serverId);
+
+                                //图片上传完成之后，进行图片的下载，图片上传完成之后会返回一个在腾讯服务器的存放的图片的ID--->serverId
+
+                                wx.downloadImage({
+
+                                    serverId: res.serverId, // 需要下载的图片的服务器端ID，由uploadImage接口获得
+
+                                    isShowProgressTips: 1, // 默认为1，显示进度提示
+
+                                    success: function (res) {
+
+                                        var localId = res.localId; // 返回图片下载后的本地ID
+
+ 
+
+                                        //通过下载的本地的ID获取的图片的base64数据，通过对数据的转换进行图片的保存
+
+                                        wx.getLocalImgData({
+
+                                            localId: localId, // 图片的localID
+
+                                            success: function (res) {
+
+                                                var localData = res.localData; // localData是图片的base64数据，可以用img标签显示
+
+ 
+
+                                                //通过ajax来将base64数据转换成图片保存在本地
+
+                                                $.ajax({
+
+                                                    url: "{:url('User/updateTestImg')}",
+
+                                                    type: "post",
+
+                                                    async: "false",
+
+                                                    dataType: "html",
+
+                                                    data: {
+
+                                                        localData: localData,
+
+                                                    },
+
+                                                    success: function (data) {
+
+                                                       var  mydata = JSON.parse(data);
+
+                                                        if(mydata.code == '0001'){
+
+                                                            alert('已上传：' + i + '/' + length);
+
+                                                        }else{
+
+                                                            alert('第：' + i + '/' + length+'上传失败');
+
+                                                        }
+
+                                                    },
+
+                                                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                                                        alert(errorThrown,555);
+
+                                                    },
+
+                                                });
+
+                                                $("#pic").append("<img src='"+localData+"'>");
+
+                                            }
+
+                                        });
+
+                                    }
+
+                                });
+
+                                if (i < length) {
+
+                                    upload();
+
+                                }
+
+                            },
+
+                            fail: function(res) {
+
+                                alert(JSON.stringify(res));
+
+                            }
+
+                        });
+
+                    }
+
+                    upload();
+                  }
+
+              
+          });
+   }
+    //点击查看大图
+   
+
+
+    // 提交
+    $('#submit').on('click',function () {
+        
+    })
+</script>
+</body>
+</html>

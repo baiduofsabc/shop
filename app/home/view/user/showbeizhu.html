@@ -1,0 +1,113 @@
+{include file="common/head"/}
+{include file="common/nav"/}
+<div id="app">
+
+  <div class="user_setting_shop" >
+    <!-- <div class="title">请输入备注内容</div> -->
+    <div class="title van-hairline--bottom">
+        <van-row>
+            <van-col span="16">
+                请输入备注内容
+            </van-col>
+            <van-col span="8">
+<!--                <div style="text-align: right;">-->
+<!--                    <van-button type="primary" size="small" class="btn_grey" @click="save">保存-->
+<!--                    </van-button>-->
+<!--                </div>-->
+            </van-col>
+
+        </van-row>
+    </div>
+<input v-model="beizhu.id" style="display: none;" required >
+<input v-model="beizhu.goods_id" style="display: none;" required >
+    <div class="field">
+    <van-field
+        v-model="beizhu.beizhu"
+        type="textarea"
+        id="area"
+        placeholder="备注...300个字符以内"
+        rows="5"
+
+        autofocus
+        class="van-hairline--surround"
+        maxlength="300"
+
+    ></van-field>
+
+    </div>
+      <van-button type="primary" size="large" class="btn_grey" @click="save">保存
+      </van-button>
+  </div>
+
+
+<!-- <div  class="uploader">
+<van-button size="large"  type="primary" class="btn_green_deep" @click="save">保 存</van-button>
+</div>  -->
+ 
+</div>
+<script>
+
+    var appIndex = new Vue({
+        el: '#app',
+        data: function data() {
+            return {
+              // id:{$beizhu.id},
+              // goods_id:{$beizhu.goods_id},
+              // beizhu:'{$beizhu.beizhu}',
+
+              beizhu:{id:{$beizhu.id},goods_id:{$beizhu.goods_id},beizhu:"{$beizhu.beizhu}"},
+            };
+        },
+        created:function(){   
+
+        },
+
+        methods: {
+          save:function() {
+
+              let _this = this
+              vant.Toast.loading({mask: true,  message: '请稍等...'});
+                
+
+                // 更新
+                axios({
+                  method:'post',
+                  url:'{:url("user/showbeizhu")}',
+                  data:this.beizhu,
+                }).then(function(resp){
+                  if(resp.data.code==1) {
+                    vant.Toast.success("保存成功");
+                      window.location.href="{:url('user/collect')}"+"?tmp="+Math.random().toString();
+                  }
+                  else {
+                    vant.Toast.fail("保存失败");
+                  } 
+                }).catch(resp => {
+                  console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+              
+               
+            },
+
+        },
+        mounted() {
+ 
+        },
+        watch: {
+            "beizhu.beizhu":{
+                handler(newValue, oldValue) {
+                    //do something
+                    if(newValue) {
+                        if (newValue.length > 299) {
+                            vant.Toast.fail("字数超出限制");
+                        }
+                    }
+                },
+                deep:true,
+                immediate: true
+            }
+        }
+
+    });
+</script>
+ 

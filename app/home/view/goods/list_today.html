@@ -1,0 +1,92 @@
+{include file="common/head"/}
+{//include file="common/nav"/}
+<div id="app">
+  <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad" :offset="1">
+    <div class="index_content">
+      <van-row gutter="1">
+        <van-col span="8" v-for="(item,index) in list" key="index">
+          <div class="img" :style="'background-image:  url('+(item.thumb)+') , url('+item.thumb+');'"
+            @click="navTo('{:url('Goods/show')}?id='+item.id)"></div>
+          <div class="title">￥{{item.price}}</div>
+        </van-col>
+      </van-row>
+    </div>
+
+
+  </van-list>
+</div>
+<script>
+  new Vue({
+    el: '#app',
+    data: function data() {
+      return {
+        list: [],
+        loading: false,
+        finished: false,
+        pageTotal: 0,
+        filter: { page: 1, limit: 18, type_id: 3 }
+      };
+    },
+    created: function () {
+      let _this = this
+      // if (window.sessionStorage.list_ul2 != 'undefined') {
+      //   var top = parseInt(sessionStorage.getItem("top2"));
+      //   top = top ? top : 0;
+      //   var product_ul = JSON.parse(sessionStorage.getItem("list_ul2"));
+      //   var page = parseInt(sessionStorage.getItem("page2"));
+      //   var url = sessionStorage.getItem("url2");
+      //   //判断返回后的页面和上一次的页面地址是否一致
+      //   if (product_ul != null && url == window.location.href) {
+      //     _this.list = product_ul;;
+      //     document.body.scrollTop = top + parseInt($(window).height());
+      //     _this.filter.page = Number(page);
+      //   }
+      // } else {
+        console.log(111)
+        // this.indexList();
+      // }
+    },
+    methods: {
+      indexList() {
+        var _this = this
+        axios({
+          method: 'post',
+          url: '{:url("Index/indexList")}',
+          data: _this.filter,
+        }).then(function (resp) {
+          _this.loading = false;
+          _this.list = _this.list.concat(resp.data.data);
+          _this.pageTotal = resp.data.count
+          _this.filter.page++
+          if (_this.list.length >= _this.pageTotal) {
+            _this.finished = true;
+          }
+        }).catch(resp => {
+          console.log('请求失败：' + resp.status + ',' + resp.statusText);
+        });
+      },
+      onLoad() {
+        this.page++;
+        this.indexList();
+      },
+      navTo: function (url) {
+        let _this = this
+        sessionStorage.clear()
+        sessionStorage.setItem("list_ul2", `${JSON.stringify(_this.list)}`);
+        sessionStorage.setItem("top2", `${window.pageYOffset}`);
+        sessionStorage.setItem("page2", `${_this.filter.page}`);
+        sessionStorage.setItem("url2", window.location.href);
+        setTimeout(() => {
+          window.location.href = url
+        }, 200)
+      }
+
+    },
+    mounted() {
+
+
+    }
+
+  });
+</script>
+{include file="common/footer"/}

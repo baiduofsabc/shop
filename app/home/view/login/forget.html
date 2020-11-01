@@ -1,0 +1,156 @@
+{include file="common/head"/}
+{include file="common/nav"/}
+<div id="app">
+<div class="login">
+<van-field
+    v-model="login.mobile"
+    placeholder="请输入手机号"
+    left-icon="a iconfont icon-shouji"
+></van-field>
+ 
+ <van-field
+    v-model="login.vercode"
+    center
+    clearable
+    placeholder="输入验证码"
+    left-icon="a iconfont icon-yanzhengma"
+  >
+  <van-button slot="button" @click="sendSms()" v-if="!isDisabled"  size="small" type="primary" style="font-size:0.35rem;" class="btn_orange_deep">{{content}}</van-button>
+  <van-button slot="button" v-if="isDisabled"  size="small" type="primary" style="font-size:0.35rem;" class="btn_orange_deep">{{content}}</van-button>
+</van-field>
+<van-field
+    v-model="login.password"
+    placeholder="请输入密码"
+ 
+    left-icon="a iconfont icon-mima54"
+></van-field>
+<van-field
+    v-model="login.password2"
+    placeholder="请再次输入密码"
+  
+    left-icon="a iconfont icon-zaicishurumima"
+></van-field>
+<div class="line_height"></div>
+<van-button type="primary" size="large" style="font-size:0.55rem;" class="btn_orange_deep" @click="reg">重置密码</van-button>
+
+<div  class="login_txt" style="font-size:0.32rem;">密码由8-16位数字、字母加密组成</div>
+</div>
+</div>
+<style>
+ .van-field__control {
+  font-size: 0.55rem;
+ }
+</style>
+
+<script>
+    var appIndex = new Vue({
+        el: '#app',
+        data: function data() {
+            return {
+                tableData: {list:[]},
+                login:{},
+                isDisabled: false, //控制按钮是否可以点击（false:可以点击，true:不可点击）
+                content: '获取验证码', // 发送验证码按钮的初始显示文字
+                timer: null,
+                count: '',
+                model: {},
+                code:'',
+                username:''
+
+            };
+        },
+        created:function(){
+         
+        },
+        methods: {
+          reg(){
+                var _this = this
+                axios({
+                    method:'post',
+                    url:'',
+                    data:_this.login,
+                }).then(function(resp){
+                    if(resp.data.code==1) {
+                        vant.Toast.success(resp.data.msg);
+                        setTimeout(function(){ 
+                            window.location.href="{:url('login/index')}"
+                        },2000);
+
+                    }
+                    else {
+                        vant.Toast.fail(resp.data.msg);
+                    }  
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+          },
+          navTo:function(url) {
+              window.location.href=url
+          },
+          sendSms () {
+            // let vm = this
+            // 校验手机号
+            if (!this.login.mobile || this.login.mobile == '') {
+                vant.Dialog.alert({
+                message: '请输入手机号'
+                }).then(() => {
+                // on close
+                });
+            }else if (!(/^[1][3,4,5,7,8,9][0-9]{9}$/.test(this.login.mobile))) {
+                vant.Dialog.alert({
+                message: '请输入正确的手机号'
+                }).then(() => {
+                // on close
+                });
+            }else{
+                var _this = this
+                axios({
+                    method:'post',
+                    url:'{:url("login/code")}',
+                    data:{phone:_this.login.mobile},
+                }).then(function(resp){
+                    if(resp.data.code==1) {
+                        vant.Toast.success(resp.data.msg);
+                        // window.location.href="{:url('user/index')}"
+                    }
+                    else {
+                        // vant.Toast.fail(resp.data.msg);
+                    }  
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+                // 控制倒计时及按钮是否可以点击
+                const TIME_COUNT = 100
+                this.count = TIME_COUNT
+                this.timer = window.setInterval(() => {
+                if (this.count > 0 && this.count <= TIME_COUNT){
+                    // 倒计时时不可点击
+                    this.isDisabled = true
+                    // 计时秒数
+                    this.count--
+                    // 更新按钮的文字内容
+                    this.content = this.count + 's后重新获取'
+                    
+                } else {
+                    // 倒计时完，可点击
+                    this.isDisabled = false
+                    // 更新按钮文字内容
+                    this.content = '获取验证码'
+                    // 清空定时器!!!
+                    clearInterval(this.timer)
+                    this.timer = null
+                }
+                }, 1000)
+                
+            }
+          }
+  
+
+        },
+        mounted() {
+ 
+        }
+
+    });
+</script>
+{include file="common/footer"/}

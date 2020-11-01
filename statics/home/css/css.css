@@ -1,0 +1,217 @@
+body {font-size: 0.3rem;background: #F5F3EB}
+[v-cloak] {
+  display: none;
+}
+.blue{color:blue;}
+.banner img{ width: 100% }
+.van-loading {text-align: center;}
+.van-tree-select__nav-item--active {border-color:#85A021!important;}
+.van-tree-select__item--active{color:#85A021!important;}
+.van-nav-bar .van-icon{color:#A19487!important;}
+/*.van-nav-bar__text {color:#A19487!important;}*/
+/* .btn_grey {color:rgb(0, 0, 0)!important;    background-color: none!important;    border: 1px solid black!important;} */
+.btn_grey_deep {color:#fff!important;background-color: #A39585!important;    border: 1px solid #A39585!important;}
+.btn_grey_deep_k {color:#A39585!important;    background-color:none!important;    border: 1px solid #A39585!important;}
+
+
+.btn_green {color:#fff!important;    background-color: #C4D69C!important;    border: 1px solid #C4D69C!important;}
+.btn_green_deep {color:#fff!important; opacity: 0.8;   background-color: #85A021!important;    border: 1px solid #85A021!important;}
+.btn_green_deep_k {color:#85A021!important;    background: none!important;    border: 1px solid #85A021!important;}
+.btn_green_deep_plain {color:#85A021!important;    background: none!important;    border: 1px solid #85A021!important; min-width: 2rem; }
+
+.btn_orange_deep_k {color:orange!important;    background: none!important;    border: 1px solid orange!important;}
+.btn_orange_deep {color:#fff!important;    background-color: orange!important;    border: 1px solid orange!important;}
+.btn_white_deep_k  {color:#000!important;    background: none!important;    border: 1px solid #000!important;}
+
+.btn_white_deep_blue  {color:blue!important;    background: none!important;    border: 1px solid #000!important;}
+
+.user_addgoods_warning{font-size:0.3rem; text-align: left;line-height: 0.5rem;border:1px solid red; margin:0.2rem ;padding:0 0.2rem; color: red}
+.fabushuoming{font-size:0.35rem;color:blue;background:none; text-align: center;width:80%;height:100%;border: solid 0.01rem black;border-radius: 0.1rem;margin:0 auto;}
+.login_foot {text-align: center;color:red;/* position: absolute;bottom: 1rem;left:0;*/width: 100%;}
+
+.swiper-container {
+      width: 100%;
+      height:3.4rem;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      height:3.4rem!important;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      background-position: center;background-size: cover;
+      
+    }
+    .swiper-slide img {width: 100%;height:3.4rem;}
+
+.index_center {margin:0.2rem; text-align: center;}
+.index_center .img {height:2rem;background-position: center;background-size: cover;}
+
+.index_content {margin:0.2rem; text-align: center;margin-bottom: 1px; }
+.index_content .img { width:100%;height:2.5rem;background-position: center;background-size: cover;}
+.index_content .title {line-height: 0.28rem;font-size:12px; background:red; color: #fff;text-align: left;position: absolute;left:0;bottom:0px;}
+.index_content .van-col{ position: relative; margin-bottom: 1px; }
+ 
+
+
+.list_content .van-col{ position: relative; margin-bottom: 1px; }
+.list_content {margin: 0.2rem; text-align: center;}
+.list_content .img { width:100%;height:2.5rem;background-position: center;background-size: cover; text-align: right; position: relative;}
+.list_content .img i {color: #F56C6C;font-size: 0.35rem;color:red; right: -5px;top: -5px; position: absolute;}
+.list_content .title {line-height: 0.28rem;font-size:12px; background:red ;text-align: left;color:#fff;position: absolute;left:0;bottom:0px;  }
+.article_show {margin:0.2rem;background: #FFFFFF}
+.article_show .title{padding:0.2rem 0.2rem }
+
+
+.article_show .content { padding:0.2rem;}
+.article_show .content_info {
+background:rgba(255,255,255,1);
+border:1px solid rgba(211,203,192,1);
+border-radius:5px; padding:0.2rem; margin:0 0 0.2rem 0;line-height:0.6rem;height: 0.6rem;overflow: hidden;}
+.article_images {margin: 0rem 0.2rem 1.1rem 0.2rem; text-align: center;}
+.article_images .img { width:2.25rem;height:2.25rem; background-position: center;background-size: cover; margin-bottom:1px}
+.article_images .van-col {vertical-align: top;}
+.login {padding: 0.2rem}
+.line_height{height:0.1rem }
+.login_txt {color: #A49485;text-align: center;line-height: 1rem}
+
+.user_bg {background: #C4D69C;height:3rem;position: relative;}
+.user_head {text-align: center;}
+/* .user_head .head_icon {border-radius: 2.5rem; overflow: hidden; background-image: url("/statics/home/images/user_head.jpg"); background-position: center top; background-size: cover; width:2.5rem;height: 2.5rem;display: inline-block;} */
+.user_head .head_info_username {line-height:0.5rem;color: #85A021}
+.user_head .head_info_info {line-height: 0.5rem;color: #A39585}
+.user_card {margin:0.2rem;color:#A49485;text-align: center;line-height: 0.5rem; padding: 0.1rem 0;background: #fff;border-radius: 4px;}
+.user_card span {color: #D3CBC0;display: block;}
+
+.shop_show {margin:0.2rem;background: #FFFFFF}
+.shop_show .title{padding:0.2rem 0.5rem }
+
+
+.shop_show .shop { padding:0.2rem;}
+.shop_show .shop_info {background:rgba(255,255,255,1);border:1px solid rgba(211,203,192,1);border-radius:5px; padding:0.2rem; margin:0.2rem 0; }
+.shop_show .shop_info_tel {line-height: 0.8rem;}
+.shop_show .shop_info_tel i {font-size: 0.4rem;display: inline-block;color: #A39585}
+
+.shop_info_goods_title {margin:0.2rem;line-height: 0.8rem;background:rgba(255,255,255,1); text-align: center;color: #000}
+
+.list_collect {margin:0.2rem 0;background: #fff;padding: 0.1rem}
+.list_collect .img { width:100%;height:2rem;display: inline-block;background-position: center;background-size: cover;}
+.list_collect .info {line-height: 0.5rem;}
+
+.list_collect .img { width:100%;height:2rem;background-position: center;background-size: cover; text-align: right; position: relative;}
+.list_collect .img i {color: #F56C6C;font-size: 0.6rem;color:red; right: -5px;top: -5px; position: absolute;}
+.list_collect .title {line-height: 0.28rem;font-size:12px; background:red ;text-align: left;color:#fff;position: absolute;left:0;bottom:0px;  }
+
+.is_collect i {color: red}
+
+
+.user_index {text-align: center; margin:0.2rem;  color: #000}
+.user_index .neir {background: #fff; padding-top: 0.2rem; display: inline-block;width: 100%; margin-bottom: 1px;}
+.user_index i {font-size: 0.5rem}
+.user_index p {padding: 0; margin: 0.1rem 0 0.2rem 0;color: #000}
+.user_index .neir span{ position: absolute; width: 0.4rem;height: 0.4rem;font-size: 0.3rem; color: #fff;border-radius: 100%;right: 0.2rem;top: 0.2rem ;background:red;}
+
+.list_notice {margin:0.2rem;background: #fff;padding: 0.1rem}
+.list_notice .img { width:100%;height:2rem;display: inline-block;background-position: center;background-size: cover;}
+.list_notice .title {line-height: 0.5rem;}
+
+.user_setting {padding: 0.2rem;margin:0.2rem;background: #fff}
+.user_setting .btn {border:solid  1px #85A021;color: #85A021;text-align: center;line-height: 0.6rem;border-radius: 4px; margin-bottom: 10px;}
+.user_setting .btn.active {background:#85A021; color: #fff }
+.user_setting .info {color:#666; line-height: 0.8rem}
+.user_setting_head {text-align: center; background: #fff;border-radius: 4px; margin: 0.2rem; padding: 0.2rem}
+/* .user_setting_head .head_icon {margin-bottom: 0.5rem; border-radius: 2.5rem; overflow: hidden; background-image: url("/statics/home/images/user_head.jpg"); background-position: center top; background-size: cover; width:3rem;height: 3rem;display: inline-block;} */
+.user_setting_head .head_info_username {line-height:0.5rem;color: #85A021}
+.user_setting_head .head_info_info {line-height: 0.5rem;color: #A39585}
+
+.user_setting_shop {text-align: center; background: #fff;border-radius: 4px; margin: 0.2rem; padding: 0.2rem}
+.user_setting_shop .title {line-height: 0.5rem;color:#666;text-align:left}
+.user_setting_shop .field { margin-bottom: 0.5rem }
+
+.user_setting_follow {text-align: center; background: #fff;border-radius: 4px; margin: 0.2rem; padding: 0.2rem}
+.user_setting_follow .title {line-height: 0.5rem;color:#666;text-align:left;line-height: 0.8rem; margin-bottom: 0.2rem}
+.user_setting_follow .follow{background:#D3CBC0;color:#A19487; margin-bottom: 1px; padding: 0.2rem;text-align: left;  }
+.user_setting_follow .follow1 {line-height: 0.4rem}
+.user_setting_follow .follow2 {line-height: 0.8rem}
+/*.btn_grey {color:#A19487!important;    background-color: #D3CBC0!important;    border: 1px solid #D3CBC0!important;}
+.btn_grey_deep {color:#fff!important;    background-color: #A39585!important;    border: 1px solid #A39585!important;}*/
+.uploader {padding: 0.15rem; }
+
+
+.recharge {padding: 0.2rem;margin:0.2rem;background: #fff}
+
+.recharge .info {color:#666; margin-bottom: 0.2rem;padding-bottom: 0.2rem}
+
+.recharge .btn {border:solid  1px #85A021;color: #85A021;text-align: center;line-height: 0.5rem;padding: 0.1rem 0; border-radius: 4px; margin-bottom: 10px;}
+.recharge .btn.active {background:#85A021; color: #fff }
+.recharge .btn p {margin:0;}
+.recharge .iconfont {font-size: 0.8rem;margin-top: 0.3rem}
+.recharge .icon-wechat {color: #1aad19}
+.recharge .icon-alipay {color: #00bbee}
+.recharge .pay_title {padding-top:0.2rem;line-height: 0.4rem}
+.recharge .pay_title {padding-bottom:0.2rem;line-height: 0.4rem}
+.van-radio__icon--checked .van-icon {background-color: #85A021!important;    border-color:#85A021!important;}
+
+/*发布页面的主图*/
+.upload-father {
+        background-color: #fff;
+    }
+    
+    .input-add {
+        display: inline-block;
+       /* width: 106px;
+        height: 106px;*/
+        width:2rem;height: 2rem;
+        outline: none;
+        position: absolute;
+        z-index: 999;
+        opacity: 0;
+    }
+    
+    .img-change {
+       /* width: 106px;
+        height: 106px;*/
+        width:2rem;height: 2rem;
+        background: #fff;
+        position: absolute;
+        border: 1px dashed #dfdfdf;
+    }
+    
+    #myImage {
+        width: 30%;
+        height: 30%;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        margin-top: -15%;
+        margin-left: -15%;
+    }
+    
+    #del {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 99999
+    }
+    
+    .upload-father-div {
+        padding: 0.15rem;
+        width:2rem;height: 2rem;
+        position: relative;
+    }
+

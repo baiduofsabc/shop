@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="zh-cn"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="zh-cn"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-cn"> <!--<![endif]-->
+
+<head>
+    <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+    <title>{$seo_title}</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="/statics/home/css/css.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1259219_pj7nkqaq8cf.css">
+
+<link rel="stylesheet" href="statics/vue/index.css">
+
+<!-- 引入组件 -->
+<script src="/statics/vue/axios.min.js"></script>
+<script src="/statics/vue/vue.min.js"></script>
+<script src="statics/vue/vant.min.js"></script>
+
+<link rel="stylesheet" href="/statics/home/js/swiper.min.css">
+ 
+<script src="/statics/home/js/swiper.min.js"></script>
+ <script src="/statics/home/js/clipboard.min.js"></script>
+ <script src="/statics/home/js/jquery.min.js"></script>
+
+    <script src="/statics/home/js/scroll.js"></script>
+    <script src="https://cdn.staticfile.org/vue-router/2.7.0/vue-router.min.js"></script>
+ <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+ <script src="/statics/home/js/exif.js"></script>
+
+<script>
+//640是原始设计果图大小
+var fontSizeAuto = function(oriWidth){
+    return function(){
+        var viewportWidth = document.documentElement.clientWidth;
+        if(viewportWidth > oriWidth){ viewportWidth = oriWidth; }
+        if(viewportWidth < 320){ viewportWidth = 320; }
+        document.documentElement.style.fontSize = viewportWidth/(oriWidth/100) +'px';   
+    }
+}
+fontSizeAuto(750)();
+window.onresize = fontSizeAuto(750);
+
+var Vue = window.Vue;
+var vant = window.vant;
+// 注册组件
+Vue.use(vant);
+// 调用函数式组件
+// vant.Toast('提示');
+</script>
+
+<!-- <script>
+  $(function () {
+    var str = window.location.href;
+    str = str.substring(str.lastIndexOf("/") + 1);
+    if ($.cookie(str)) {
+        console.log(5555)
+    $("html,body").animate({ scrollTop: $.cookie(str) }, 1000);
+    }
+    else {
+        console.log(666)
+    }
+  })
+
+  $(window).scroll(function () {
+    console.log(888888)
+    var str = window.location.href;
+    str = str.substring(str.lastIndexOf("/") + 1);
+    var top = $(document).scrollTop();
+    $.cookie(str, top, { path: '/' });
+    return $.cookie(str);
+ })
+</script> -->
+
+</head>
+<body>
+ 

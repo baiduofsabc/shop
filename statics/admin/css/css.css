@@ -1,0 +1,52 @@
+#appIndex {padding: 20px;}
+.lable_name { margin-top:20px; margin-bottom: 10px; }
+.table_value { margin-bottom: 10px;}
+.talbe_item {border:1px solid #E4E7ED; padding: 20px;}
+.el-tabs__header {border-bottom:none!important;;margin-bottom:0px!important;}
+.el-dialog .avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+.el-dialog  .avatar-uploader .el-upload:hover {
+    border-color: #409EFF;
+  }
+ .el-dialog .avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+  }
+ .el-dialog .avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+  }
+
+.el-checkbox.is-bordered+.el-checkbox.is-bordered {margin:0 5px!important;}
+.el-checkbox.is-bordered {margin:0 5px!important;}
+
+.el-pagination {margin-top: 24px;}
+
+.app_index_setting_btn {padding: 20px;}
+.banner_info { background: #fff;padding:0px 20px 0 20px; font-size: 14px; position: relative; height: 180px;}
+.banner_info .thumb{ width: 200px; float: left; text-align: center; margin-top: 20px; height:150px;line-height: 150px;border:dashed 1px #eee;}
+.banner_info .thumb i {width:200px; height:150px;}
+.banner_info .thumb img {width:200px; height:150px;}
+.banner_info .thumb p { color:#929DAB}
+
+.banner_info .banner_info_r { margin-left: 200px; }
+.banner_info .banner_info_r .info_more{ width: 50% ; float: left; padding-top:30px; }
+.banner_info .banner_info_r .info_more span.label { width: 90px;float: left; display: block;line-height: 40px; margin-top: 10px; color: #2E4769; text-align: center;}
+.banner_info .banner_info_r .info_more .in_sel { margin-left: 90px; margin-top: 10px;}
+.banner_info .banner_info_r .info_more .el-select { width: 100%;}
+
+.banner_info .banner_info_r .info_more .in_hasel .el-input input{ border-radius: 0 0 4px 4px }
+.banner_info .banner_info_r .info_more .in_hasel .el-select .el-input input{ border-radius:4px 4px 0 0; border-bottom: 0 }
+.banner_info .banner_info_r .banner_sort {width: 30%;float: right; text-align:center;line-height: 160px;}
+.banner_info .banner_info_r .banner_sort img { vertical-align: middle; margin: 0 10px; }
+.banner_info .del_banner {font-size: 20px; cursor: pointer;  background: #F65B79; width: 27px; height: 27px; border-radius: 27px; text-align: center;color: #fff;line-height: 25px; position: absolute;top:-10px; right: -10px;}

@@ -1,0 +1,349 @@
+{include file="common/head"/}
+
+<style type="text/css" media="screen">
+    .swiper-container {
+        height: 3.4rem !important;
+    }
+    .van-nav-bar__text{color: #000;font-size: 17px}
+    .btn-bcg {
+        padding: 0.2rem;
+        left: 0;
+        right: 0;
+        bottom: 0rem;
+        position: absolute;
+        height: 2rem;
+        background:rgb(255,255,255,0.9);;
+        z-index: 999;
+    }
+</style>
+<div id="app">
+    <van-nav-bar
+            title="{$head_title}"
+
+            :left-text="userInfo.username"
+
+            @click-left="onClickLeft"
+            @click-right="onClickRight"
+            style="color:#000;"
+    />
+    </van-nav-bar>
+    <van-nav-bar
+            title="{$head_title}"
+            :left-text="userInfo.username"
+            style="position:fixed; width: 100%;top: 0;z-index: 9999999"
+    />
+    </van-nav-bar>
+
+
+    <div class="user_index" v-if="userInfo.id">
+        <van-row gutter="1">
+            <van-col span="6">
+                <div class="neir" @click="navTo('{:url('notice')}')" style="position: relative;border-bottom: black 0.15px solid;border-right: black 0.15px solid">
+                    <i class="iconfont icon-iconbell"></i>
+                    <p>通 知</p>
+                    <span v-if="noticeNum>0">{{noticeNum}}</span>
+                </div>
+            </van-col>
+            <van-col span="6">
+                <div class="neir" @click="navTo('{:url('goods')}')" style="border-bottom: black 0.15px solid;border-right: black 0.15px solid">
+                    <i class="iconfont icon-shangchuan"></i>
+                    <p>我的发布</p>
+                </div>
+            </van-col>
+            <van-col span="6">
+                <div class="neir" @click="navTo('{:url('collect')}')" style="border-bottom: black 0.15px solid;border-right: black 0.15px solid">
+                    <i class="iconfont icon-shoucang"></i>
+                    <p>收 藏</p>
+                </div>
+            </van-col>
+            <van-col span="6">
+                <div class="neir" @click="getNav()" style="border-bottom: black 0.15px solid;">
+                    <i class="iconfont icon-fabubiaoshu"></i>
+                    <p>发 布</p>
+                </div>
+            </van-col>
+
+            <!-- <van-col span="6">
+              <div class="neir" @click="showImg('{$webInfo.ewm}')">
+              <i class="iconfont icon-iconfonterweima"></i>
+              <p>官方二维码</p>
+              </div>
+            </van-col> -->
+            <van-col span="6">
+                <div class="neir" @click="navTo('{:url('index/logout')}')" style="border-right: black 0.15px solid">
+                    <i class="iconfont icon-tuichu"></i>
+                    <p>退 出</p>
+                </div>
+            </van-col>
+            <van-col span="6">
+
+                <div class="neir" @click="showImg('{$webInfo.ewm}')" style="border-right: black 0.15px solid">
+
+                    <i class="iconfont icon-iconfonterweima"></i>
+
+                    <p>官方二维码</p>
+
+                </div>
+
+            </van-col>
+<!--            <van-col span="6">-->
+<!--                <div class="neir" @click="navTo('{:url('feedback')}')">-->
+<!--                    <i class="iconfont icon-youjian"></i>-->
+<!--                    <p>投 诉</p>-->
+<!--                </div>-->
+<!--            </van-col>-->
+            <van-col span="6">
+                <div class="neir" @click="showImg('{$webInfo.kefu}')" style="border-right: black 0.15px solid">
+                    <i class="iconfont icon-kefu"></i>
+                    <p>官方客服</p>
+                </div>
+            </van-col>
+
+
+<!--                <van-col span="6" >-->
+<!--                    <div class="neir" @click="navTo('{:url('Recharge/index')}')">-->
+<!--                    <i class="iconfont icon-chongzhi2"></i>-->
+<!--                    <p>充 值</p>-->
+<!--                    </div>-->
+<!--                  </van-col>-->
+<!--                  <van-col span="6" >-->
+<!--                    <div class="neir" @click="navTo('{:url('shop/index')}?id={$Think.session.user.id}')">-->
+<!--                    <i class="iconfont icon-dianpu"></i>-->
+<!--                    <p>我的店铺</p>-->
+<!--                    </div>-->
+<!--                  </van-col>-->
+            <van-col span="6">
+                <div class="neir" @click="navTo('{:url('setting')}')" >
+                    <i class="iconfont icon-ai-set"></i>
+                    <p>设 置</p>
+                </div>
+            </van-col>
+
+
+
+        </van-row>
+
+
+    </div>
+
+
+    <van-popup
+            v-model="popupShow"
+            position="top"
+            :style="{ height: '100%' }"
+    >
+        <van-tree-select
+                :items="items"
+                :main-active-index="mainActiveIndex"
+                :active-id="activeId"
+                @navclick="onNavClick"
+                @itemclick="onItemClick"
+                :style="{height:'100%'}"
+        />
+        </van-tree-select>
+
+        <!-- <div class="index_center" style="background: #fff;padding: 0.2rem" v-if="sortBannerInfo.length>0">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide" v-for="(vo,index) in sortBannerInfo" :style="'background-image: url('+vo.thumb+');'" @click="viewPic(index)" >
+
+              </div>
+
+
+            </div>
+
+        </div>
+        </div> -->
+        <div class="btn-bcg">
+            <van-button size="large" type="primary" class="btn_green_deep" @click="navTo(thisNav.url)"
+                        style="margin-bottom: 0.2rem ; height: 100%" v-if="thisNav.id&&false">发布至{{thisNav.text}}
+            </van-button>
+            <van-button size="large" type="primary" style="width: 100%;height: 60px;line-height: 58px;background: #07c160 !important;opacity: 1;top: 50%;z-index: 999;border: none !important;" @click="popupShow=false">
+            收 起</van-button>
+        </div>
+    </van-popup>
+
+
+    <!--     <van-list
+        v-model="loading"
+        :finished="finished"
+        finished-text="没有更多了"
+        @load="getUserGoods"
+      >
+
+      <div class="list_content">
+        <van-row gutter="1">
+          <van-col span="8" v-for="(item,index) in list" :key="index" >
+            <div class="img"  :style="'background-image: url('+item.thumb+');'" @click="navTo('{:url('Goods/show')}?id='+item.id)"></div>
+            <div class="title">￥{{item.price}}</div>
+          </van-col>
+        </van-row>
+      </div>
+
+      </van-list> -->
+    <!-- <div class="index_center" style="background: #fff;padding: 0.2rem" v-if="sortBannerInfo.length>0">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" v-for="(vo,index) in sortBannerInfo" :style="'background-image: url('+vo.thumb+');'" @click="viewPic(index)" >
+
+          </div>
+
+
+        </div>
+
+    </div>
+    </div> -->
+
+
+</div>
+
+<script>
+    var appIndex = new Vue({
+        el: '#app',
+        data: function data() {
+            return {
+                filter: {page: 1, limit: 15},
+                userInfo: {},
+                list: [],
+                loading: false,
+                finished: false,
+                pageTotal: 0,
+                noticeNum: 0,
+                bannerInfo: [],
+                bannerImages: [],
+                items: [],
+                // 左侧高亮元素的index
+                mainActiveIndex: 0,
+                // 被选中元素的id
+                activeId: 1,
+                popupShow: false,
+                thisNav: {},
+            };
+        },
+        created: function () {
+            this.setNav();
+            this.getUserInfo()
+            this.getRead()
+            // this.getBanner()
+        },
+
+        methods: {
+            getNav() {
+                this.popupShow = true
+            },
+            setNav() {
+                var _this = this
+                axios({
+                    method: 'post',
+                    url: '{:url("Goods/index")}',
+                    data: {},
+                }).then(function (resp) {
+                    _this.items = resp.data.data.category
+                    _this.thisNav = _this.items[0]
+                }).catch(resp => {
+                    console.log('请求失败：' + resp.status + ',' + resp.statusText);
+                });
+            },
+            onNavClick(index) {
+                this.mainActiveIndex = index;
+                this.thisNav = this.items[index];
+                this.$set(this.thisNav, 'url', "{:url('goodsAdd')}?type=1&catid=" + this.thisNav.id)
+            },
+            onItemClick(data) {
+                this.thisNav = data
+                this.$set(this.thisNav, 'url', "{:url('goodsAdd')}?type=2&catid=" + this.thisNav.id)
+                this.activeId = data.id;
+                if (this.mainActiveIndex == 0) {
+                    window.location.href = "{:url('goodsAdd')}?type=1&catid=" + data.id
+                } else {
+                    window.location.href = "{:url('goodsAdd')}?type=2&catid=" + data.id
+                }
+                //window.location.href="{:url('list_list')}?catid="+data.id
+            },
+            onClickLeft() {
+                if (window.history.length > 1) {
+                    window.history.go(-1);
+                } else {
+                    window.location.href = "/"
+                }
+            },
+            onClickRight() {
+                window.location.href = "{:url('home/user/index')}"
+            },
+            showImg(thumb) {
+
+                let img = []
+                img.push('/public' + thumb);
+
+                let _this = this
+                vant.ImagePreview({
+                    images: img,
+                    startPosition: 0,
+                    onClose() {
+                        // do something
+                    }
+                });
+            },
+            getUserInfo() {
+                var _this = this
+                axios({
+                    method: 'post',
+                    url: '',
+                    data: _this.filter,
+                }).then(function (resp) {
+                    _this.userInfo = resp.data
+                }).catch(resp => {
+                    console.log('请求失败：' + resp.status + ',' + resp.statusText);
+                });
+            },
+            getUserGoods() {
+                var _this = this
+                axios({
+                    method: 'post',
+                    url: '{:url("getUserGoods")}',
+                    data: _this.filter,
+                }).then(function (resp) {
+                    _this.loading = false;
+                    _this.list = _this.list.concat(resp.data.data);
+                    _this.pageTotal = resp.data.count
+                    _this.filter.page++
+                    if (_this.list.length >= _this.pageTotal) {
+                        _this.finished = true;
+                    }
+                }).catch(resp => {
+                    console.log('请求失败：' + resp.status + ',' + resp.statusText);
+                });
+
+            },
+            navTo: function (url) {
+
+                window.location.href = url
+            },
+            getRead: function (url) {
+                var _this = this
+                axios({
+                    method: 'post',
+                    url: '{:url("getReadNotice")}',
+                    data: {},
+                }).then(function (resp) {
+                    _this.noticeNum = resp.data.data
+                }).catch(resp => {
+                    console.log('请求失败：' + resp.status + ',' + resp.statusText);
+                });
+
+            },
+
+
+        },
+        mounted() {
+
+        },
+
+
+    });
+</script>
+<div style="position:absolute;left:0;bottom: 50px;right: 0">
+    {//include file="common/ad"/}
+</div>
+<div class="van-hairline--top-bottom van-tabbar van-tabbar--fixed" style="bottom: 0.7rem ;background: none; text-align: center ;left: 0.5rem;">Baiduo(xuzhou)ITCo.,Ltd 苏ICP备19027979号</div>
+{include file="common/footer"/}

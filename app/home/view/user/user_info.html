@@ -1,0 +1,137 @@
+{include file="common/head"/}
+{include file="common/nav"/}
+<div id="app">
+   <div class="user_head" v-if="userInfo.id">
+     <div class="head_icon"></div>
+     <div class="head_info_username">{{userInfo.username}}</div>
+     <div class="head_info_info">ID:{{userInfo.id+10000}}</div>
+   </div>
+   <div class="user_card" v-if="userInfo.id">
+     <van-row >
+      <van-col span="12" >
+          <span>积分</span>
+          {{userInfo.cardInfo.integral}}
+      </van-col>
+      <van-col span="12" >
+          <span>会员</span>
+          {{userInfo.cardInfo.integral>0?"VIP会员":"普通会员"}}
+
+      </van-col>
+    </van-row>
+   </div>
+
+   <div class="shop_show" v-if="userInfo.id">
+      <div class="title van-hairline--bottom">
+        <van-row>
+          <van-col span="16"   >
+            店铺介绍:
+          </van-col>
+          <van-col span="8">
+            <div style="text-align: right;"><van-button type="primary" size="small" class="btn_grey">复制文字</van-button></div>
+          </van-col>
+          
+        </van-row>
+      </div>
+
+      <div class="shop"  v-if="userInfo.id">
+          <van-button type="primary" size="small" class="btn_grey_deep">展开</van-button>
+          <div class="shop_info">
+              花花公子短袖T恤男夏装潮流男士冰丝2019新款夏季男装潮牌上衣服!花花公子正品，防伪码可查送运费险免费退换                    
+          </div>
+          <div class="shop_info_tel  van-hairline--bottom">
+              <i class="iconfont icon-tianchongxing-"></i> 电话：15000000        
+          </div>
+          <div class="shop_info_tel">
+              <i class="iconfont icon-weixin"></i> 微信：80000000                   
+          </div>
+
+ 
+      </div>
+
+  </div>
+  <div class="shop_info_goods_title">以下为该店所有发布</div>
+    <van-list
+    v-model="loading"
+    :finished="finished"
+    finished-text="没有更多了"
+    @load="getUserGoods"
+  >
+
+  <div class="list_content">
+    <van-row  gutter="1"> 
+      <van-col span="8" v-for="(item,index) in list" :key="index" >
+        <div class="img"  :style="'background-image: url('+item.thumb+');'" @click="navTo('{:url('Article/show')}?id='+item.id)"></div>
+        <div class="title">{{item.name}}</div>
+      </van-col>
+      
+    </van-row>
+  </div>
+ 
+  </van-list>
+
+</div>
+<script>
+    var appIndex = new Vue({
+        el: '#app',
+        data: function data() {
+            return {
+              filter:{},
+              userInfo:{shopInfo:{}},
+              list: [],
+              loading: false,
+              finished: false,
+              pageTotal:0,
+ 
+      
+            };
+        },
+        created:function(){   
+          this.getUserInfo()
+        },
+
+        methods: {
+            getUserInfo(){
+                  var _this = this
+                  axios({
+                      method:'post',
+                      url:'',
+                      data:_this.filter,
+                  }).then(function(resp){
+                    _this.userInfo = resp.data
+                    
+                       
+                  }).catch(resp => {
+                      console.log('请求失败：'+resp.status+','+resp.statusText);
+                  });
+            },
+            getUserGoods() {
+              var _this = this
+              axios({
+                      method:'post',
+                      url:'{:url("getUserGoods")}',
+                      data:_this.filter,
+              }).then(function(resp){
+                      _this.loading = false;
+                        _this.list=_this.list.concat(resp.data.data);
+                        _this.pageTotal = resp.data.count
+                        _this.filter.page++
+                        if (_this.list.length >= _this.pageTotal) {
+                    _this.finished = true;
+                  }
+              }).catch(resp => {
+                      console.log('请求失败：'+resp.status+','+resp.statusText);
+              });
+
+            },
+            navTo:function(url) {
+              window.location.href=url
+           }
+
+        },
+        mounted() {
+ 
+        }
+
+    });
+</script>
+{include file="common/footer"/}

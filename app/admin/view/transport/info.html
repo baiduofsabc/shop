@@ -1,0 +1,368 @@
+{include file="common/head2"/}
+<script type="text/javascript" src="/statics/UE/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="/statics/UE/ueditor.all.js"></script>
+<div id="appIndex">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>{{ruleForm.name}}</legend>
+    </fieldset>
+    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+            <el-form-item label="名称" prop="name">
+                <el-input v-model="ruleForm.name"></el-input>
+            </el-form-item>
+            <el-form-item label="缩略图" prop="thumb">
+                <el-upload
+                  class="avatar-uploader"
+                  action="{:url('UpFiles/uploadJson')}"
+                  :show-file-list="false"
+                  :on-success="handleAvatarSuccess"
+                  :before-upload="beforeAvatarUpload">
+                  <img v-if="ruleForm.thumb" :src="ruleForm.thumb" class="avatar" style="width:200px">
+                  <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                </el-upload>
+            </el-form-item>
+
+            <el-form-item label="封面图" prop="thumb">
+                <el-upload
+                  action="{:url('UpFiles/uploadJson')}"
+                  list-type="picture-card"
+                  :file-list="ruleForm.images"
+                  
+                  :on-preview="handlePictureCardPreview"
+                  :on-success="handleCardSuccess"
+                  :on-remove="handleRemove">
+                  <i class="el-icon-plus"></i>
+                </el-upload>
+                <el-dialog :visible.sync="dialogVisible">
+                    <img width="100%" :src="ruleForm.images" alt="">
+                </el-dialog>
+            </el-form-item>
+
+            <el-form-item label="市区转运价格" prop="in_price">
+                <el-input v-model="ruleForm.in_price"></el-input>
+            </el-form-item>
+            <el-form-item label="市外转运价格" prop="out_price">
+                <el-input v-model="ruleForm.out_price"></el-input>
+            </el-form-item>
+            <el-form-item label="每公里价格" prop="distance_pirce">
+                <el-input v-model="ruleForm.distance_pirce"></el-input>
+            </el-form-item>
+            <el-form-item label="楼层阶梯价格" prop="floor_price">
+                <el-input v-model="ruleForm.floor_price"></el-input>
+            </el-form-item>
+            <el-form-item label="医疗护理人员价格" prop="tend_price">
+                <el-input v-model="ruleForm.tend_price"></el-input>
+            </el-form-item>
+
+   
+            <el-form-item label="必须项目" prop="project">
+                <el-input v-model="ruleForm.project"></el-input>
+            </el-form-item>
+            <el-form-item label="必须项目总价" prop="project">
+                <el-input v-model="ruleForm.project_price"></el-input>
+            </el-form-item>
+             
+        
+     
+  
+            <el-form-item label="简介" prop="content">
+                <script id="container" name="content" type="text/plain">
+                    {{ruleForm.info}}
+                   </script>
+            </el-form-item> 
+ 
+            <el-form-item>
+                <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+                <el-button @click="resetForm('ruleForm')">重置</el-button>
+            </el-form-item>
+        </el-form>
+
+
+</div>
+<script>
+    var appIndex = new Vue({
+        el: '#appIndex',
+        data() {
+            return {
+                tableData: [],
+                dialogVisible: false,
+                ruleForm: {},
+                filter:{page:1},
+                rules: {
+                    name: [
+                        { required: true, message: '请输入名称', trigger: 'blur' },
+                        { min: 3, max: 10, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+                    ],
+                    region: [
+                        { required: true, message: '请选择活动区域', trigger: 'change' }
+                    ],
+                    date1: [
+                        { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
+                    ],
+                    date2: [
+                        { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
+                    ],
+                    type: [
+                        { type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
+                    ],
+                    resource: [
+                        { required: true, message: '请选择活动资源', trigger: 'change' }
+                    ],
+                    desc: [
+                        { required: true, message: '请填写活动形式', trigger: 'blur' }
+                    ]
+                },
+                thisTitle:"添加",
+                pageTotal:0,
+                editor:'',
+                level:[],
+                regions:[[],[],[]],
+                fileList: []
+
+            };
+        },
+        created:function(){
+           this.setData();
+        },
+        methods: {
+            
+                setData(){
+
+                    var _this = this
+                    axios({
+                        method:'post',
+                        url:'{:url("info")}',
+                        data:{id:1},
+                    }).then(function(resp){
+                        if(resp.data.data.images) {
+                            resp.data.data.images = JSON.parse(resp.data.data.images)
+                            _this.fileList =  resp.data.data.images
+
+                        }
+                        else {
+                            resp.data.data.images = []
+                            _this.fileList = []
+                        }
+
+                        
+                        _this.ruleForm = resp.data.data;
+                    
+                        _this.editor = UE.getEditor('container');
+                        _this.editor.ready(function() {
+                            if (_this.ruleForm.info) {
+                              _this.editor.setContent(_this.ruleForm.info);  
+                            }
+                            else{
+                                _this.editor.setContent('');
+                            }
+                            
+                        });
+                    }).catch(resp => {
+                        console.log('请求失败：'+resp.status+','+resp.statusText);
+                    });
+                },
+                getArea(pid,index,val=1) {
+                    if(index==1&&val==1) {
+                
+                        this.$set(this.ruleForm,'city','')
+                        this.$set(this.ruleForm,'district','')
+                    }
+                    if(index==2&&val==1) {
+                        this.$set(this.ruleForm,'district','')
+                    }
+
+                    var _this = this
+                    axios({
+                        method:'post',
+                        url:'{:url("getArea")}',
+                        data:{pid:pid},
+                    }).then(function(resp){
+                         _this.$set(_this.regions,index,resp.data)
+                    }).catch(resp => {
+                        console.log('请求失败：'+resp.status+','+resp.statusText);
+                    });
+
+                },
+                handleCurrentChange(val) {
+                    this.$set(this.filter,'page',val);
+                    this.setData()
+                },
+                add() {
+                    var _this =this;
+                    this.thisTitle="添加";
+                    this.dialogVisible=true;
+                    this.ruleForm = {};
+                    this.editor = UE.getEditor('container');
+
+                    this.editor.ready(function() {
+                        _this.editor.setContent('');
+                    });
+
+                    // this.editor.addListener("ready", function () {
+                    //     // editor准备好之后才可以使用
+                    //     _this.editor.setContent('');
+                    //
+                    // });
+
+
+
+
+                },
+                edit(index) {
+                    var _this =this;
+                    _this.thisTitle="编辑";
+
+                    if(_this.tableData[index].province) {
+                        _this.getArea(_this.tableData[index].province,1,2)
+                    }
+                    if(_this.tableData[index].city) {
+                        _this.getArea(_this.tableData[index].city,2,2)
+                    }
+                    axios({
+                        method:'post',
+                        url:'{:url("hospitalInfo")}',
+                        data:{id:_this.tableData[index].id},
+                    }).then(function(resp){
+
+                        _this.ruleForm = resp.data.data;
+                        _this.dialogVisible=true;
+                        _this.editor = UE.getEditor('container');
+                        _this.editor.ready(function() {
+                            if (_this.tableData[index].info) {
+                              _this.editor.setContent(_this.tableData[index].info);  
+                            }
+                            else{
+                                _this.editor.setContent('');
+                            }
+                            
+                        });
+                    }).catch(resp => {
+                        console.log('请求失败：'+resp.status+','+resp.statusText);
+                    });
+
+
+
+                    //this.editor.setContent(_this.tableData[index].content);
+
+
+
+                },
+                handleClick(row) {
+                    console.log(row);
+                },
+                handleClose(done) {
+                    this.$confirm('确认关闭？')
+                        .then(_ => {
+                            done();
+                        })
+                        .catch(_ => {});
+                },
+                submitForm(formName) {
+                    var _this = this;
+                    this.$refs[formName].validate((valid) => {
+                        if (valid) {
+                            _this.save()
+                        } else {
+                            console.log('error submit!!');
+                            return false;
+                        }
+                    });
+                },
+                save() {
+                    let ueditordata = UE.getEditor('container').getContent();
+                    this.ruleForm.info = ueditordata;
+
+                    let submitInfo = JSON.parse(JSON.stringify(this.ruleForm))
+                    this.$set(submitInfo,'images',JSON.stringify(this.fileList))
+
+                    var _this = this
+                    axios({
+                        method:'post',
+                        url:'{:url("add")}',
+                        data:submitInfo,
+                    }).then(function(resp){
+                        console.log(resp.data);
+                        if(resp.data.code==1) {
+                            _this.$notify({title: '成功',message:resp.data.msg,type: 'success'});
+                            _this.dialogVisible=false;
+                        }
+                        else {
+                            _this.$notify({title: '失败',message:resp.data.msg,type: 'error'});
+                        }
+                        this.dialogVisible=false;
+                        _this.setData();
+                    }).catch(resp => {
+                        console.log('请求失败：'+resp.status+','+resp.statusText);
+                    });
+                },
+                resetForm(formName) {
+                    this.$refs[formName].resetFields();
+                },
+                handleAvatarSuccess(res, file) {
+                    console.log(res)
+                   this.$set(this.ruleForm,'thumb',res.url)
+                 
+                },
+                beforeAvatarUpload(file) {
+                    const isLt2M = file.size / 1024 / 1024 < 2;
+                    if (!isLt2M) {
+                      this.$message.error('上传头像图片大小不能超过 2MB!');
+                    }
+                    return  isLt2M;
+                },
+                handleRemove(file, fileList) {
+                    console.log(file, fileList);
+                    this.fileList = fileList
+                },
+                handlePictureCardPreview(file) {
+                    // this.dialogImageUrl = file.url;
+                    // this.dialogVisible = true;
+                },
+                handleCardSuccess(res, file,fileList) {
+                    //this.fileList.push({name:"",url:'/public'+res.url})
+                    this.ruleForm.images.push({name:"",url:res.url}); 
+              
+              
+
+                },
+                del(index){
+                    var _this = this
+                    this.$confirm('确认删除？')
+                        .then(_ => {
+                            _this.del2(index);
+                        })
+                        .catch(_ => {});
+
+                },
+                del2(index) {
+                    var _this = this;
+                    var id = this.tableData[index].id;
+                    axios({
+                        method:'post',
+                        url:'{:url("hospitalDel")}',
+                        data:{id:id},
+                    }).then(function(resp){
+                        console.log(resp.data);
+                        if(resp.data.code==1) {
+                            _this.$notify({title: '成功',message:resp.data.msg,type: 'success'});
+                        }
+                        else {
+                            _this.$notify({title: '失败',message:resp.data.msg,type: 'error'});
+                        }
+                        _this.setData();
+                    }).catch(resp => {
+                        console.log('请求失败：'+resp.status+','+resp.statusText);
+                    });
+                }
+
+
+        },
+        mounted() {
+
+
+        }
+
+    });
+</script>
+</body>
+</html>    

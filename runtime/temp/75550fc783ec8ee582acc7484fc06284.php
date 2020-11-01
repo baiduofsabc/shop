@@ -1,0 +1,349 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:51:"E:\asd1028\fszb1027/app/admin\view\base\notice.html";i:1603874470;s:52:"E:\asd1028\fszb1027\app\admin\view\common\head2.html";i:1603874470;}*/ ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><?php echo config('sys_name'); ?>后台管理</title>
+    <link rel="stylesheet" href="/public/static/plugins/layui/css/layui.css" media="all" />
+
+    <link rel="stylesheet" href="/statics/admin/css/css.css">
+
+    <script src="/statics/admin/js/axios.min.js"></script>
+    <!-- 引入Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="/statics/admin/element/index.css">
+    <!-- 引入组件库 -->
+    <script src="/statics/admin/element/index.js"></script>
+</head>
+<body>
+ 
+<div id="appIndex">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>优惠券管理</legend>
+    </fieldset>
+   <el-form :inline="true" :model="filter">
+     <el-form-item label="通知标题">
+        <el-input v-model="filter.title" placeholder="通知标题"></el-input>
+      </el-form-item>
+      <el-form-item label="通知内容">
+        <el-input v-model="filter.info" placeholder="通知内容"></el-input>
+      </el-form-item>
+ 
+
+   
+        <el-button type="primary" @click="setData">查询</el-button>
+        <el-button plain style="margin-bottom: 20px;" @click="add">添加</el-button>
+      </el-form-item>
+    </el-form>
+
+    <el-table
+            :data="tableData"
+            border
+            style="width: 100%">
+        <el-table-column
+                fixed
+                prop="id"
+                label="序号"
+                width="100">
+        </el-table-column>
+        <el-table-column
+                prop="title"
+                label="通知标题"
+                width="200">
+        </el-table-column>
+        <el-table-column
+                prop="info"
+                label="通知内容"
+                width="400">
+        </el-table-column>
+        <el-table-column
+                prop="add_time"
+                label="通知时间"
+                width="200">
+        </el-table-column>
+   
+        <el-table-column
+                label="操作"
+                width="160">
+            <template slot-scope="scope">
+                <el-button
+                        size="mini"
+                        type="danger" @click="del(scope.$index)"
+                         >删除</el-button>
+            </template>
+        </el-table-column>
+    </el-table>
+ 
+    <el-pagination
+      background
+      @current-change="handleCurrentChange"
+      layout="prev, pager, next"
+      :page-size="15"
+      :total="pageTotal">
+    </el-pagination>
+
+    <el-dialog
+            :title="thisTitle+'通知'"
+            :visible.sync="dialogVisible"
+            width="70%"
+            :close-on-click-modal="false"
+            :before-close="handleClose">
+
+
+        <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+           <el-form-item label="通知标题" prop="title">
+                <el-input v-model="ruleForm.title"></el-input>
+            </el-form-item>
+            <el-form-item label="通知内容" prop="info">
+                <el-input v-model="ruleForm.info"
+                row="15"
+                 type="textarea"
+                ></el-input>
+            </el-form-item>
+            <el-form-item label="缩略图" prop="thumb">
+                <el-upload
+                  action="<?php echo url('UpFiles/uploadJson'); ?>"
+                  list-type="picture-card"
+                  :file-list="fileList"
+                  :on-success="handleAvatarSuccess"
+                  :on-preview="handlePictureCardPreview"
+                  :on-remove="handleRemove">
+                  <i class="el-icon-plus"></i>
+                </el-upload>
+            </el-form-item>
+         
+ 
+            <el-form-item>
+                <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+                <el-button @click="resetForm('ruleForm')">重置</el-button>
+            </el-form-item>
+        </el-form>
+
+
+
+    </el-dialog>
+
+
+
+
+</div>
+<script>
+    var appIndex = new Vue({
+        el: '#appIndex',
+        data() {
+            return {
+                tableData: [],
+                dialogVisible: false,
+                ruleForm: {use_in:1,status:1},
+                filter:{page:1},
+                fileList:[],
+                rules: {
+                    title: [
+                        { required: true, message: '请输入名称', trigger: 'blur' },
+                   
+                    ],
+                    info: [
+                        { required: true, message: '请选择活动区域', trigger: 'change' }
+                    ],
+                     
+                },
+                thisTitle:"添加",
+                pageTotal:0,
+                editor:'',
+                level:[],
+                regions:[[],[],[]],
+                dateVal:[],
+                textarea:"",
+
+            };
+        },
+        created:function(){
+           this.setData();
+     
+    
+
+        },
+        methods: {
+            handleRemove(file, fileList) {
+            console.log(file, fileList);
+          },
+          handlePictureCardPreview(file) {
+            this.dialogImageUrl = file.url;
+            this.dialogVisible = true;
+          },
+            handleAvatarSuccess(res, file,fileList) {
+                this.fileList = fileList
+                //this.imageUrl = URL.createObjectURL(file.raw);
+              },
+            setData(){
+
+                var _this = this
+                axios({
+                    method:'post',
+                    url:'<?php echo url("notice"); ?>',
+                    data:_this.filter,
+                }).then(function(resp){
+                    console.log(resp.data);
+                    _this.tableData = resp.data.data;
+                    _this.pageTotal = resp.data.count;
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+            },
+             
+            handleCurrentChange(val) {
+                this.$set(this.filter,'page',val);
+                this.setData()
+            },
+            add() {
+                var _this =this;
+                this.thisTitle="添加";
+                this.dialogVisible=true;
+                this.ruleForm = {};
+   
+            },
+            edit(index) {
+                var _this =this;
+                _this.thisTitle="编辑";
+ 
+                axios({
+                    method:'post',
+                    url:'<?php echo url("noticeInfo"); ?>',
+                    data:{id:_this.tableData[index].id},
+                }).then(function(resp){
+                    _this.ruleForm = resp.data.data;
+                    _this.dateVal[0] = resp.data.data.start_time;
+                    _this.dateVal[1] = resp.data.data.end_time;
+                    _this.dialogVisible=true;
+                    _this.editor = UE.getEditor('container');
+                    _this.editor.ready(function() {
+                        if (_this.tableData[index].info) {
+                          _this.editor.setContent(_this.tableData[index].info);  
+                        }
+                        else{
+                            _this.editor.setContent('');
+                        }
+                        
+                    });
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+
+
+
+                //this.editor.setContent(_this.tableData[index].content);
+
+
+
+            },
+            handleClick(row) {
+                console.log(row);
+            },
+            handleClose(done) {
+                this.$confirm('确认关闭？')
+                    .then(_ => {
+                        done();
+                    })
+                    .catch(_ => {});
+            },
+            submitForm(formName) {
+
+                var _this = this;
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        _this.save()
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+                });
+            },
+            save() {
+   
+
+         
+ 
+                
+                let images = [];
+                for (var i = 0; i < this.fileList.length; i++) {
+                    images.push(this.fileList[i].response.url)
+                }
+                this.$set(this.ruleForm,'images',images.join(','));
+
+   
+                var _this = this
+                axios({
+                    method:'post',
+                    url:'<?php echo url("noticeAdd"); ?>',
+                    data:_this.ruleForm,
+                }).then(function(resp){
+                    console.log(resp.data);
+                    if(resp.data.code==1) {
+                        _this.$notify({title: '成功',message:resp.data.msg,type: 'success'});
+                        _this.dialogVisible=false;
+                    }
+                    else {
+                        _this.$notify({title: '失败',message:resp.data.msg,type: 'error'});
+                    }
+                    this.dialogVisible=false;
+                    _this.setData();
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+            },
+            resetForm(formName) {
+                this.$refs[formName].resetFields();
+            },
+   
+            beforeAvatarUpload(file) {
+           
+                const isLt2M = file.size / 1024 / 1024 < 2;
+
+               
+                if (!isLt2M) {
+                  this.$message.error('上传头像图片大小不能超过 2MB!');
+                }
+                return  isLt2M;
+            },
+            del(index){
+                var _this = this
+                this.$confirm('确认删除？')
+                    .then(_ => {
+                        _this.del2(index);
+                    })
+                    .catch(_ => {});
+
+            },
+            del2(index) {
+                var _this = this;
+                var id = this.tableData[index].id;
+                axios({
+                    method:'post',
+                    url:'<?php echo url("noticeDel"); ?>',
+                    data:{id:id},
+                }).then(function(resp){
+                    console.log(resp.data);
+                    if(resp.data.code==1) {
+                        _this.$notify({title: '成功',message:resp.data.msg,type: 'success'});
+                    }
+                    else {
+                        _this.$notify({title: '失败',message:resp.data.msg,type: 'error'});
+                    }
+                    _this.setData();
+                }).catch(resp => {
+                    console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+            }
+
+
+        },
+        mounted() {
+
+
+        }
+
+    });
+</script>
+</body>
+</html>

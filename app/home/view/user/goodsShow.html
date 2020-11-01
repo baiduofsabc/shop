@@ -1,0 +1,280 @@
+{include file="common/head"/}
+{include file="common/nav"/}
+ 
+<div id="app" v-cloak>
+  <div class="article_show" v-if="info.id">
+      <div class="title van-hairline--bottom">
+        <van-row>
+          <van-col span="10"   >
+            {{info.addtime}}
+          </van-col>
+          <van-col span="14">
+            <div style="text-align: right;">
+              <van-button type="primary" size="small" class="btn_grey" @click="navTo('{:url('goodsAdd')}?id='+info.id)">编辑</van-button>
+              <van-button type="primary" size="small" class="btn_grey" @click="setStatus(info.status==1?2:1)">{{info.status==1?'下架':'上架'}}</van-button> 
+              <van-button type="primary" size="small" class="btn_grey" @click="setStatus(3)">删除</van-button>
+            </div>
+           </van-col>
+        </van-row>
+      </div>
+
+      <div class="content">
+          
+          <div class="content_info">
+            <van-button type="primary" size="small" class="btn_grey_deep" @click="openInfo">{{infoHeight=="auto"?"收起":"展开"}}</van-button>  {{info.info}}                   
+          </div>
+ 
+          <van-button type="primary" icon="friends" size="small" class="btn_green ">分享</van-button>
+  
+      </div>
+
+  
+
+    <div class="article_images"  v-if="info.id">
+        <van-row  gutter="1">
+    
+          <van-col span="8" v-for="(item,index) in info.images" key="index">
+            <div class="img" :style="'background-image: url('+item+');'" @click="viewPic(index)"></div>
+          </van-col>
+  
+        </van-row>
+ 
+    </div>
+
+    </div>
+
+ 
+<van-cell-group title="发布至">
+ 
+  <van-cell :title="item.name" :value="item.days?item.days+'天':'请选择天数'" :label="'所需'+item.need_int+'积分/天,剩余'+(item.ad_info.lastDays.toFixed(1)>0?item.ad_info.lastDays.toFixed(1):0)+'天'" is-link v-for="(item,index) in advInfo" @click="getPicker(index)" />
+
+</van-cell-group>
+
+<van-popup v-model="showPicker" position="bottom">
+  <van-picker
+    show-toolbar
+    :columns="columns"
+    @cancel="showPicker = false"
+    @confirm="onConfirm"
+  ></van-picker>
+</van-popup>
+
+<div style="height: 1.5rem"></div>
+<van-submit-bar
+  :price="total_int*100"
+  button-text="提交"
+  label="合计："
+  suffix-label="积分"
+  @submit="show=true"
+  currency="$"
+  :safe-area-inset-bottom="true"
+></van-submit-bar>
+<van-dialog
+  v-model="show"
+  title="请输入密码"
+  show-cancel-button
+  @confirm="onSubmitCheck"
+>
+ <van-field
+    v-model="password"
+    type="password"
+    placeholder="请输入密码"
+  ></van-field> 
+</van-dialog>
+</div>
+ <script>
+    var dayNum = [0,1,2,3,4,5,6,7,8,9]
+    new Vue({
+        el: '#app',
+        data: function data() {
+            return {
+                show:false,
+                password:"",
+                filter:{},
+                info:{},
+                show: false,
+                picIndex: 0,
+                status:['','上架','下架','删除'],
+                showPicker:false,
+                columns: [
+                {
+                  values:dayNum,
+                  className: 'column1'
+                },
+                {
+                  values:dayNum,
+                  className: 'column2'
+                },
+                {
+                  values:dayNum,
+                  className: 'column3'
+                },
+                ],
+                value:"",
+                advInfo:[],
+                thisIndex:0,
+                total_int:0,
+                infoHeight:"0.6rem",
+             
+            };
+        },
+        created:function(){
+            this.setData();
+            console.log(1111)
+        },
+
+        methods: {
+          openInfo() {
+            if(this.infoHeight=="auto") {
+              this.infoHeight="0.6rem"
+
+            }
+            else {
+              this.infoHeight="auto"
+            }
+            
+          },
+            getPicker(index) {
+              this.thisIndex = index;
+              this.showPicker = true;
+            },
+            viewPic(index) {
+                // this.picIndex = index;
+                // this.show = true
+
+                let _this = this
+                vant.ImagePreview({
+                  images: _this.info.images,
+                  startPosition: index,
+                  onClose() {
+                    // do something
+                  }
+                });
+            },
+            setData(){
+                var _this = this
+    
+                    axios({
+                        method:'post',
+                        url:'',
+                        data:_this.filter,
+                    }).then(function(resp){    
+                        _this.info=resp.data.data;
+                        _this.info.images.unshift(_this.info.thumb)
+                        _this.advInfo = resp.data.adv
+                    }).catch(resp => {
+                        console.log('请求失败：'+resp.status+','+resp.statusText);
+                    });  
+            },
+            onConfirm(value) {
+              this.$set(this.advInfo[this.thisIndex],'days',Number(value.join('')));
+              this.showPicker = false; 
+              this.total_int = 0
+              for (var i = 0; i < this.advInfo.length; i++) {
+                this.total_int = this.total_int + (this.advInfo[i].days*this.advInfo[i].need_int) 
+              }
+            },
+            collectDel(){
+                var _this = this
+                vant.Dialog.confirm({
+                  title: '提示',
+                  message: '确认取消？'
+                }).then(() => {
+                  vant.Toast.loading({mask: true,  message: '请稍等...'});
+                  axios({
+                      method:'post',
+                      url:'{:url("User/collectDel")}',
+                      data:{id:_this.info.collect_id},
+                  }).then(function(resp){
+                    if(resp.data.code==1) {
+                        vant.Toast.success("已取消");
+                        _this.info.collect_status=0
+                    }
+                    else {
+                        vant.Toast.fail("取消失败");
+                    }  
+                  }).catch(resp => {
+                      console.log('请求失败：'+resp.status+','+resp.statusText);
+                  });
+                }).catch(() => {
+                  // on cancel
+                });     
+            },
+            setStatus(status){
+                vant.Toast.loading({mask: true,  message: '请稍等...'});
+                var _this = this
+                axios({
+                      method:'post',
+                      url:'{:url("goodsSubmit")}',
+                      data:{id:_this.info.id,status:status},
+                }).then(function(resp){
+                    if(resp.data.code==1) {
+                      vant.Toast.success(_this.status[status]+"成功！");
+                      _this.$set(_this.info,'status',status)
+                      if(status==3) {
+                         window.location.href="{:url('goods')}"                       
+                      }
+             
+                    }
+                    else {
+                        vant.Toast.fail(_this.status[status]+"失败！");
+                    }  
+                }).catch(resp => {
+                      console.log('请求失败：'+resp.status+','+resp.statusText);
+                });
+             
+            },
+            navTo:function(url) {
+              window.location.href=url
+            },
+            onSubmitCheck:function() {
+              vant.Toast.loading({mask: true,  message: '请稍等...'});
+              var _this = this
+              axios({
+                      method:'post',
+                      url:'{:url("checkPassword")}',
+                      data:{password:_this.password},
+              }).then(function(resp){
+                if(resp.data.code==1) {
+                  _this.onSubmit();
+                }
+                else {
+                  vant.Toast.fail(resp.data.msg);
+                }  
+              }).catch(resp => {
+                      console.log('请求失败：'+resp.status+','+resp.statusText);
+              });
+            },
+            onSubmit:function() {
+              var _this = this
+              axios({
+                      method:'post',
+                      url:'{:url("advAdd")}',
+                      data:{list:_this.advInfo,total_int:_this.total_int,goods_id:_this.info.id},
+              }).then(function(resp){
+                console.log(resp.data)
+                if(resp.data.code==1) {
+                  vant.Toast.success("提交成功");
+                  _this.setData();
+                }
+                  else {
+                  vant.Toast.fail(resp.data.msg);
+                }  
+              }).catch(resp => {
+                      console.log('请求失败：'+resp.status+','+resp.statusText);
+              });
+  
+                  
+               
+            },
+ 
+         
+
+        },
+        mounted() {
+ 
+        }
+
+    });
+</script>
+ 

@@ -1,0 +1,257 @@
+{include file="common/head"/} {include file="common/nav"/}
+<style>
+    .van-icon-delete:before {
+        content: "×";
+        line-height: 0.4rem;
+/*margin-right: 0.2rem;*/
+        font-size: 0.6rem;
+/*        font-weight: 100;*/
+    }
+    .van-uploader__preview-delete {
+        right: 1px;
+        top: 1px;
+        background: red;
+        height: 0.6rem;
+        width: 0.6rem;
+    }
+    .body{
+        font-size: 0rem;
+    }
+</style>
+
+
+<div id="app">
+    <!-- <van-dropdown-menu>
+  <van-dropdown-item v-model="filter.status" :options="option1" @change="reset" ></van-dropdown-item>
+  <van-dropdown-item title="筛选" ref="item">
+     <van-tree-select
+        :items="items"
+        :main-active-index="mainActiveIndex"
+        :active-id="activeId"
+        @navclick="onNavClick"
+        @itemclick="onItemClick"
+      />
+    </van-tree-select>
+     
+  </van-dropdown-item>
+</van-dropdown-menu> -->
+
+    <van-list  v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad" :offset="1">
+        <div class="list_content">
+            <van-row gutter="1">
+                <van-col span="8" v-for="(item,index) in list" :key="index">
+                    <div class="img" :style="'background-image: url('+item.thumb+');'"
+                        @click="navTo('{:url('goods/show')}?id='+item.id)">
+                        <div class="title">￥{{item.price}}</div>
+                    </div>
+
+                  <a href="javascript:;" @click="del(item)"><i class="van-icon van-icon-delete van-uploader__preview-delete"></i></a>
+                    <!-- <div class="title">{{item.price}}</div> -->
+                </van-col>
+            </van-row>
+        </div>
+    </van-list>
+    <div @click.stop="navTo2" style="position: fixed; left: 0px; top: 0px; width: 2rem; height: 0.8rem; z-index: 999;">
+    </div>
+</div>
+<script>
+    var appIndex = new Vue({
+        el: '#app',
+        data: function data() {
+            return {
+                filter: {
+                    page: 1,
+                    limit: 18,
+                    status: 0
+                },
+                userInfo: {},
+                list: [],
+                loading: false,
+                finished: false,
+                pageTotal: 0,
+                items: [],
+                // 左侧高亮元素的index
+                mainActiveIndex: 0,
+                // 被选中元素的id
+                activeId: 1,
+                listShow: true,
+                option1: [{
+                    text: '全部',
+                    value: 0
+                }, {
+                    text: '上架中',
+                    value: 1
+                }, {
+                    text: '已下架',
+                    value: 2
+                }],
+            };
+        },
+        created: function () {
+            let _this = this
+            console.log(sessionStorage)
+
+            // if (window.sessionStorage.list_ul4 != undefined) {
+            //
+            //     console.log(window.sessionStorage)
+            //     // console.log(JSON.parse(window.sessionStorage.list_ul))
+            //     var top = parseInt(sessionStorage.getItem("top4"));
+            //     top = top ? top : 0;
+            //     var product_ul = JSON.parse(sessionStorage.getItem("list_ul4"));
+            //     var page = parseInt(sessionStorage.getItem("page4"));
+            //     var url = sessionStorage.getItem("url4");
+            //     //判断返回后的页面和上一次的页面地址是否一致
+            //     if (product_ul != null && url == window.location.href) {
+            //         _this.list = product_ul;
+            //         _this.filter.page = page;
+            //         console.log(sessionStorage)
+            //         window.scrollTop=top
+            //         document.scrollingElement.scrollTop = top + parseInt($(window).height());
+            //         _this.filter.page = Number(page+1);
+            //     }
+            //     this.setNav();
+            // } else {
+                console.log('sessionStorage没有数据')
+                // _this.finished = true;
+                 this.setNav();
+                 // this.getUserInfo()
+                 //this.getUserGoods()
+            // }
+        },
+
+        methods: {
+            del(item) {
+
+                vant.Toast.loading({ mask: true, message: '请稍等...' });
+                var _this = this
+                console.log(_this)
+                vant.Dialog.confirm({
+                    title: '',
+                    message: '是否删除该条发布？'
+                }).then(() => {
+                    axios({
+                        cache:false,
+                        method: 'post',
+                        url: '{:url("goods/delshow")}',
+                        data: { id:item.id },
+                    }).then(function (resp) {
+                        vant.Toast.success("删除成功");
+                        window.location.href = '{:url("user/goods")}'+"?tmp="+Math.random().toString();;
+
+                    }).catch(resp => {
+                        console.log('请求失败：' + resp.status + ',' + resp.statusText);
+                    });
+
+                }).catch(() => {
+                    console.log("取消删除")
+                })
+            },
+            getUserInfo() {
+                var _this = this
+                axios({
+                    method: 'post',
+                    url: '',
+                    data: _this.filter,
+                }).then(function (resp) {
+
+                    _this.userInfo = resp.data
+                    console.log(resp.data)
+                }).catch(resp => {
+                    console.log('请求失败：' + resp.status + ',' + resp.statusText);
+                });
+            },
+            getUserGoods() {
+                var _this = this
+                axios({
+                    method: 'post',
+                    url: '',
+                    data: _this.filter,
+                }).then(function (resp) {
+                    _this.loading = false;
+                    _this.list = _this.list.concat(resp.data.data);
+                    _this.pageTotal = resp.data.count
+                    _this.filter.page++
+                    setTimeout(()=>{
+
+                        var top = parseInt(sessionStorage.getItem("top4"));
+                        window.scrollTop=top
+                        document.scrollingElement.scrollTop = top + parseInt($(window).height());
+                    })
+                    if (_this.list.length >= _this.pageTotal) {
+                        _this.finished = true;
+                    }
+                }).catch(resp => {
+                    console.log('请求失败：' + resp.status + ',' + resp.statusText);
+                });
+            },
+            onLoad() {
+                this.page++;
+                this.getUserGoods();
+            },
+            setNav() {
+                var _this = this
+                axios({
+                    method: 'post',
+                    url: '{:url("goods/index")}',
+                    data: {},
+                }).then(function (resp) {
+                    _this.items = resp.data.data.category
+                }).catch(resp => {
+                    console.log('请求失败：' + resp.status + ',' + resp.statusText);
+                });
+            },
+            onNavClick(index) {
+                this.mainActiveIndex = index;
+
+            },
+            onItemClick(data) {
+                this.$set(this.filter, 'catid', data.id)
+                this.activeId = data.id;
+                this.$refs.item.toggle();
+                this.reset()
+            },
+
+            reset() {
+                this.listShow = false
+
+                this.$set(this.filter, 'page', 1)
+                this.list = []
+                this.finished = false
+                this.pageTotal = 0;
+                let _this = this
+                setTimeout(function () {
+                    _this.listShow = true
+                }, 300);
+            },
+            //新增返回键
+            navTo2() {
+                // console.log(sessionStorage)
+                setTimeout(() => {
+                    if (window.history.length > 1) {
+                        sessionStorage.clear();
+                        sessionStorage.setItem("top4", `${window.pageYOffset}`);
+                        window.location.href = "{:url('home/user/index')}"
+                    } else {
+                        window.location.href = "/"
+                    }
+                }, 200)
+            },
+            navTo: function (url) {
+                let _this = this
+                sessionStorage.clear()
+                // console.log(sessionStorage)
+                sessionStorage.setItem("list_ul4", `${JSON.stringify(_this.list)}`);
+                sessionStorage.setItem("top4", `${window.pageYOffset}`);
+                sessionStorage.setItem("page4", `${_this.filter.page - 1}`);
+                sessionStorage.setItem("url4", window.location.href);
+                setTimeout(() => {
+                    window.location.href = url
+                }, 200)
+            }
+        },
+        mounted() {
+
+        }
+
+    });
+</script>

@@ -1,0 +1,60 @@
+<div style="height: 1rem"></div>
+<style type="text/css" media="screen">
+  #footer .van-tabbar-item__text {font-size: 0.35rem}
+</style>
+<div id="footer">
+<van-tabbar
+  v-model="active"
+  active-color="#ff0000"
+  inactive-color="#000"
+>
+  <van-tabbar-item @click="navTo('{:url('Index/index_hot')}')" >热门商品</van-tabbar-item>
+  <van-tabbar-item @click="navTo1">分类</van-tabbar-item>
+  <van-tabbar-item @click="navTo('{:url('Goods/list_today')}')"  >今日之星</van-tabbar-item>
+  <van-tabbar-item @click="navTo('{:url('User/index')}')">我的</van-tabbar-item>
+</van-tabbar>
+</div>
+<script>
+    var footer = new Vue({
+        el: '#footer',
+        data: function data() {
+            return {
+             active: {$foot_active},
+              listorder:'',
+            };
+        },
+        created:function(){
+          // if({$foot_active}==1) {
+          //   this.active = 0
+          // }
+          // if({$foot_active}==3) {
+          //   this.active = 2
+          // }
+        },
+
+        methods: {
+          navTo: function (url) {
+            window.location.href = url
+          },
+          navTo1() {
+            var _this = this
+            axios({
+              method: 'post',
+              url: '{:url("goods/listorder")}',
+              data: '',
+            }).then(function (resp) {
+console.log(resp.data.data[0])
+              window.location.href = "{:url('Goods/list_list')}?catid=" + resp.data.data[0].id;
+            })
+
+
+          },
+        },
+        mounted() {
+ 
+        }
+
+    });
+</script>
+</body>
+</html>

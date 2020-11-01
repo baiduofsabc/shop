@@ -1,0 +1,261 @@
+{include file="common/head"/}
+
+<div id="nav">
+    <van-nav-bar title="{$head_title}" left-text="返回" right-text="我的" left-arrow @click-left="onClickLeft"
+        @click-right="onClickRight" />
+    </van-nav-bar>
+    <van-nav-bar title="{$head_title}" left-text="返回" right-text="我的" left-arrow @click-left="onClickLeft"
+        @click-right="onClickRight" style="position:fixed; width: 100%;top: 0;z-index: 9999999" />
+    </van-nav-bar>
+
+    <!-- <van-row>
+  <van-col span="8"><div class="img" style="background-image: url('/statics/home/images/demo_fuzhuang.jpg');"></div></van-col>
+  <van-col span="8"><div class="img" style="background-image: url('/statics/home/images/demo_fuzhuang.jpg');"></div></van-col>
+  <van-col span="8"><div class="img" style="background-image: url('/statics/home/images/demo_fuzhuang.jpg');"></div></van-col>
+</van-row> -->
+</div>
+<script>
+    new Vue({
+        el: '#nav',
+        data: function data() {
+            return {
+            };
+        },
+        created: function () {
+        },
+        methods: {
+            onClickLeft() {
+                sessionStorage.clear()
+                if (window.history.length > 1) {
+                    window.history.go(-1);
+                } else {
+                    window.location.href = "/"
+                }
+            },
+            onClickRight() {
+                window.location.href = "{:url('home/user/index')}"
+            }
+        },
+        mounted() {
+        }
+    });
+</script>
+<style>
+    .van-nav-bar__left .van-nav-bar__text {
+        color: #A19487;
+    }
+
+    .van-nav-bar__right .van-nav-bar__text {
+        color: blue;
+    }
+</style>
+
+
+<div id="app">
+    <!-- <div class="user_card" v-if="userInfo.id">
+     <van-row > -->
+    <!-- <div class="user_head" v-if="userInfo.id">
+    <div class="head_icon" style="width: 1.6rem;height: 1.6rem;border-radius: 0"></div>
+    <div style="color: #fff;background:red;display: inline-block; vertical-align: top;">100分</div>
+    <div class="head_info_username">{{userInfo.username}}</div>
+    <div class="head_info_info">ID:{{userInfo.id+10000}}</div>
+  </div> -->
+    <!-- <van-col span="12" >
+       <span>积分</span>
+       {{userInfo.cardInfo.integral}}
+       <span>会员</span>
+       {{userInfo.cardInfo.integral>100?"VIP会员":"普通会员"}}
+   </van-col> -->
+    <!-- </van-row>
+  </div> -->
+<!--    <div class="shop_show" v-if="userInfo.id">-->
+<!--        <div class="title van-hairline&#45;&#45;bottom">-->
+<!--            <van-row>-->
+<!--                <van-col span="16">-->
+<!--                    店铺介绍:-->
+<!--                </van-col>-->
+<!--            </van-row>-->
+<!--        </div>-->
+<!--        <div class="shop">-->
+<!--            <div class="shop_info">-->
+<!--                <van-button type="primary" size="small" class="btn_white_deep_blue" @click="openInfo">-->
+<!--                    {{infoHeight=="auto"?"收起":"展开"}}-->
+<!--                </van-button>-->
+<!--                <span v-if="infoHeight=='auto' || !userInfo.shopInfo.info ">{{userInfo.shopInfo.info}}</span>-->
+<!--                <span v-else>{{userInfo.shopInfo.info.substring(0,20)}} <span-->
+<!--                        v-if="userInfo.shopInfo.info.length > 20">...</span> </span>-->
+<!--            </div>-->
+<!--            <div class="shop_info_tel  van-hairline&#45;&#45;bottom">-->
+<!--                <i class="iconfont icon-tianchongxing-"></i> 电话：<a href="tel:{{userInfo.shopInfo.tel}}">-->
+<!--                    {{userInfo.shopInfo.tel}}</a>-->
+<!--            </div>-->
+<!--            <div class="shop_info_tel">-->
+<!--                <i class="iconfont icon-weixin"></i> 微信： {{userInfo.shopInfo.wechat}}-->
+<!--                <van-button type="primary" size="small" class="btn_white_deep_k tag-read"-->
+<!--                    :data-clipboard-text="userInfo.shopInfo.wechat" @click="copy()">复制号码-->
+<!--                </van-button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <div class="shop_info_goods_title">以下为本店所有发布</div>
+    <div class="user_index" v-if="userInfo.id">
+    </div>
+    <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad" :offset="1">
+        <div class="list_content">
+            <van-row gutter="1">
+                <van-col span="8" v-for="(item,index) in list" :key="index">
+                    <div class="img" :style="'background-image: url('+item.thumb+');'"
+                        @click="navTo('{:url('Goods/show')}?id='+item.id)">
+                        <div class="title">￥{{item.price}}</div>
+                    </div>
+                </van-col>
+            </van-row>
+        </div>
+    </van-list>
+
+    <!-- 组件不支持跳转保存位置 -->
+    <!-- <div @click.stop='getTop'
+        style="position: fixed; left:0;top: 0;width: 2rem;height: .8rem;z-index:999"></div>
+</div> -->
+
+    <script>
+        var appIndex = new Vue({
+            el: '#app',
+            data: function data() {
+                return {
+                    filter: { page: 1, limit: 18 },
+                    userInfo: {},
+                    list: [],
+                    loading: false,
+                    finished: false,
+                    pageTotal: 0,
+                    noticeNum: 0,
+                    infoHeight: "0.6rem",
+                    thisImage: "",
+                    popupShow: false,
+                };
+            },
+            created: function () {
+                this.getUserInfo()
+                let _this = this
+                console.log('店铺')
+                // if (window.sessionStorage.list_ul6 != undefined && window.sessionStorage.length != 0) {
+                //     console.log(window.sessionStorage.list_ul)
+                //     var top = parseInt(sessionStorage.getItem("top6"));
+                //     top = top ? top : 0;
+                //     var product_ul = JSON.parse(sessionStorage.getItem("list_ul6"));
+                //     var page = parseInt(sessionStorage.getItem("page6"));
+                //     var url = sessionStorage.getItem("url6");
+                //     //判断返回后的页面和上一次的页面地址是否一致
+                //     if (product_ul != null && url == window.location.href) {
+                //         _this.list = product_ul;
+                //         console.log(_this.list)
+                //         setTimeout(() => {
+                //             window.scrollBy(0, Number(top + 252))
+                //         }, 500);
+                //         _this.filter.page = Number(page);
+                //     }
+                // } else {
+                    console.log('sessionStorage没有数据')
+                    this.getUserInfo()
+                    this.getRead()
+                    // this.getUserGoods()
+                // }
+
+            },
+            methods: {
+                copy() {
+                    var clipboard = new ClipboardJS('.tag-read')
+                    clipboard.on('success', e => {
+                        console.log('复制成功')
+                        // 释放内存
+                        clipboard.destroy()
+                    })
+                    clipboard.on('error', e => {
+                        // 不支持复制
+                        console.log('该浏览器不支持自动复制')
+                        // 释放内存
+                        clipboard.destroy()
+                    })
+                },
+                openInfo() {
+
+                    console.log(this.infoHeight)
+                    if (this.infoHeight == "auto") {
+                        this.infoHeight = "0.6rem"
+                    } else {
+                        this.infoHeight = "auto"
+                    }
+                },
+                getUserInfo() {
+                    var _this = this
+                    axios({
+                        method: 'post',
+                        url: '',
+                        data: {
+                            id: '{$getData.id}'
+                        },
+                    }).then(function (resp) {
+                        _this.userInfo = resp.data
+                    }).catch(resp => {
+                        console.log('请求失败：' + resp.status + ',' + resp.statusText);
+                    });
+                },
+                getUserGoods() {
+                    var _this = this
+
+                    axios({
+                        method: 'post',
+                        url: '{:url("getUserGoods")}?id={$getData.id}',
+                        data: _this.filter,
+                    }).then(function (resp) {
+                        _this.loading = false;
+                        // if (window.sessionStorage.list_ul6 == undefined) {
+                            _this.list = _this.list.concat(resp.data.data);
+                        // }
+                        _this.pageTotal = resp.data.count
+                        _this.filter.page++
+                        if (_this.list.length >= _this.pageTotal) {
+                            _this.finished = true;
+                        }
+                    }).catch(resp => {
+                        console.log('请求失败：' + resp.status + ',' + resp.statusText);
+                    });
+
+
+                },
+                onLoad() {
+                    this.page++;
+                    this.getUserGoods();
+                },
+                navTo: function (url) {
+                    let _this = this
+                    sessionStorage.clear()
+                    // console.log(sessionStorage)
+                    sessionStorage.setItem("list_ul6", `${JSON.stringify(_this.list)}`);
+                    sessionStorage.setItem("top6", `${window.pageYOffset}`);
+                    sessionStorage.setItem("page6", `${_this.filter.page - 1}`);
+                    sessionStorage.setItem("url6", window.location.href);
+                    console.log(sessionStorage)
+                    setTimeout(() => {
+                        window.location.href = url
+                    }, 200)
+                },
+                getRead: function (url) {
+                    var _this = this
+                    axios({
+                        method: 'post',
+                        url: '{:url("getReadNotice")}',
+                        data: {},
+                    }).then(function (resp) {
+                        _this.noticeNum = resp.data.data
+                    }).catch(resp => {
+                        console.log('请求失败：' + resp.status + ',' + resp.statusText);
+                    });
+                }
+            },
+            mounted() {
+            }
+        });
+
+    </script>

@@ -1,0 +1,3569 @@
+---------------------------------------------------------------
+[ 2020-11-01T10:05:58+08:00 ] 192.168.1.10 GET /
+[ info ] 192.168.1.10:8001/ [运行时间：0.416505s][吞吐率：2.40req/s] [内存消耗：2,499.35kb] [文件加载：50]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '192.168.1.10:8001',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Index->index[ E:\asd1028\fszb1027\app\home\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.045428s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.070584s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.003732s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001356s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_category` [ RunTime:0.001917s ]
+[ sql ] [ SQL ] SELECT MIN(parentid) AS tp_min FROM `tp_category` WHERE  `parentid` <> 0 LIMIT 1 [ RunTime:0.019094s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_category` WHERE  `parentid` = 1 ORDER BY listorder asc LIMIT 1 [ RunTime:0.002744s ]
+---------------------------------------------------------------
+[ 2020-11-01T10:07:42+08:00 ] 192.168.1.10 GET /w56mn23fs.php
+[ info ] 192.168.1.10:8001/w56mn23fs.php [运行时间：0.185256s][吞吐率：5.40req/s] [内存消耗：1,743.01kb] [文件加载：44]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-11-01T10:07:42+08:00 ] 192.168.1.10 GET /w56mn23fs.php/login/index.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/login/index.html [运行时间：0.096288s][吞吐率：10.39req/s] [内存消耗：1,857.29kb] [文件加载：45]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Login->index[ E:\asd1028\fszb1027\app\admin\controller\Login.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027/app/admin\view\login\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-11-01T10:07:42+08:00 ] 192.168.1.10 GET /w56mn23fs.php/captcha.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/captcha.html [运行时间：0.204354s][吞吐率：4.89req/s] [内存消耗：1,458.79kb] [文件加载：33]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/login/index.html',
+  'accept' => 'image/avif,image/webp,image/apng,image/*,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ E:\asd1028\fszb1027\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-11-01T10:08:00+08:00 ] 192.168.1.10 POST /w56mn23fs.php/login/index.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/login/index.html [运行时间：0.177391s][吞吐率：5.64req/s] [内存消耗：2,698.41kb] [文件加载：51]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '42',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/login/index.html',
+  'origin' => 'http://192.168.1.10:8001',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => '*/*',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+)
+[ info ] [ PARAM ] array (
+  'username' => 'admin',
+  'password' => 'admin',
+  'captcha' => 'ylab',
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Login->index[ E:\asd1028\fszb1027\app\admin\controller\Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006721s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.044462s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `username` = 'admin' LIMIT 1 [ RunTime:0.014961s ]
+---------------------------------------------------------------
+[ 2020-11-01T10:08:00+08:00 ] 192.168.1.10 GET /w56mn23fs.php/captcha.html?id=0.5305467035731837
+[ info ] 192.168.1.10:8001/w56mn23fs.php/captcha.html?id=0.5305467035731837 [运行时间：0.039708s][吞吐率：25.18req/s] [内存消耗：1,459.12kb] [文件加载：33]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/login/index.html',
+  'accept' => 'image/avif,image/webp,image/apng,image/*,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ E:\asd1028\fszb1027\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-11-01T10:08:08+08:00 ] 192.168.1.10 GET /w56mn23fs.php/captcha.html?id=0.5305467035731837?id=0.6444666572459654
+[ info ] 192.168.1.10:8001/w56mn23fs.php/captcha.html?id=0.5305467035731837?id=0.6444666572459654 [运行时间：0.018405s][吞吐率：54.33req/s] [内存消耗：1,459.30kb] [文件加载：33]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/login/index.html',
+  'accept' => 'image/avif,image/webp,image/apng,image/*,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ E:\asd1028\fszb1027\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-11-01T10:08:14+08:00 ] 192.168.1.10 POST /w56mn23fs.php/login/index.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/login/index.html [运行时间：0.201816s][吞吐率：4.96req/s] [内存消耗：2,771.48kb] [文件加载：55]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '43',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/login/index.html',
+  'origin' => 'http://192.168.1.10:8001',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => '*/*',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+)
+[ info ] [ PARAM ] array (
+  'username' => 'admin',
+  'password' => '123456',
+  'captcha' => 'acl8',
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Login->index[ E:\asd1028\fszb1027\app\admin\controller\Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012453s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.003718s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `username` = 'admin' LIMIT 1 [ RunTime:0.002717s ]
+[ sql ] [ SQL ] UPDATE `tp_admin`  SET `ip`='192.168.1.10'  WHERE  `admin_id` = 1 [ RunTime:0.046945s ]
+---------------------------------------------------------------
+[ 2020-11-01T10:08:16+08:00 ] 192.168.1.10 GET /w56mn23fs.php/index/index.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/index/index.html [运行时间：0.329714s][吞吐率：3.03req/s] [内存消耗：2,784.20kb] [文件加载：60]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/login/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Index->index[ E:\asd1028\fszb1027\app\admin\controller\Index.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ VIEW ] E:\asd1028\fszb1027/app/admin\view\index\index.html [ array (
+  0 => 'menus',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.013679s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.004303s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.001559s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_auth_rule` [ RunTime:0.059193s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_auth_rule` WHERE  (  menustatus=1 ) ORDER BY `sort` [ RunTime:0.068658s ]
+---------------------------------------------------------------
+[ 2020-11-01T10:08:16+08:00 ] 192.168.1.10 GET /w56mn23fs.php/Index/main.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/Index/main.html [运行时间：0.101469s][吞吐率：9.86req/s] [内存消耗：2,621.43kb] [文件加载：56]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Index',
+    2 => 'main',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Index->main[ E:\asd1028\fszb1027\app\admin\controller\Index.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027/app/admin\view\index\main.html [ array (
+  0 => 'config',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006259s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.006131s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.004169s ]
+[ sql ] [ SQL ] SELECT VERSION() AS ver [ RunTime:0.032080s ]
+---------------------------------------------------------------
+[ 2020-11-01T10:08:22+08:00 ] 192.168.1.10 GET /w56mn23fs.php/Category/index.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/Category/index.html [运行时间：0.125782s][吞吐率：7.95req/s] [内存消耗：2,765.92kb] [文件加载：58]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Category',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Category->index[ E:\asd1028\fszb1027\app\admin\controller\Category.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027/app/admin\view\category\index.html [ array (
+  0 => 'module',
+  1 => 'categorys',
+  2 => 'title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012018s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.003944s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.002597s ]
+---------------------------------------------------------------
+[ 2020-11-01T10:13:30+08:00 ] 192.168.1.10 GET /w56mn23fs.php/page/edit.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/page/edit.html [运行时间：0.718578s][吞吐率：1.39req/s] [内存消耗：2,580.05kb] [文件加载：60]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'page',
+    2 => 'edit',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\EmptyController->edit[ E:\asd1028\fszb1027\app\admin\controller\EmptyController.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003631s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.003285s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.002008s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_page` [ RunTime:0.070059s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_page` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.010417s ]
+[ error ] [8]未定义数组索引: [E:\asd1028\fszb1027\app\admin\controller\EmptyController.php:80]
+[ error ] [8]未定义数组索引: [E:\asd1028\fszb1027\app\admin\controller\EmptyController.php:81]
+[ error ] [10501]SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'title' cannot be null[E:\asd1028\fszb1027\think\library\think\db\Connection.php:455]
+---------------------------------------------------------------
+[ 2020-11-01T10:13:34+08:00 ] 192.168.1.10 GET /w56mn23fs.php/Goods/index.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/Goods/index.html [运行时间：0.188091s][吞吐率：5.32req/s] [内存消耗：2,798.83kb] [文件加载：57]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Goods',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Goods->index[ E:\asd1028\fszb1027\app\admin\controller\Goods.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027/app/admin\view\goods\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004101s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.003619s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.002220s ]
+---------------------------------------------------------------
+[ 2020-11-01T10:13:35+08:00 ] 192.168.1.10 POST /w56mn23fs.php/Goods/index.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/Goods/index.html [运行时间：0.201097s][吞吐率：4.97req/s] [内存消耗：2,666.87kb] [文件加载：60]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Goods',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '10',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/Goods/index.html',
+  'origin' => 'http://192.168.1.10:8001',
+  'content-type' => 'application/json;charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+)
+[ info ] [ PARAM ] array (
+  'page' => 1,
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Goods->index[ E:\asd1028\fszb1027\app\admin\controller\Goods.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003347s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.004762s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.002408s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_goods` [ RunTime:0.135128s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_goods` `a` LEFT JOIN `tp_category` `at` ON `a`.`catid`=`at`.`id` LIMIT 1 [ RunTime:0.007487s ]
+[ sql ] [ SQL ] SELECT `a`.*,at.catname as cate FROM `tp_goods` `a` LEFT JOIN `tp_category` `at` ON `a`.`catid`=`at`.`id` ORDER BY `a`.`id` LIMIT 0,15 [ RunTime:0.004734s ]
+[ error ] [8]未定义变量: map[E:\asd1028\fszb1027\app\admin\controller\Goods.php:30]
+---------------------------------------------------------------
+[ 2020-11-01T10:13:35+08:00 ] 192.168.1.10 POST /w56mn23fs.php/Goods/getLevel.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/Goods/getLevel.html [运行时间：0.053267s][吞吐率：18.77req/s] [内存消耗：2,556.95kb] [文件加载：54]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Goods',
+    2 => 'getLevel',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '2',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/Goods/index.html',
+  'origin' => 'http://192.168.1.10:8001',
+  'content-type' => 'application/json;charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Goods->getLevel[ E:\asd1028\fszb1027\app\admin\controller\Goods.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012898s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.004200s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.002288s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_category` [ RunTime:0.002548s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_category` WHERE  `parentid` = 0 [ RunTime:0.001471s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_category` WHERE  `parentid` = 1 [ RunTime:0.001528s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_category` WHERE  `parentid` = 11 [ RunTime:0.001538s ]
+---------------------------------------------------------------
+[ 2020-11-01T10:13:35+08:00 ] 192.168.1.10 POST /w56mn23fs.php/Goods/tagList.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/Goods/tagList.html [运行时间：0.075260s][吞吐率：13.29req/s] [内存消耗：2,534.65kb] [文件加载：58]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Goods',
+    2 => 'tagList',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '2',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/Goods/index.html',
+  'origin' => 'http://192.168.1.10:8001',
+  'content-type' => 'application/json;charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Goods->tagList[ E:\asd1028\fszb1027\app\admin\controller\Goods.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003251s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.002086s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.001320s ]
+[ error ] [10501]SQLSTATE[42S02]: Base table or view not found: 1146 Table 'shop.tp_tend_tag' doesn't exist[E:\asd1028\fszb1027\think\library\think\db\Connection.php:387]
+---------------------------------------------------------------
+[ 2020-11-01T10:13:35+08:00 ] 192.168.1.10 POST /w56mn23fs.php/Goods/tagComList.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/Goods/tagComList.html [运行时间：0.099516s][吞吐率：10.05req/s] [内存消耗：2,534.71kb] [文件加载：58]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Goods',
+    2 => 'tagComList',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '2',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/Goods/index.html',
+  'origin' => 'http://192.168.1.10:8001',
+  'content-type' => 'application/json;charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Goods->tagComList[ E:\asd1028\fszb1027\app\admin\controller\Goods.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004144s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.004242s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.002405s ]
+[ error ] [10501]SQLSTATE[42S02]: Base table or view not found: 1146 Table 'shop.tp_tend_tag_com' doesn't exist[E:\asd1028\fszb1027\think\library\think\db\Connection.php:387]
+---------------------------------------------------------------
+[ 2020-11-01T10:14:03+08:00 ] 192.168.1.10 GET /w56mn23fs.php/Users/index.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/Users/index.html [运行时间：0.236390s][吞吐率：4.23req/s] [内存消耗：2,717.06kb] [文件加载：57]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Users',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Users->index[ E:\asd1028\fszb1027\app\admin\controller\Users.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027/app/admin\view\users\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.014162s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.005572s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.003420s ]
+---------------------------------------------------------------
+[ 2020-11-01T10:14:03+08:00 ] 192.168.1.10 POST /w56mn23fs.php/Users/index.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/Users/index.html [运行时间：0.058187s][吞吐率：17.19req/s] [内存消耗：2,638.63kb] [文件加载：57]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Users',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '15',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'skin=0; PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/Users/index.html',
+  'origin' => 'http://192.168.1.10:8001',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Users->index[ E:\asd1028\fszb1027\app\admin\controller\Users.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012003s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.003039s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.002268s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.006040s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_users` `u` LEFT JOIN `tp_users_card` `ul` ON `u`.`id`=`ul`.`user_id` WHERE  ( `u`.`email` LIKE '%%' OR `u`.`mobile` LIKE '%%' OR `u`.`username` LIKE '%%' ) LIMIT 1 [ RunTime:0.006907s ]
+[ sql ] [ SQL ] SELECT `u`.*,`ul`.`integral` FROM `tp_users` `u` LEFT JOIN `tp_users_card` `ul` ON `u`.`id`=`ul`.`user_id` WHERE  ( `u`.`email` LIKE '%%' OR `u`.`mobile` LIKE '%%' OR `u`.`username` LIKE '%%' ) ORDER BY u.id desc LIMIT 0,10 [ RunTime:0.004182s ]
+---------------------------------------------------------------
+[ 2020-11-01T10:14:05+08:00 ] 192.168.1.10 GET /w56mn23fs.php/Base/feedback.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/Base/feedback.html [运行时间：0.168470s][吞吐率：5.94req/s] [内存消耗：2,807.44kb] [文件加载：57]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Base',
+    2 => 'feedback',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Base->feedback[ E:\asd1028\fszb1027\app\admin\controller\Base.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027/app/admin\view\base\feedback.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012197s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.004014s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.002391s ]
+---------------------------------------------------------------
+[ 2020-11-01T10:14:05+08:00 ] 192.168.1.10 POST /w56mn23fs.php/Base/feedback.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/Base/feedback.html [运行时间：0.111208s][吞吐率：8.99req/s] [内存消耗：2,677.15kb] [文件加载：60]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Base',
+    2 => 'feedback',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '10',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/Base/feedback.html',
+  'origin' => 'http://192.168.1.10:8001',
+  'content-type' => 'application/json;charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+)
+[ info ] [ PARAM ] array (
+  'page' => 1,
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Base->feedback[ E:\asd1028\fszb1027\app\admin\controller\Base.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004129s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.004284s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.001853s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_feedback` [ RunTime:0.063497s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_feedback` `a` LEFT JOIN `tp_users` `at` ON `a`.`user_id`=`at`.`id` LIMIT 1 [ RunTime:0.003014s ]
+[ sql ] [ SQL ] SELECT `a`.*,`at`.`username`,`at`.`mobile` FROM `tp_feedback` `a` LEFT JOIN `tp_users` `at` ON `a`.`user_id`=`at`.`id` ORDER BY `a`.`id` LIMIT 0,15 [ RunTime:0.001356s ]
+[ error ] [8]未定义变量: map[E:\asd1028\fszb1027\app\admin\controller\Base.php:82]
+---------------------------------------------------------------
+[ 2020-11-01T10:14:05+08:00 ] 192.168.1.10 POST /w56mn23fs.php/Base/getLevel.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/Base/getLevel.html [运行时间：0.130380s][吞吐率：7.67req/s] [内存消耗：2,683.84kb] [文件加载：57]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Base',
+    2 => 'getLevel',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '2',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/Base/feedback.html',
+  'origin' => 'http://192.168.1.10:8001',
+  'content-type' => 'application/json;charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Common->_empty[ E:\asd1028\fszb1027\app\admin\controller\Common.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027\think\tpl\dispatch_jump.tpl [ array (
+  0 => 'code',
+  1 => 'msg',
+  2 => 'data',
+  3 => 'url',
+  4 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002854s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.003336s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.002100s ]
+---------------------------------------------------------------
+[ 2020-11-01T10:14:05+08:00 ] 192.168.1.10 POST /w56mn23fs.php/Base/tagList.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/Base/tagList.html [运行时间：0.140411s][吞吐率：7.12req/s] [内存消耗：2,551.64kb] [文件加载：55]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Base',
+    2 => 'tagList',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '2',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/Base/feedback.html',
+  'origin' => 'http://192.168.1.10:8001',
+  'content-type' => 'application/json;charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Common->_empty[ E:\asd1028\fszb1027\app\admin\controller\Common.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027\think\tpl\dispatch_jump.tpl [ array (
+  0 => 'code',
+  1 => 'msg',
+  2 => 'data',
+  3 => 'url',
+  4 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012527s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.002298s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.001365s ]
+---------------------------------------------------------------
+[ 2020-11-01T10:14:05+08:00 ] 192.168.1.10 POST /w56mn23fs.php/Base/tagComList.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/Base/tagComList.html [运行时间：0.096430s][吞吐率：10.37req/s] [内存消耗：2,551.66kb] [文件加载：55]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Base',
+    2 => 'tagComList',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '2',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/Base/feedback.html',
+  'origin' => 'http://192.168.1.10:8001',
+  'content-type' => 'application/json;charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Common->_empty[ E:\asd1028\fszb1027\app\admin\controller\Common.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027\think\tpl\dispatch_jump.tpl [ array (
+  0 => 'code',
+  1 => 'msg',
+  2 => 'data',
+  3 => 'url',
+  4 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012714s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.002457s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.001434s ]
+---------------------------------------------------------------
+[ 2020-11-01T10:14:06+08:00 ] 192.168.1.10 GET /w56mn23fs.php/Ad/type.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/Ad/type.html [运行时间：0.184987s][吞吐率：5.41req/s] [内存消耗：2,711.30kb] [文件加载：57]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Ad',
+    2 => 'type',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Ad->type[ E:\asd1028\fszb1027\app\admin\controller\Ad.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027/app/admin\view\ad\type.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006933s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.007087s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.003701s ]
+---------------------------------------------------------------
+[ 2020-11-01T10:14:06+08:00 ] 192.168.1.10 POST /w56mn23fs.php/Ad/type.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/Ad/type.html [运行时间：0.158777s][吞吐率：6.30req/s] [内存消耗：2,513.58kb] [文件加载：54]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Ad',
+    2 => 'type',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '15',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'skin=0; PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/Ad/type.html',
+  'origin' => 'http://192.168.1.10:8001',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Ad->type[ E:\asd1028\fszb1027\app\admin\controller\Ad.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.013113s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.002573s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.001363s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_ad_type` [ RunTime:0.108457s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_ad_type` WHERE  `name` LIKE '%%' ORDER BY `sort` [ RunTime:0.005597s ]
+---------------------------------------------------------------
+[ 2020-11-01T10:14:09+08:00 ] 192.168.1.10 GET /w56mn23fs.php/Base/notice.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/Base/notice.html [运行时间：0.145258s][吞吐率：6.88req/s] [内存消耗：2,766.68kb] [文件加载：57]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Base',
+    2 => 'notice',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Base->notice[ E:\asd1028\fszb1027\app\admin\controller\Base.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027/app/admin\view\base\notice.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.014289s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.002827s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.001364s ]
+---------------------------------------------------------------
+[ 2020-11-01T10:14:09+08:00 ] 192.168.1.10 POST /w56mn23fs.php/Base/notice.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/Base/notice.html [运行时间：0.189686s][吞吐率：5.27req/s] [内存消耗：2,678.63kb] [文件加载：60]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Base',
+    2 => 'notice',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '10',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/Base/notice.html',
+  'origin' => 'http://192.168.1.10:8001',
+  'content-type' => 'application/json;charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+)
+[ info ] [ PARAM ] array (
+  'page' => 1,
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Base->notice[ E:\asd1028\fszb1027\app\admin\controller\Base.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004624s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.002814s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.001347s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_notice` [ RunTime:0.018533s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_notice` `a` LIMIT 1 [ RunTime:0.003046s ]
+[ sql ] [ SQL ] SELECT `a`.* FROM `tp_notice` `a` ORDER BY a.id desc LIMIT 0,15 [ RunTime:0.003887s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_regions` [ RunTime:0.118889s ]
+[ sql ] [ SQL ] SELECT `name` FROM `tp_regions` WHERE  `id` IN (0,0,0) [ RunTime:0.006173s ]
+[ error ] [8]未定义变量: map[E:\asd1028\fszb1027\app\admin\controller\Base.php:305]
+[ error ] [8]未定义变量: page[E:\asd1028\fszb1027\app\admin\controller\Base.php:307]
+[ error ] [8]未定义数组索引: province[E:\asd1028\fszb1027\app\admin\controller\Base.php:310]
+[ error ] [8]未定义数组索引: city[E:\asd1028\fszb1027\app\admin\controller\Base.php:310]
+[ error ] [8]未定义数组索引: district[E:\asd1028\fszb1027\app\admin\controller\Base.php:310]
+[ error ] [8]未定义数组索引: address[E:\asd1028\fszb1027\app\admin\controller\Base.php:313]
+---------------------------------------------------------------
+[ 2020-11-01T10:14:17+08:00 ] 192.168.1.10 GET /w56mn23fs.php/Base/recharge.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/Base/recharge.html [运行时间：0.140892s][吞吐率：7.10req/s] [内存消耗：2,777.30kb] [文件加载：57]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Base',
+    2 => 'recharge',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Base->recharge[ E:\asd1028\fszb1027\app\admin\controller\Base.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027/app/admin\view\base\recharge.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004769s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.003415s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.001746s ]
+---------------------------------------------------------------
+[ 2020-11-01T10:14:17+08:00 ] 192.168.1.10 POST /w56mn23fs.php/Base/recharge.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/Base/recharge.html [运行时间：0.098694s][吞吐率：10.13req/s] [内存消耗：2,673.59kb] [文件加载：60]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Base',
+    2 => 'recharge',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '10',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/Base/recharge.html',
+  'origin' => 'http://192.168.1.10:8001',
+  'content-type' => 'application/json;charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+)
+[ info ] [ PARAM ] array (
+  'page' => 1,
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Base->recharge[ E:\asd1028\fszb1027\app\admin\controller\Base.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.014025s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.003260s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.002060s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_recharge` [ RunTime:0.041437s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_recharge` `a` LIMIT 1 [ RunTime:0.005050s ]
+[ sql ] [ SQL ] SELECT `a`.* FROM `tp_recharge` `a` ORDER BY `a`.`id` LIMIT 0,15 [ RunTime:0.003891s ]
+[ error ] [8]未定义变量: map[E:\asd1028\fszb1027\app\admin\controller\Base.php:24]
+[ error ] [8]未定义变量: page[E:\asd1028\fszb1027\app\admin\controller\Base.php:26]
+[ error ] [8]未定义变量: address[E:\asd1028\fszb1027\app\admin\controller\Base.php:29]
+---------------------------------------------------------------
+[ 2020-11-01T10:14:17+08:00 ] 192.168.1.10 POST /w56mn23fs.php/Base/getDepartment.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/Base/getDepartment.html [运行时间：0.149230s][吞吐率：6.70req/s] [内存消耗：2,553.52kb] [文件加载：58]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Base',
+    2 => 'getDepartment',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '2',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/Base/recharge.html',
+  'origin' => 'http://192.168.1.10:8001',
+  'content-type' => 'application/json;charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Base->getDepartment[ E:\asd1028\fszb1027\app\admin\controller\Base.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.013524s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.007146s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.004652s ]
+[ error ] [10501]SQLSTATE[42S02]: Base table or view not found: 1146 Table 'shop.tp_department' doesn't exist[E:\asd1028\fszb1027\think\library\think\db\Connection.php:387]
+---------------------------------------------------------------
+[ 2020-11-01T10:17:29+08:00 ] 192.168.1.10 GET /w56mn23fs.php/System/system.html
+[ info ] 192.168.1.10:8001/w56mn23fs.php/System/system.html [运行时间：0.652971s][吞吐率：1.53req/s] [内存消耗：2,727.14kb] [文件加载：57]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'System',
+    2 => 'system',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/w56mn23fs.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\System->system[ E:\asd1028\fszb1027\app\admin\controller\System.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027/app/admin\view\system\system.html [ array (
+  0 => 'system',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.013463s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.004478s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.002692s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_system` [ RunTime:0.148579s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_system` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.005289s ]
+---------------------------------------------------------------
+[ 2020-11-01T11:45:24+08:00 ] 192.168.1.10 GET /
+[ info ] 192.168.1.10:8001/ [运行时间：1.302474s][吞吐率：0.77req/s] [内存消耗：2,501.13kb] [文件加载：50]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Index->index[ E:\asd1028\fszb1027\app\home\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.360862s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.165745s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.029796s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.006442s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_category` [ RunTime:0.009517s ]
+[ sql ] [ SQL ] SELECT MIN(parentid) AS tp_min FROM `tp_category` WHERE  `parentid` <> 0 LIMIT 1 [ RunTime:0.029381s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_category` WHERE  `parentid` = 1 ORDER BY listorder asc LIMIT 1 [ RunTime:0.088214s ]
+---------------------------------------------------------------
+[ 2020-11-01T11:45:45+08:00 ] 192.168.1.10 GET /admin.php
+[ info ] 192.168.1.10:8001/admin.php [运行时间：0.364190s][吞吐率：2.75req/s] [内存消耗：2,634.23kb] [文件加载：58]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Index->index[ E:\asd1028\fszb1027\app\admin\controller\Index.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ VIEW ] E:\asd1028\fszb1027/app/admin\view\index\index.html [ array (
+  0 => 'menus',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003628s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.003017s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.001705s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_auth_rule` [ RunTime:0.033677s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_auth_rule` WHERE  (  menustatus=1 ) ORDER BY `sort` [ RunTime:0.037756s ]
+---------------------------------------------------------------
+[ 2020-11-01T11:45:45+08:00 ] 192.168.1.10 GET /admin.php/Index/main.html
+[ info ] 192.168.1.10:8001/admin.php/Index/main.html [运行时间：0.113581s][吞吐率：8.80req/s] [内存消耗：2,486.09kb] [文件加载：54]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Index',
+    2 => 'main',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/admin.php',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\asd1028\fszb1027/app/admin\lang\zh-cn.php
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Index->main[ E:\asd1028\fszb1027\app\admin\controller\Index.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027/app/admin\view\index\main.html [ array (
+  0 => 'config',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002871s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.005649s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.002210s ]
+[ sql ] [ SQL ] SELECT VERSION() AS ver [ RunTime:0.003351s ]
+---------------------------------------------------------------
+[ 2020-11-01T11:45:52+08:00 ] 192.168.1.10 GET /index.php
+[ info ] 192.168.1.10:8001/index.php [运行时间：0.051664s][吞吐率：19.36req/s] [内存消耗：2,501.14kb] [文件加载：50]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Index->index[ E:\asd1028\fszb1027\app\home\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003290s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.002636s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.001422s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001062s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_category` [ RunTime:0.002044s ]
+[ sql ] [ SQL ] SELECT MIN(parentid) AS tp_min FROM `tp_category` WHERE  `parentid` <> 0 LIMIT 1 [ RunTime:0.001586s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_category` WHERE  `parentid` = 1 ORDER BY listorder asc LIMIT 1 [ RunTime:0.001401s ]
+---------------------------------------------------------------
+[ 2020-11-01T11:45:52+08:00 ] 192.168.1.10 GET /index.php/Goods-list_list-catid-17.html
+[ info ] 192.168.1.10:8001/index.php/Goods-list_list-catid-17.html [运行时间：0.269393s][吞吐率：3.71req/s] [内存消耗：2,738.20kb] [文件加载：52]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'Goods',
+    2 => 'list_list',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'catid' => '17',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Goods->list_list[ E:\asd1028\fszb1027\app\home\controller\Goods.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027/app/home\view\goods/list_list.html [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'foot_active',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011539s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.002902s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.001754s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001478s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_category` [ RunTime:0.002625s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_category` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.025529s ]
+---------------------------------------------------------------
+[ 2020-11-01T11:45:52+08:00 ] 192.168.1.10 GET /index.php/statics/vue/index.css
+[ info ] 192.168.1.10:8001/index.php/statics/vue/index.css [运行时间：0.191132s][吞吐率：5.23req/s] [内存消耗：2,462.07kb] [文件加载：52]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'statics',
+    2 => 'vue',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Goods-list_list-catid-17.html',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Common->_empty[ E:\asd1028\fszb1027\app\home\controller\Common.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027\think\tpl\dispatch_jump.tpl [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'code',
+  3 => 'msg',
+  4 => 'data',
+  5 => 'url',
+  6 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.123468s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.004274s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.002185s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001125s ]
+[ error ] [8]未定义变量: dao[E:\asd1028\fszb1027\app\home\controller\EmptyController.php:15]
+---------------------------------------------------------------
+[ 2020-11-01T11:45:53+08:00 ] 192.168.1.10 GET /index.php/statics/vue/vant.min.js
+[ info ] 192.168.1.10:8001/index.php/statics/vue/vant.min.js [运行时间：0.218245s][吞吐率：4.58req/s] [内存消耗：2,462.05kb] [文件加载：52]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'statics',
+    2 => 'vue',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Goods-list_list-catid-17.html',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Common->_empty[ E:\asd1028\fszb1027\app\home\controller\Common.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027\think\tpl\dispatch_jump.tpl [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'code',
+  3 => 'msg',
+  4 => 'data',
+  5 => 'url',
+  6 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002917s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.004131s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.003099s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.003052s ]
+[ error ] [8]未定义变量: dao[E:\asd1028\fszb1027\app\home\controller\EmptyController.php:15]
+---------------------------------------------------------------
+[ 2020-11-01T11:45:53+08:00 ] 192.168.1.10 POST /index.php/Goods-index.html
+[ info ] 192.168.1.10:8001/index.php/Goods-index.html [运行时间：0.198022s][吞吐率：5.05req/s] [内存消耗：2,453.29kb] [文件加载：48]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'Goods',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '21',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Goods-list_list-catid-17.html',
+  'origin' => 'http://192.168.1.10:8001',
+  'content-type' => 'application/json;charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+)
+[ info ] [ PARAM ] array (
+  'page' => 1,
+  'limit' => 18,
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Goods->index[ E:\asd1028\fszb1027\app\home\controller\Goods.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.013678s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.002900s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.001614s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001131s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_category` [ RunTime:0.001833s ]
+[ sql ] [ SQL ] SELECT `id`,catname as text FROM `tp_category` WHERE  `parentid` = 0 [ RunTime:0.001946s ]
+[ sql ] [ SQL ] SELECT `id`,catname as text,`listorder` FROM `tp_category` WHERE  `parentid` = 1 ORDER BY listorder asc [ RunTime:0.001517s ]
+[ sql ] [ SQL ] SELECT `id`,catname as text,`listorder` FROM `tp_category` WHERE  `parentid` = 11 ORDER BY listorder asc [ RunTime:0.000959s ]
+---------------------------------------------------------------
+[ 2020-11-01T11:45:53+08:00 ] 192.168.1.10 POST /index.php/Goods-index.html
+[ info ] 192.168.1.10:8001/index.php/Goods-index.html [运行时间：0.263274s][吞吐率：3.80req/s] [内存消耗：2,453.29kb] [文件加载：48]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'Goods',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '21',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Goods-list_list-catid-17.html',
+  'origin' => 'http://192.168.1.10:8001',
+  'content-type' => 'application/json;charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+)
+[ info ] [ PARAM ] array (
+  'page' => 1,
+  'limit' => 18,
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Goods->index[ E:\asd1028\fszb1027\app\home\controller\Goods.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.013907s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.007671s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.004603s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.003898s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_category` [ RunTime:0.006399s ]
+[ sql ] [ SQL ] SELECT `id`,catname as text FROM `tp_category` WHERE  `parentid` = 0 [ RunTime:0.003953s ]
+[ sql ] [ SQL ] SELECT `id`,catname as text,`listorder` FROM `tp_category` WHERE  `parentid` = 1 ORDER BY listorder asc [ RunTime:0.003836s ]
+[ sql ] [ SQL ] SELECT `id`,catname as text,`listorder` FROM `tp_category` WHERE  `parentid` = 11 ORDER BY listorder asc [ RunTime:0.003479s ]
+---------------------------------------------------------------
+[ 2020-11-01T11:45:56+08:00 ] 192.168.1.10 GET /index.php/statics/vue/index.css
+[ info ] 192.168.1.10:8001/index.php/statics/vue/index.css [运行时间：0.047732s][吞吐率：20.95req/s] [内存消耗：2,462.07kb] [文件加载：52]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'statics',
+    2 => 'vue',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Goods-list_list-catid-17.html',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Common->_empty[ E:\asd1028\fszb1027\app\home\controller\Common.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027\think\tpl\dispatch_jump.tpl [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'code',
+  3 => 'msg',
+  4 => 'data',
+  5 => 'url',
+  6 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012372s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.003125s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.002168s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001754s ]
+[ error ] [8]未定义变量: dao[E:\asd1028\fszb1027\app\home\controller\EmptyController.php:15]
+---------------------------------------------------------------
+[ 2020-11-01T11:49:23+08:00 ] 192.168.1.10 GET /index.php/Index-index_hot.html
+[ info ] 192.168.1.10:8001/index.php/Index-index_hot.html [运行时间：0.169926s][吞吐率：5.88req/s] [内存消耗：2,631.45kb] [文件加载：52]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'Index',
+    2 => 'index_hot',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Goods-list_list-catid-17.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Index->index_hot[ E:\asd1028\fszb1027\app\home\controller\Index.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027/app/home\view\index/index.html [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'foot_active',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012826s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.002249s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.001629s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.000937s ]
+---------------------------------------------------------------
+[ 2020-11-01T11:49:23+08:00 ] 192.168.1.10 GET /index.php/statics/vue/index.css
+[ info ] 192.168.1.10:8001/index.php/statics/vue/index.css [运行时间：0.056705s][吞吐率：17.64req/s] [内存消耗：2,462.09kb] [文件加载：52]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'statics',
+    2 => 'vue',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Index-index_hot.html',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Common->_empty[ E:\asd1028\fszb1027\app\home\controller\Common.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027\think\tpl\dispatch_jump.tpl [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'code',
+  3 => 'msg',
+  4 => 'data',
+  5 => 'url',
+  6 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012652s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.005148s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.002518s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.002022s ]
+[ error ] [8]未定义变量: dao[E:\asd1028\fszb1027\app\home\controller\EmptyController.php:15]
+---------------------------------------------------------------
+[ 2020-11-01T11:49:23+08:00 ] 192.168.1.10 GET /index.php/statics/vue/vant.min.js
+[ info ] 192.168.1.10:8001/index.php/statics/vue/vant.min.js [运行时间：0.090431s][吞吐率：11.06req/s] [内存消耗：2,462.07kb] [文件加载：52]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'statics',
+    2 => 'vue',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Index-index_hot.html',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Common->_empty[ E:\asd1028\fszb1027\app\home\controller\Common.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027\think\tpl\dispatch_jump.tpl [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'code',
+  3 => 'msg',
+  4 => 'data',
+  5 => 'url',
+  6 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004976s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.004864s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.003763s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.003072s ]
+[ error ] [8]未定义变量: dao[E:\asd1028\fszb1027\app\home\controller\EmptyController.php:15]
+---------------------------------------------------------------
+[ 2020-11-01T11:49:23+08:00 ] 192.168.1.10 POST /index.php/Index-index_hot.html
+[ info ] 192.168.1.10:8001/index.php/Index-index_hot.html [运行时间：0.045828s][吞吐率：21.82req/s] [内存消耗：2,416.11kb] [文件加载：48]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'Index',
+    2 => 'index_hot',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '2',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Index-index_hot.html',
+  'origin' => 'http://192.168.1.10:8001',
+  'content-type' => 'application/json;charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Index->index_hot[ E:\asd1028\fszb1027\app\home\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005035s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.005157s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.002250s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.002484s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_goods` [ RunTime:0.001443s ]
+[ sql ] [ SQL ] SELECT `id`,`price`,`thumb` FROM `tp_goods` ORDER BY addtime asc , id desc [ RunTime:0.001124s ]
+---------------------------------------------------------------
+[ 2020-11-01T11:49:55+08:00 ] 192.168.1.10 GET /index.php/Index-index_hot.html
+[ info ] 192.168.1.10:8001/index.php/Index-index_hot.html [运行时间：0.087249s][吞吐率：11.46req/s] [内存消耗：2,471.94kb] [文件加载：49]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'Index',
+    2 => 'index_hot',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Index-index_hot.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Index->index_hot[ E:\asd1028\fszb1027\app\home\controller\Index.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027/app/home\view\index/index.html [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'foot_active',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.056314s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.002949s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.001491s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001295s ]
+---------------------------------------------------------------
+[ 2020-11-01T11:49:55+08:00 ] 192.168.1.10 GET /index.php/statics/vue/vant.min.js
+[ info ] 192.168.1.10:8001/index.php/statics/vue/vant.min.js [运行时间：0.040580s][吞吐率：24.64req/s] [内存消耗：2,462.07kb] [文件加载：52]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'statics',
+    2 => 'vue',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Index-index_hot.html',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Common->_empty[ E:\asd1028\fszb1027\app\home\controller\Common.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027\think\tpl\dispatch_jump.tpl [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'code',
+  3 => 'msg',
+  4 => 'data',
+  5 => 'url',
+  6 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003937s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.003511s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.002231s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001693s ]
+[ error ] [8]未定义变量: dao[E:\asd1028\fszb1027\app\home\controller\EmptyController.php:15]
+---------------------------------------------------------------
+[ 2020-11-01T11:49:55+08:00 ] 192.168.1.10 GET /index.php/statics/vue/index.css
+[ info ] 192.168.1.10:8001/index.php/statics/vue/index.css [运行时间：0.074227s][吞吐率：13.47req/s] [内存消耗：2,462.09kb] [文件加载：52]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'statics',
+    2 => 'vue',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Index-index_hot.html',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Common->_empty[ E:\asd1028\fszb1027\app\home\controller\Common.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027\think\tpl\dispatch_jump.tpl [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'code',
+  3 => 'msg',
+  4 => 'data',
+  5 => 'url',
+  6 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011915s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.003169s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.003951s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.002166s ]
+[ error ] [8]未定义变量: dao[E:\asd1028\fszb1027\app\home\controller\EmptyController.php:15]
+---------------------------------------------------------------
+[ 2020-11-01T11:49:55+08:00 ] 192.168.1.10 POST /index.php/Index-index_hot.html
+[ info ] 192.168.1.10:8001/index.php/Index-index_hot.html [运行时间：0.044053s][吞吐率：22.70req/s] [内存消耗：2,416.11kb] [文件加载：48]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'Index',
+    2 => 'index_hot',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '2',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Index-index_hot.html',
+  'origin' => 'http://192.168.1.10:8001',
+  'content-type' => 'application/json;charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Index->index_hot[ E:\asd1028\fszb1027\app\home\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004153s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.003336s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.003942s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.002750s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_goods` [ RunTime:0.002331s ]
+[ sql ] [ SQL ] SELECT `id`,`price`,`thumb` FROM `tp_goods` ORDER BY addtime asc , id desc [ RunTime:0.001147s ]
+---------------------------------------------------------------
+[ 2020-11-01T11:49:56+08:00 ] 192.168.1.10 GET /index.php/Goods-list_today.html
+[ info ] 192.168.1.10:8001/index.php/Goods-list_today.html [运行时间：0.152663s][吞吐率：6.55req/s] [内存消耗：2,652.99kb] [文件加载：52]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'Goods',
+    2 => 'list_today',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Index-index_hot.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Goods->list_today[ E:\asd1028\fszb1027\app\home\controller\Goods.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027/app/home\view\goods/list_today.html [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'foot_active',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011543s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.002771s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.002489s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001615s ]
+---------------------------------------------------------------
+[ 2020-11-01T11:49:56+08:00 ] 192.168.1.10 GET /index.php/statics/vue/vant.min.js
+[ info ] 192.168.1.10:8001/index.php/statics/vue/vant.min.js [运行时间：0.045863s][吞吐率：21.80req/s] [内存消耗：2,462.09kb] [文件加载：52]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'statics',
+    2 => 'vue',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Goods-list_today.html',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Common->_empty[ E:\asd1028\fszb1027\app\home\controller\Common.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027\think\tpl\dispatch_jump.tpl [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'code',
+  3 => 'msg',
+  4 => 'data',
+  5 => 'url',
+  6 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.013840s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.003401s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.002369s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001439s ]
+[ error ] [8]未定义变量: dao[E:\asd1028\fszb1027\app\home\controller\EmptyController.php:15]
+---------------------------------------------------------------
+[ 2020-11-01T11:49:56+08:00 ] 192.168.1.10 GET /index.php/statics/vue/index.css
+[ info ] 192.168.1.10:8001/index.php/statics/vue/index.css [运行时间：0.079454s][吞吐率：12.59req/s] [内存消耗：2,462.10kb] [文件加载：52]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'statics',
+    2 => 'vue',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Goods-list_today.html',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Common->_empty[ E:\asd1028\fszb1027\app\home\controller\Common.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027\think\tpl\dispatch_jump.tpl [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'code',
+  3 => 'msg',
+  4 => 'data',
+  5 => 'url',
+  6 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.014568s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.003538s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.001876s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001174s ]
+[ error ] [8]未定义变量: dao[E:\asd1028\fszb1027\app\home\controller\EmptyController.php:15]
+---------------------------------------------------------------
+[ 2020-11-01T11:49:57+08:00 ] 192.168.1.10 GET /index.php/Goods-list_today.html
+[ info ] 192.168.1.10:8001/index.php/Goods-list_today.html [运行时间：0.043965s][吞吐率：22.75req/s] [内存消耗：2,502.51kb] [文件加载：49]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'Goods',
+    2 => 'list_today',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Goods-list_today.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Goods->list_today[ E:\asd1028\fszb1027\app\home\controller\Goods.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027/app/home\view\goods/list_today.html [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'foot_active',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.014004s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.002776s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.001966s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001887s ]
+---------------------------------------------------------------
+[ 2020-11-01T11:49:57+08:00 ] 192.168.1.10 GET /index.php/statics/vue/vant.min.js
+[ info ] 192.168.1.10:8001/index.php/statics/vue/vant.min.js [运行时间：0.039555s][吞吐率：25.28req/s] [内存消耗：2,462.09kb] [文件加载：52]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'statics',
+    2 => 'vue',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Goods-list_today.html',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Common->_empty[ E:\asd1028\fszb1027\app\home\controller\Common.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027\think\tpl\dispatch_jump.tpl [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'code',
+  3 => 'msg',
+  4 => 'data',
+  5 => 'url',
+  6 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004107s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.004898s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.002705s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001299s ]
+[ error ] [8]未定义变量: dao[E:\asd1028\fszb1027\app\home\controller\EmptyController.php:15]
+---------------------------------------------------------------
+[ 2020-11-01T11:49:57+08:00 ] 192.168.1.10 GET /index.php/statics/vue/index.css
+[ info ] 192.168.1.10:8001/index.php/statics/vue/index.css [运行时间：0.069612s][吞吐率：14.37req/s] [内存消耗：2,462.10kb] [文件加载：52]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'statics',
+    2 => 'vue',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Goods-list_today.html',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Common->_empty[ E:\asd1028\fszb1027\app\home\controller\Common.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027\think\tpl\dispatch_jump.tpl [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'code',
+  3 => 'msg',
+  4 => 'data',
+  5 => 'url',
+  6 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012506s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.002531s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.001180s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001798s ]
+[ error ] [8]未定义变量: dao[E:\asd1028\fszb1027\app\home\controller\EmptyController.php:15]
+---------------------------------------------------------------
+[ 2020-11-01T11:49:58+08:00 ] 192.168.1.10 GET /index.php/User-index.html
+[ info ] 192.168.1.10:8001/index.php/User-index.html [运行时间：0.156625s][吞吐率：6.38req/s] [内存消耗：2,595.02kb] [文件加载：50]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'User',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Goods-list_today.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006341s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.003011s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.001992s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001939s ]
+---------------------------------------------------------------
+[ 2020-11-01T11:49:58+08:00 ] 192.168.1.10 GET /index.php/Login-index.html
+[ info ] 192.168.1.10:8001/index.php/Login-index.html [运行时间：0.110302s][吞吐率：9.07req/s] [内存消耗：1,908.88kb] [文件加载：44]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'Login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Goods-list_today.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\home\controller\Login->index[ E:\asd1028\fszb1027\app\home\controller\Login.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027/app/home\view\login/index.html [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'foot_active',
+  3 => 'title',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-11-01T11:49:58+08:00 ] 192.168.1.10 GET /index.php/statics/vue/index.css
+[ info ] 192.168.1.10:8001/index.php/statics/vue/index.css [运行时间：0.040473s][吞吐率：24.71req/s] [内存消耗：2,462.09kb] [文件加载：52]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'statics',
+    2 => 'vue',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Login-index.html',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Common->_empty[ E:\asd1028\fszb1027\app\home\controller\Common.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027\think\tpl\dispatch_jump.tpl [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'code',
+  3 => 'msg',
+  4 => 'data',
+  5 => 'url',
+  6 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002882s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.002104s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.002009s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001205s ]
+[ error ] [8]未定义变量: dao[E:\asd1028\fszb1027\app\home\controller\EmptyController.php:15]
+---------------------------------------------------------------
+[ 2020-11-01T11:49:58+08:00 ] 192.168.1.10 GET /index.php/statics/vue/vant.min.js
+[ info ] 192.168.1.10:8001/index.php/statics/vue/vant.min.js [运行时间：0.066518s][吞吐率：15.03req/s] [内存消耗：2,462.07kb] [文件加载：52]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'statics',
+    2 => 'vue',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=cur0ttmr04uc0cdiulh9cui2b8; skin=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'referer' => 'http://192.168.1.10:8001/index.php/Login-index.html',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.10:8001',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Common->_empty[ E:\asd1028\fszb1027\app\home\controller\Common.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027\think\tpl\dispatch_jump.tpl [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'code',
+  3 => 'msg',
+  4 => 'data',
+  5 => 'url',
+  6 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004185s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.003108s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.003120s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001101s ]
+[ error ] [8]未定义变量: dao[E:\asd1028\fszb1027\app\home\controller\EmptyController.php:15]
+---------------------------------------------------------------
+[ 2020-11-01T13:15:24+08:00 ] 127.0.0.1 GET /
+[ info ] v9p6pa.natappfree.cc/ [运行时间：0.066453s][吞吐率：15.05req/s] [内存消耗：2,500.21kb] [文件加载：50]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-real-ip' => '1.194.16.184',
+  'x-natapp-ip' => '1.194.16.184',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'host' => 'v9p6pa.natappfree.cc',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Index->index[ E:\asd1028\fszb1027\app\home\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.007411s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.005058s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.002572s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001706s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_category` [ RunTime:0.003780s ]
+[ sql ] [ SQL ] SELECT MIN(parentid) AS tp_min FROM `tp_category` WHERE  `parentid` <> 0 LIMIT 1 [ RunTime:0.001999s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_category` WHERE  `parentid` = 1 ORDER BY listorder asc LIMIT 1 [ RunTime:0.001711s ]
+---------------------------------------------------------------
+[ 2020-11-01T13:15:34+08:00 ] 127.0.0.1 GET /index.php
+[ info ] v9p6pa.natappfree.cc/index.php [运行时间：0.042128s][吞吐率：23.74req/s] [内存消耗：2,500.33kb] [文件加载：50]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-real-ip' => '1.194.16.184',
+  'x-natapp-ip' => '1.194.16.184',
+  'upgrade-insecure-requests' => '1',
+  'cookie' => 'PHPSESSID=rh2vnl0s4fionp8gc5oppsqs73',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'host' => 'v9p6pa.natappfree.cc',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Index->index[ E:\asd1028\fszb1027\app\home\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004965s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.003470s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.001230s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.000862s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_category` [ RunTime:0.001755s ]
+[ sql ] [ SQL ] SELECT MIN(parentid) AS tp_min FROM `tp_category` WHERE  `parentid` <> 0 LIMIT 1 [ RunTime:0.000754s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_category` WHERE  `parentid` = 1 ORDER BY listorder asc LIMIT 1 [ RunTime:0.000778s ]
+---------------------------------------------------------------
+[ 2020-11-01T13:15:35+08:00 ] 127.0.0.1 GET /index.php/Goods-list_list-catid-17.html
+[ info ] v9p6pa.natappfree.cc/index.php/Goods-list_list-catid-17.html [运行时间：0.061231s][吞吐率：16.33req/s] [内存消耗：2,561.89kb] [文件加载：49]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'Goods',
+    2 => 'list_list',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-real-ip' => '1.194.16.184',
+  'x-natapp-ip' => '1.194.16.184',
+  'upgrade-insecure-requests' => '1',
+  'cookie' => 'PHPSESSID=rh2vnl0s4fionp8gc5oppsqs73',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'host' => 'v9p6pa.natappfree.cc',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'catid' => '17',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Goods->list_list[ E:\asd1028\fszb1027\app\home\controller\Goods.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027/app/home\view\goods/list_list.html [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'foot_active',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003102s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.002287s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.001990s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001065s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_category` [ RunTime:0.001559s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_category` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000963s ]
+---------------------------------------------------------------
+[ 2020-11-01T13:15:35+08:00 ] 127.0.0.1 GET /index.php/statics/vue/index.css
+[ info ] v9p6pa.natappfree.cc/index.php/statics/vue/index.css [运行时间：0.068410s][吞吐率：14.62req/s] [内存消耗：2,461.38kb] [文件加载：52]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'statics',
+    2 => 'vue',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-real-ip' => '1.194.16.184',
+  'x-natapp-ip' => '1.194.16.184',
+  'referer' => 'http://v9p6pa.natappfree.cc/index.php/Goods-list_list-catid-17.html',
+  'cookie' => 'PHPSESSID=rh2vnl0s4fionp8gc5oppsqs73',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'host' => 'v9p6pa.natappfree.cc',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Common->_empty[ E:\asd1028\fszb1027\app\home\controller\Common.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027\think\tpl\dispatch_jump.tpl [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'code',
+  3 => 'msg',
+  4 => 'data',
+  5 => 'url',
+  6 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002491s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.002497s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.001553s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001790s ]
+[ error ] [8]未定义变量: dao[E:\asd1028\fszb1027\app\home\controller\EmptyController.php:15]
+---------------------------------------------------------------
+[ 2020-11-01T13:15:36+08:00 ] 127.0.0.1 GET /index.php/statics/vue/vant.min.js
+[ info ] v9p6pa.natappfree.cc/index.php/statics/vue/vant.min.js [运行时间：0.076725s][吞吐率：13.03req/s] [内存消耗：2,461.37kb] [文件加载：52]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'statics',
+    2 => 'vue',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-real-ip' => '1.194.16.184',
+  'x-natapp-ip' => '1.194.16.184',
+  'referer' => 'http://v9p6pa.natappfree.cc/index.php/Goods-list_list-catid-17.html',
+  'cookie' => 'PHPSESSID=rh2vnl0s4fionp8gc5oppsqs73',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'host' => 'v9p6pa.natappfree.cc',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Common->_empty[ E:\asd1028\fszb1027\app\home\controller\Common.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027\think\tpl\dispatch_jump.tpl [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'code',
+  3 => 'msg',
+  4 => 'data',
+  5 => 'url',
+  6 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012287s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.002235s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.001929s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001744s ]
+[ error ] [8]未定义变量: dao[E:\asd1028\fszb1027\app\home\controller\EmptyController.php:15]
+---------------------------------------------------------------
+[ 2020-11-01T13:15:37+08:00 ] 127.0.0.1 GET /index.php/statics/vue/index.css
+[ info ] v9p6pa.natappfree.cc/index.php/statics/vue/index.css [运行时间：0.031280s][吞吐率：31.97req/s] [内存消耗：2,461.38kb] [文件加载：52]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'statics',
+    2 => 'vue',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-real-ip' => '1.194.16.184',
+  'x-natapp-ip' => '1.194.16.184',
+  'referer' => 'http://v9p6pa.natappfree.cc/index.php/Goods-list_list-catid-17.html',
+  'cookie' => 'PHPSESSID=rh2vnl0s4fionp8gc5oppsqs73',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+  'host' => 'v9p6pa.natappfree.cc',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Common->_empty[ E:\asd1028\fszb1027\app\home\controller\Common.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027\think\tpl\dispatch_jump.tpl [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'code',
+  3 => 'msg',
+  4 => 'data',
+  5 => 'url',
+  6 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003193s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001739s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.000981s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001076s ]
+[ error ] [8]未定义变量: dao[E:\asd1028\fszb1027\app\home\controller\EmptyController.php:15]
+---------------------------------------------------------------
+[ 2020-11-01T13:15:38+08:00 ] 127.0.0.1 POST /index.php/Goods-index.html
+[ info ] v9p6pa.natappfree.cc/index.php/Goods-index.html [运行时间：0.061214s][吞吐率：16.34req/s] [内存消耗：2,452.38kb] [文件加载：48]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'Goods',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-real-ip' => '1.194.16.184',
+  'x-natapp-ip' => '1.194.16.184',
+  'referer' => 'http://v9p6pa.natappfree.cc/index.php/Goods-list_list-catid-17.html',
+  'origin' => 'http://v9p6pa.natappfree.cc',
+  'cookie' => 'PHPSESSID=rh2vnl0s4fionp8gc5oppsqs73',
+  'content-type' => 'application/json;charset=UTF-8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'application/json, text/plain, */*',
+  'content-length' => '21',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'host' => 'v9p6pa.natappfree.cc',
+)
+[ info ] [ PARAM ] array (
+  'page' => 1,
+  'limit' => 18,
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Goods->index[ E:\asd1028\fszb1027\app\home\controller\Goods.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003648s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.006925s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.002587s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001785s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_category` [ RunTime:0.004104s ]
+[ sql ] [ SQL ] SELECT `id`,catname as text FROM `tp_category` WHERE  `parentid` = 0 [ RunTime:0.003370s ]
+[ sql ] [ SQL ] SELECT `id`,catname as text,`listorder` FROM `tp_category` WHERE  `parentid` = 1 ORDER BY listorder asc [ RunTime:0.003977s ]
+[ sql ] [ SQL ] SELECT `id`,catname as text,`listorder` FROM `tp_category` WHERE  `parentid` = 11 ORDER BY listorder asc [ RunTime:0.002074s ]
+---------------------------------------------------------------
+[ 2020-11-01T13:15:38+08:00 ] 127.0.0.1 POST /index.php/Goods-index.html
+[ info ] v9p6pa.natappfree.cc/index.php/Goods-index.html [运行时间：0.088317s][吞吐率：11.32req/s] [内存消耗：2,452.38kb] [文件加载：48]
+[ info ] [ LANG ] E:\asd1028\fszb1027\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'Goods',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-real-ip' => '1.194.16.184',
+  'x-natapp-ip' => '1.194.16.184',
+  'referer' => 'http://v9p6pa.natappfree.cc/index.php/Goods-list_list-catid-17.html',
+  'origin' => 'http://v9p6pa.natappfree.cc',
+  'cookie' => 'PHPSESSID=rh2vnl0s4fionp8gc5oppsqs73',
+  'content-type' => 'application/json;charset=UTF-8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'application/json, text/plain, */*',
+  'content-length' => '21',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'host' => 'v9p6pa.natappfree.cc',
+)
+[ info ] [ PARAM ] array (
+  'page' => 1,
+  'limit' => 18,
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Goods->index[ E:\asd1028\fszb1027\app\home\controller\Goods.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003099s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.003650s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.001461s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001119s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_category` [ RunTime:0.002419s ]
+[ sql ] [ SQL ] SELECT `id`,catname as text FROM `tp_category` WHERE  `parentid` = 0 [ RunTime:0.000993s ]
+[ sql ] [ SQL ] SELECT `id`,catname as text,`listorder` FROM `tp_category` WHERE  `parentid` = 1 ORDER BY listorder asc [ RunTime:0.000904s ]
+[ sql ] [ SQL ] SELECT `id`,catname as text,`listorder` FROM `tp_category` WHERE  `parentid` = 11 ORDER BY listorder asc [ RunTime:0.000743s ]
+---------------------------------------------------------------
+[ 2020-11-01T16:01:52+08:00 ] 127.0.0.1 GET /index.php
+[ info ] yvy2c7.natappfree.cc/index.php [运行时间：0.812315s][吞吐率：1.23req/s] [内存消耗：2,514.82kb] [文件加载：50]
+[ info ] [ LANG ] E:\asd1028\fszb1027\shop\shop.git\trunk\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-real-ip' => '1.194.16.184',
+  'x-natapp-ip' => '1.194.16.184',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'host' => 'yvy2c7.natappfree.cc',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Index->index[ E:\asd1028\fszb1027\shop\shop.git\trunk\app\home\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.138156s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.166668s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.012526s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.005615s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_category` [ RunTime:0.006784s ]
+[ sql ] [ SQL ] SELECT MIN(parentid) AS tp_min FROM `tp_category` WHERE  `parentid` <> 0 LIMIT 1 [ RunTime:0.015342s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_category` WHERE  `parentid` = 1 ORDER BY listorder asc LIMIT 1 [ RunTime:0.006462s ]
+---------------------------------------------------------------
+[ 2020-11-01T16:01:52+08:00 ] 127.0.0.1 GET /index.php/Goods-list_list-catid-17.html
+[ info ] yvy2c7.natappfree.cc/index.php/Goods-list_list-catid-17.html [运行时间：0.095337s][吞吐率：10.49req/s] [内存消耗：2,752.47kb] [文件加载：52]
+[ info ] [ LANG ] E:\asd1028\fszb1027\shop\shop.git\trunk\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'Goods',
+    2 => 'list_list',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-real-ip' => '1.194.16.184',
+  'x-natapp-ip' => '1.194.16.184',
+  'upgrade-insecure-requests' => '1',
+  'cookie' => 'PHPSESSID=4po3ijpji82cdv4p8spmpovodt',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'host' => 'yvy2c7.natappfree.cc',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'catid' => '17',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Goods->list_list[ E:\asd1028\fszb1027\shop\shop.git\trunk\app\home\controller\Goods.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027\shop\shop.git\trunk/app/home\view\goods/list_list.html [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'foot_active',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011978s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.002671s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.001826s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001250s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_category` [ RunTime:0.002257s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_category` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.001546s ]
+---------------------------------------------------------------
+[ 2020-11-01T16:01:53+08:00 ] 127.0.0.1 GET /index.php/statics/vue/index.css
+[ info ] yvy2c7.natappfree.cc/index.php/statics/vue/index.css [运行时间：0.203431s][吞吐率：4.92req/s] [内存消耗：2,618.37kb] [文件加载：55]
+[ info ] [ LANG ] E:\asd1028\fszb1027\shop\shop.git\trunk\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'statics',
+    2 => 'vue',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-real-ip' => '1.194.16.184',
+  'x-natapp-ip' => '1.194.16.184',
+  'referer' => 'http://yvy2c7.natappfree.cc/index.php/Goods-list_list-catid-17.html',
+  'cookie' => 'PHPSESSID=4po3ijpji82cdv4p8spmpovodt',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'host' => 'yvy2c7.natappfree.cc',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Common->_empty[ E:\asd1028\fszb1027\shop\shop.git\trunk\app\home\controller\Common.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027\shop\shop.git\trunk\think\tpl\dispatch_jump.tpl [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'code',
+  3 => 'msg',
+  4 => 'data',
+  5 => 'url',
+  6 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008200s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.005934s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.004218s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.002697s ]
+[ error ] [8]未定义变量: dao[E:\asd1028\fszb1027\shop\shop.git\trunk\app\home\controller\EmptyController.php:15]
+---------------------------------------------------------------
+[ 2020-11-01T16:01:53+08:00 ] 127.0.0.1 GET /index.php/statics/vue/vant.min.js
+[ info ] yvy2c7.natappfree.cc/index.php/statics/vue/vant.min.js [运行时间：0.077423s][吞吐率：12.92req/s] [内存消耗：2,475.96kb] [文件加载：52]
+[ info ] [ LANG ] E:\asd1028\fszb1027\shop\shop.git\trunk\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'statics',
+    2 => 'vue',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-real-ip' => '1.194.16.184',
+  'x-natapp-ip' => '1.194.16.184',
+  'referer' => 'http://yvy2c7.natappfree.cc/index.php/Goods-list_list-catid-17.html',
+  'cookie' => 'PHPSESSID=4po3ijpji82cdv4p8spmpovodt',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'host' => 'yvy2c7.natappfree.cc',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Common->_empty[ E:\asd1028\fszb1027\shop\shop.git\trunk\app\home\controller\Common.php ]
+[ info ] [ VIEW ] E:\asd1028\fszb1027\shop\shop.git\trunk\think\tpl\dispatch_jump.tpl [ array (
+  0 => 'head_title',
+  1 => 'seo_title',
+  2 => 'code',
+  3 => 'msg',
+  4 => 'data',
+  5 => 'url',
+  6 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.013337s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.002678s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.001270s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001008s ]
+[ error ] [8]未定义变量: dao[E:\asd1028\fszb1027\shop\shop.git\trunk\app\home\controller\EmptyController.php:15]
+---------------------------------------------------------------
+[ 2020-11-01T16:01:56+08:00 ] 127.0.0.1 POST /index.php/Goods-index.html
+[ info ] yvy2c7.natappfree.cc/index.php/Goods-index.html [运行时间：0.065009s][吞吐率：15.38req/s] [内存消耗：2,466.68kb] [文件加载：48]
+[ info ] [ LANG ] E:\asd1028\fszb1027\shop\shop.git\trunk\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'Goods',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-real-ip' => '1.194.16.184',
+  'x-natapp-ip' => '1.194.16.184',
+  'referer' => 'http://yvy2c7.natappfree.cc/index.php/Goods-list_list-catid-17.html',
+  'origin' => 'http://yvy2c7.natappfree.cc',
+  'cookie' => 'PHPSESSID=4po3ijpji82cdv4p8spmpovodt',
+  'content-type' => 'application/json;charset=UTF-8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'application/json, text/plain, */*',
+  'content-length' => '21',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'host' => 'yvy2c7.natappfree.cc',
+)
+[ info ] [ PARAM ] array (
+  'page' => 1,
+  'limit' => 18,
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Goods->index[ E:\asd1028\fszb1027\shop\shop.git\trunk\app\home\controller\Goods.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012294s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.002519s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.001825s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.001007s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_category` [ RunTime:0.002082s ]
+[ sql ] [ SQL ] SELECT `id`,catname as text FROM `tp_category` WHERE  `parentid` = 0 [ RunTime:0.003051s ]
+[ sql ] [ SQL ] SELECT `id`,catname as text,`listorder` FROM `tp_category` WHERE  `parentid` = 1 ORDER BY listorder asc [ RunTime:0.003870s ]
+[ sql ] [ SQL ] SELECT `id`,catname as text,`listorder` FROM `tp_category` WHERE  `parentid` = 11 ORDER BY listorder asc [ RunTime:0.001990s ]
+---------------------------------------------------------------
+[ 2020-11-01T16:01:56+08:00 ] 127.0.0.1 POST /index.php/Goods-index.html
+[ info ] yvy2c7.natappfree.cc/index.php/Goods-index.html [运行时间：0.048289s][吞吐率：20.71req/s] [内存消耗：2,466.68kb] [文件加载：48]
+[ info ] [ LANG ] E:\asd1028\fszb1027\shop\shop.git\trunk\think\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'Goods',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-real-ip' => '1.194.16.184',
+  'x-natapp-ip' => '1.194.16.184',
+  'referer' => 'http://yvy2c7.natappfree.cc/index.php/Goods-list_list-catid-17.html',
+  'origin' => 'http://yvy2c7.natappfree.cc',
+  'cookie' => 'PHPSESSID=4po3ijpji82cdv4p8spmpovodt',
+  'content-type' => 'application/json;charset=UTF-8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'application/json, text/plain, */*',
+  'content-length' => '21',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+  'host' => 'yvy2c7.natappfree.cc',
+)
+[ info ] [ PARAM ] array (
+  'page' => 1,
+  'limit' => 18,
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Goods->index[ E:\asd1028\fszb1027\shop\shop.git\trunk\app\home\controller\Goods.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012453s ] mysql:host=127.0.0.1;port=3306;dbname=shop;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.003638s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 90 LIMIT 1 [ RunTime:0.002438s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `id` = 91 LIMIT 1 [ RunTime:0.002843s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_category` [ RunTime:0.001614s ]
+[ sql ] [ SQL ] SELECT `id`,catname as text FROM `tp_category` WHERE  `parentid` = 0 [ RunTime:0.000946s ]
+[ sql ] [ SQL ] SELECT `id`,catname as text,`listorder` FROM `tp_category` WHERE  `parentid` = 1 ORDER BY listorder asc [ RunTime:0.000940s ]
+[ sql ] [ SQL ] SELECT `id`,catname as text,`listorder` FROM `tp_category` WHERE  `parentid` = 11 ORDER BY listorder asc [ RunTime:0.000971s ]

@@ -1,0 +1,57 @@
+<div id="nav" >
+<van-nav-bar
+  title="{$head_title}"
+  left-text="返回"
+  right-text="我的"
+  left-arrow
+  @click-left="onClickLeft"
+  @click-right="onClickRight"
+/>
+</van-nav-bar>
+<van-nav-bar
+  title="{$head_title}"
+  left-text="返回"
+  right-text="我的"
+  left-arrow
+  @click-left="onClickLeft"
+  @click-right="onClickRight"
+  style="position:fixed; width: 100%;top: 0;z-index: 9999999"
+/>
+</van-nav-bar>
+ 
+<!-- <van-row>
+  <van-col span="8"><div class="img" style="background-image: url('/statics/home/images/demo_fuzhuang.jpg');"></div></van-col>
+  <van-col span="8"><div class="img" style="background-image: url('/statics/home/images/demo_fuzhuang.jpg');"></div></van-col>
+  <van-col span="8"><div class="img" style="background-image: url('/statics/home/images/demo_fuzhuang.jpg');"></div></van-col>
+</van-row> -->
+</div>
+<script>
+    new Vue({
+        el: '#nav',
+        data: function data() {
+            return {
+              
+            };
+        },
+        created:function(){
+ 
+        },
+
+        methods: {
+          onClickLeft() {
+            if(window.history.length > 1){ 
+              window.history.go( -1 ); 
+            }else{ 
+              window.location.href="/"
+            } 
+          },
+          onClickRight() {
+            window.location.href="{:url('home/user/index')}"
+          }
+        },
+        mounted() {
+ 
+        }
+
+    });
+</script>

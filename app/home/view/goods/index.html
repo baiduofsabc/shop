@@ -1,0 +1,126 @@
+{include file="common/head"/}
+{include file="common/nav"/}
+<div id="app">
+ 
+    <van-tree-select
+      :items="items"
+      :main-active-index="mainActiveIndex"
+      :active-id="activeId"
+      @navclick="onNavClick"
+      @itemclick="onItemClick"
+    />
+  </van-tree-select>
+ 
+<div class="index_center" style="background: #fff;padding: 0.2rem" v-if="sortBannerInfo.length>0">
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" v-for="(vo,index) in sortBannerInfo" :style="'background-image: url('+vo.thumb+');'" @click="viewPic(index)" >
+      
+      </div>
+ 
+ 
+    </div>
+ 
+</div>
+</div>
+ 
+
+ 
+
+</div>
+<script>
+    var appIndex = new Vue({
+        el: '#app',
+        data: function data() {
+            return {
+                items:[],
+              // 左侧高亮元素的index
+              mainActiveIndex: 0,
+              // 被选中元素的id
+              activeId: 1,
+              bannerInfo:[],
+              bannerImages:[],
+            };
+        },
+        created:function(){
+          this.setData()
+          
+
+
+        },
+
+        methods: {
+            onNavClick(index) {
+              this.mainActiveIndex = index;
+            },
+            onItemClick(data) {
+
+              window.location.href="{:url('list_list')}?catid="+data.id
+            },
+            setData(){
+                  var _this = this
+                  axios({
+                      method:'post',
+                      url:'{:url("index")}',
+                      data:_this.filter,
+                  }).then(function(resp){
+                      _this.items = resp.data.data.category
+                      _this.bannerInfo = JSON.parse(resp.data.data.banner)
+                      for (var i = 0; i < _this.sortBannerInfo.length; i++) {
+                         _this.bannerImages.push(_this.sortBannerInfo[i].thumb)
+                      }
+                      setTimeout(function() { 
+                        var swiper = new Swiper('.swiper-container', {
+                          slidesPerView: 3,
+                          spaceBetween:5,
+                          paginationClickable: true,
+                           autoplay: {
+                              delay: 3000,
+                              stopOnLastSlide: false,
+                              disableOnInteraction: true,
+                              },
+                        });
+
+                       },500);
+                  }).catch(resp => {
+                      console.log('请求失败：'+resp.status+','+resp.statusText);
+                  });
+            },
+            viewPic(index) {
+                // this.picIndex = index;
+                // this.show = true
+
+                let _this = this
+                vant.ImagePreview({
+                  images: _this.bannerImages,
+                  startPosition: index,
+                  onClose() {
+                    // do something
+                  }
+                });
+            },
+            sortByKey: function(array, key) { //(数组、排序的列)
+              return array.sort(function(a, b) {
+                var x = a[key];
+                var y = b[key];
+                return ((x < y) ? 1 : ((x > y) ? -1 : 0));
+              })
+            },
+            navTo:function(url) {
+              
+              window.location.href=url
+            },
+
+        },
+        mounted() {
+ 
+        },
+        computed:{
+          sortBannerInfo:function(){
+             return this.sortByKey(this.bannerInfo,'order_num');
+          }
+        },
+
+    });
+</script>
+{include file="common/footer"/}
